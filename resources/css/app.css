@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply font-medium text-slate-800;
+}
+
+#mydropdown {
+    transform: translate(-125px, 15px) !important;
+}
+
+.navbar-fixed {
+    @apply bg-white shadow-xl transition-colors duration-500 ease-in-out;
+}
+
+.navbar-fixed a span,
+.navbar-fixed ul li a {
+    @apply text-slate-800 transition-all duration-300 ease-in-out hover:text-green-500;
+}
+
+.sidebar {
+    @apply z-50;
+}
+
+.sidebar-items {
+    @apply mt-3 flex items-center rounded-md p-2.5 px-4 text-slate-800 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white;
+}
+
+.sidebar-items.active {
+    @apply text-green-500;
+}
+
+.sidebar-items.active a {
+    @apply font-bold text-green-500;
+}
+
+.form-login {
+    @apply mb-3 w-full rounded-full border-none bg-slate-200 p-2.5 px-5 transition-all duration-500 ease-out focus:ring-2 focus:ring-green-500;
+}
+
+.form-control {
+    @apply block w-full rounded-full border-transparent bg-slate-100 p-2.5 pl-5 text-slate-900 focus:border-green-400 focus:ring-transparent dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500;
+}
+
+.search-form {
+    @apply block w-full rounded-full border border-slate-300 bg-slate-50 p-2.5 pl-10 text-sm text-slate-900 transition-all duration-500  ease-out focus:border-green-500 focus:ring-green-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500;
+}
+
+.search-btn {
+    @apply ml-2 rounded-full bg-green-500 p-2.5 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-green-600 focus:outline-none;
+}
+
+.mybtn {
+    @apply mr-2 inline-flex items-center rounded-full bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-green-600 focus:outline-none;
+}
