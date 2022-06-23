@@ -54,3 +54,67 @@ html {
 .mybtn {
     @apply mr-2 inline-flex items-center rounded-full bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-green-600 focus:outline-none;
 }
+
+/** Select2 **/
+
+.select2-container--default .select2-selection--single {
+    @apply rounded-full border-none bg-slate-100 !important;
+}
+
+.select2-container .select2-selection--single {
+    @apply h-[45px] !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    @apply leading-[45px] !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    @apply pl-5 !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    @apply right-[15px] h-[45px] !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__clear {
+    @apply mr-5 !important;
+}
+
+/** Select 2 Dropdown **/
+
+.select2-container--open .select2-dropdown--below {
+    @apply rounded-xl !important;
+}
+
+.select2-container--open .select2-dropdown {
+    @apply top-3 !important;
+}
+
+.select2-dropdown {
+    @apply border-none bg-slate-300 !important;
+}
+
+.select2-search--dropdown {
+    @apply p-[15px] !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    @apply border-transparent !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+    @apply px-5 !important;
+    margin: 5px 0 5px 0 !important;
+}
+
+textarea,
+select {
+    @apply rounded-full bg-slate-100;
+}

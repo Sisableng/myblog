@@ -21,6 +21,25 @@ class CategoryController extends Controller
         return view("categories.index", compact("title", "categories"));
     }
 
+    public function select(Request $request)
+    {
+        $categories = [];
+        if ($request->has("q")) {
+            $search = $request->q;
+            $categories = Category::select("id", "title")
+                ->where("title", "LIKE", "%$search%")
+                ->limit(6)
+                ->get();
+        } else {
+            $categories = Category::select("id", "title")
+                ->onlyParent()
+                ->limit(6)
+                ->get();
+        }
+
+        return response()->json($categories);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,8 +47,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         $title = trans("categories.create.title");
-        return view("categories.create", compact("title"));
+        return view("categories.create", compact("title", "categories"));
     }
 
     /**

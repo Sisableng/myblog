@@ -19,6 +19,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Select2 Css -->
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+
 </head>
 
 <body>
@@ -201,13 +205,9 @@
             @yield('auth')
         </main>
     </div>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         // Sidebar app.blade.php
-
         function dropdown() {
             document.querySelector("#submenu").classList.toggle("hidden");
             document.querySelector("#arrow").classList.toggle("rotate-0");
@@ -221,9 +221,64 @@
         function Close() {
             document.querySelector(".sidebar").classList.toggle("left-[-300px]");
         }
-
         // End Sidebar
     </script>
+    
+<script>
+        // Select2 Parent Category
+        $(function() {
+            // Generate Slug
+            function generateSlug(value){
+                 return value.trim()
+                  .toLowerCase()
+                  .replace(/[^a-z\d-]/gi, '-')
+                  .replace(/-+/g, '-').replace(/^-|-$/g, "");
+            } 
+
+            // Select parent category
+            $('#select_category_parent').select2({
+                placeholder: "{{ trans('categories.create.parent-category-placeholder') }}",
+                language: "{{ app()->getLocale() }}",
+                allowClear: true,
+                ajax: {
+                url: "{{ route('categories.select') }}",
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                   return {
+                      results: $.map(data, function(item) {
+                         return {
+                            text: item.title,
+                            id: item.id
+                         }
+                      })
+                   };
+                }
+                }
+            });
+
+            // Input title
+            $('#category_title').change( function(){
+                let title = $(this).val();
+                let parent_category = $('#select_category_parent').val() ?? "";
+                $('#category_slug').val(generateSlug(title +" "+ parent_category));
+            });
+
+            // input select parent category
+            $('#select_category_parent').change( function(){
+                let title = $('#category_title').val();
+                let parent_category = $(this).val() ?? "";
+                $('#category_slug').val(generateSlug(title +" "+ parent_category));
+            });
+        });
+    </script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Flowbite -->
+    <script src="{{ asset('js/flowbite.js') }}"></script>
+    <!-- Select2 Js -->
+    <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
 </body>
 
 </html>

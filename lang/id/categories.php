@@ -6,6 +6,9 @@ return [
     "addBtn" => "Tambah Kategori",
     "create" => [
         "title" => "Tambah Kategori",
+        "parent-category-label" => "Kategori Induk",
+        "parent-category-placeholder" => "Pilih Kategori Induk",
+        "slug-placeholder" => "Otomatis Dibuat",
     ],
     "form" => [
         "title" => "Judul",

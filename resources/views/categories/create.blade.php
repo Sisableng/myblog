@@ -3,21 +3,31 @@
 @section('content')
 <div class="container">
     
-<form>
+<form action="" method="POST">
 <div class="mb-10 p-10 sm:px-5 border border-slate-200 rounded-3xl">
-      <div class="mb-10 flex sm:flex-col items-center">
-    <label for="" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.title') }}</label>
-    <input type="text" value="" class="form-control">
+      <div class="mb-10 flex sm:flex-col items-start">
+    <label for="category_title" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.title') }}</label>
+    <input id="category_title" value="" name="title" type="text" class="form-control">
 </div>
-  <div class="mb-10 flex sm:flex-col items-center">
-    <label for="" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.slug') }}</label>
-    <input type="text" value="" class="form-control">
+      <div class="mb-10 flex sm:flex-col items-start">
+    <label for="category_slug" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.slug') }}</label>
+    <input id="category_slug" value="" name="slug" type="text" class="block w-full rounded-full border-none bg-slate-300 p-2.5 pl-5 text-slate-900 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400" placeholder="{{ trans('categories.create.slug-placeholder') }}" disabled>
 </div>
-  <div class="mb-10 flex sm:flex-col items-center">
+
+<!-- Select2 -->
+<div class="mb-10 flex sm:flex-col items-start relative">
+<label for="select_category_parent" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.create.parent-category-label') }}</label>
+<select id="select_category_parent" name="parent_category" class="absolute w-full">
+</select>
+</div>
+
+ <div class="mb-10 flex sm:flex-col items-start">
     <label for="" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.desc') }}</label>
-    <input type="text" value="" class="form-control">
+    <textarea type="text" value="" class="block w-full rounded-xl border-none bg-slate-100 p-2.5 pl-5 text-slate-900 focus:border-green-400 focus:ring-transparent dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500" maxlength="150"></textarea>
 </div>
-<div class="flex sm:flex-col justify-center items-center w-full">
+
+<!-- Upoad File -->
+<div class="flex sm:flex-col justify-center items-start w-full">
     <label for="" class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.thumb') }}</label>
     <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-3xl border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
         <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -28,11 +38,11 @@
         <input value="" id="dropzone-file" type="file" class="hidden">
     </label>
 </div>
+
 </div> 
   <div class="w-full flex justify-end">
     <button type="submit" class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-full text-sm px-7 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700">{{ trans('categories.form.submit') }}</button>
   </div>
 </form>
-
 </div>
 @endsection

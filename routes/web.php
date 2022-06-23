@@ -15,21 +15,32 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get(
-    '/localization/{language}',
-    [App\Http\Controllers\LocalizationController::class, 'switch']
-)->name('localization.switch');
+Route::get("/localization/{language}", [
+    App\Http\Controllers\LocalizationController::class,
+    "switch",
+])->name("localization.switch");
 
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", function () {
+    return view("welcome");
 });
 
 Auth::routes([
-    'register' => false
+    "register" => false,
 ]);
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
+Route::middleware(["auth"])->group(function () {
+    Route::get("/home", [
+        App\Http\Controllers\HomeController::class,
+        "index",
+    ])->name("home");
+
+    // Categories
+    Route::get("/categories/select", [
+        \App\Http\Controllers\CategoryController::class,
+        "select",
+    ])->name("categories.select");
+    Route::resource(
+        "/categories",
+        \App\Http\Controllers\CategoryController::class
+    );
 });

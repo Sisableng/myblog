@@ -6,6 +6,9 @@ return [
     "addBtn" => "Add Category",
     "create" => [
         "title" => "Add Category",
+        "parent-category-label" => "Parent Category",
+        "parent-category-placeholder" => "Select Parent Category",
+        "slug-placeholder" => "Auto Generate",
     ],
     "form" => [
         "title" => "title",

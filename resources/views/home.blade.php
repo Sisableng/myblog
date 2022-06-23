@@ -8,7 +8,7 @@
                 <div class="card-body space-y-10 p-0 m-0">
                     <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span class="text-slate-500">{{ Auth::user()->name }}</span></h1>
                     <div>
-                        <a href="https://www.youtube.com/watch?v=XIEu-SB6rJ8&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=24&ab_channel=Ilmukita" class="text-green-500" target="_blank">Hanca : 24 (Membuat breadcums)</a>
+                        <a href="https://www.youtube.com/watch?v=m53sjEEba7A&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=26&ab_channel=Ilmukita" class="text-green-500" target="_blank">Hanca : 26 (Konfigurasi input slug)</a>
                     </div>
 
                     <div class="flex justify-between content-center sm:flex-col sm:space-y-5">
