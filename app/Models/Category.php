@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'slug', 'parent_id', 'desc', 'thumb'];
+
     public function scopeOnlyParent($query)
     {
         return $query->whereNull("parent_id");

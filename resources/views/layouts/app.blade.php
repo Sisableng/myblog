@@ -32,7 +32,7 @@
             <span class="fixed text-white text-lg top-6 left-7 cursor-pointer hidden sm:block" onclick="Open()">
                 <i class="fad fa-bars-staggered px-3 py-3 bg-slate-900 rounded-full"></i>
             </span>
-            <asside class="sidebar shadow-md fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 w-[250px] sm:w-[300px] overflow-y-auto  overflow-x-hidden dark:bg-slate-900 sm:bg-slate-100">
+            <asside class="sidebar shadow-2xl fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 w-[250px] sm:w-[300px] overflow-y-auto  overflow-x-hidden dark:bg-slate-900 sm:bg-slate-100">
                 <div class="dark:text-slate-100 text-xl">
                     <div class="p-2.5 mt-1 flex items-center">
                         <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
@@ -79,12 +79,12 @@
                     <span class="text-[15px] w-full text-slate-800 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.settings') }}</span>
                 </div>
                 <div class="bottom-0 absolute w-full left-3 sm:left-10 right-0 px-2">
-                <div class="group mb-5 flex items-center justify-center w-52 rounded-full bg-green-500 p-2.5 px-4 text-slate-100 duration-300 hover:text-green-300 focus:text-green-600 dark:text-white">
-                    <a href="{{ '/' }}" target="_blank">
-                        <i class="fad fa-arrow-up-right-from-square"></i>
-                        <span class="text-[15px] ml-4 text-slate-100 group-hover:text-green-300 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.view_site') }}</span>
-                    </a>
-                </div>
+                    <div class="group mb-5 flex items-center justify-center w-52 rounded-full bg-green-500 p-2.5 px-4 text-slate-100 duration-300 hover:text-green-300 focus:text-green-600 dark:text-white">
+                        <a href="{{ '/' }}" target="_blank">
+                            <i class="fad fa-arrow-up-right-from-square"></i>
+                            <span class="text-[15px] ml-4 text-slate-100 group-hover:text-green-300 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.view_site') }}</span>
+                        </a>
+                    </div>
                 </div>
             </asside>
         </div>
@@ -221,19 +221,18 @@
         function Close() {
             document.querySelector(".sidebar").classList.toggle("left-[-300px]");
         }
-        // End Sidebar
     </script>
-    
-<script>
+
+    <script>
         // Select2 Parent Category
         $(function() {
             // Generate Slug
-            function generateSlug(value){
-                 return value.trim()
-                  .toLowerCase()
-                  .replace(/[^a-z\d-]/gi, '-')
-                  .replace(/-+/g, '-').replace(/^-|-$/g, "");
-            } 
+            function generateSlug(value) {
+                return value.trim()
+                    .toLowerCase()
+                    .replace(/[^a-z\d-]/gi, '-')
+                    .replace(/-+/g, '-').replace(/^-|-$/g, "");
+            }
 
             // Select parent category
             $('#select_category_parent').select2({
@@ -241,35 +240,39 @@
                 language: "{{ app()->getLocale() }}",
                 allowClear: true,
                 ajax: {
-                url: "{{ route('categories.select') }}",
-                dataType: 'json',
-                delay: 250,
-                processResults: function(data) {
-                   return {
-                      results: $.map(data, function(item) {
-                         return {
-                            text: item.title,
-                            id: item.id
-                         }
-                      })
-                   };
-                }
+                    url: "{{ route('categories.select') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function(data) {
+                        return {
+                            results: $.map(data, function(item) {
+                                return {
+                                    text: item.title,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    }
                 }
             });
 
             // Input title
-            $('#category_title').change( function(){
+            $('#category_title').change(function() {
                 let title = $(this).val();
                 let parent_category = $('#select_category_parent').val() ?? "";
-                $('#category_slug').val(generateSlug(title +" "+ parent_category));
+                $('#category_slug').val(generateSlug(title + " " + parent_category));
             });
 
             // input select parent category
-            $('#select_category_parent').change( function(){
+            $('#select_category_parent').change(function() {
                 let title = $('#category_title').val();
                 let parent_category = $(this).val() ?? "";
-                $('#category_slug').val(generateSlug(title +" "+ parent_category));
+                $('#category_slug').val(generateSlug(title + " " + parent_category));
             });
+
+            // Event:Thumbnail
+            $('#button_file').filemanager('image');
+
         });
     </script>
     <!-- Scripts -->
@@ -279,6 +282,8 @@
     <!-- Select2 Js -->
     <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+    @include('sweetalert::alert')
 </body>
 
 </html>

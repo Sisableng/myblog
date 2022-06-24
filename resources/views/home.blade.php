@@ -8,7 +8,7 @@
                 <div class="card-body space-y-10 p-0 m-0">
                     <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span class="text-slate-500">{{ Auth::user()->name }}</span></h1>
                     <div>
-                        <a href="https://www.youtube.com/watch?v=m53sjEEba7A&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=26&ab_channel=Ilmukita" class="text-green-500" target="_blank">Hanca : 26 (Konfigurasi input slug)</a>
+                        <a href="https://www.youtube.com/watch?v=naI_-xj9eoU&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=34&ab_channel=Ilmukita" class="text-green-500" target="_blank">Hanca : 34 (Implementasi sweetalert)</a>
                     </div>
 
                     <div class="flex justify-between content-center sm:flex-col sm:space-y-5">
@@ -17,15 +17,15 @@
                                 <i class="fad fa-plus mr-2 -ml-1"></i>
                                 Add Post
                             </button>
-                         </div>
+                        </div>
                         <div>
-                            <form class="flex items-center mb-0">   
+                            <form class="flex items-center mb-0">
                                 <label for="simple-search" class="sr-only">Search</label>
                                 <div class="relative w-full">
                                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                         <i class="fad fa-magnifying-glass"></i>
                                     </div>
-                                        <input type="text" id="simple-search" class="search-form" placeholder="{{ trans('dashboard.index.search') }}" required="">
+                                    <input type="text" id="simple-search" class="search-form" placeholder="{{ trans('dashboard.index.search') }}" required="">
                                 </div>
                                 <button type="submit" class="search-btn"><i class="fad fa-magnifying-glass"></i></button>
                             </form>
@@ -39,7 +39,7 @@
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         {{ trans('categories.table.title') }}
-                                     </th>
+                                    </th>
                                     <th scope="col" class="px-6 py-3">
                                         {{ trans('categories.table.slug') }}
                                     </th>
@@ -56,7 +56,7 @@
                             </thead>
                             <tbody>
                                 <tr class="bg-slate-100 border-b dark:bg-slate-800 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600">
-                
+
                                     <td class="px-6 py-4">
                                         WEW
                                     </td>
@@ -99,8 +99,8 @@
         </div>
         <div class="ml-3 text-sm font-normal">
             <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Admin - <span class="text-slate-500 font-normal">Wildan Maulana</span></h4>
-            <div class="text-sm font-normal">Disarankan Menggunakan PC/Laptop ya lur!!</div> 
-            <span class="text-xs font-medium text-green-500 dark:text-blue-500">a few seconds ago</span>   
+            <div class="text-sm font-normal">Disarankan Menggunakan PC/Laptop ya lur!!</div>
+            <span class="text-xs font-medium text-green-500 dark:text-blue-500">a few seconds ago</span>
         </div>
     </div>
 </div>

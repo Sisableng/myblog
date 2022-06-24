@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CategoryController extends Controller
 {
@@ -60,7 +63,55 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                "title" => "required|string|max:60",
+                "slug" => "required|string|unique:categories,slug",
+                "desc" => "required",
+                "thumb" => "required|string|max:150",
+            ]
+        );
+
+        if ($validator->fails()) {
+            if ($request->has('parent_category')) {
+                $request['parent_category'] = Category::select('id', 'title')->find($request->parent_category);
+            }
+            // SWEET ALERT TOAST
+            // return back()->with('toast_error', $validator->messages()->all()[0])->withInput($request->all());
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        }
+
+        try {
+            Category::create([
+                'title' => $request->title,
+                'slug' => $request->slug,
+                'parent_id' => $request->parent_category,
+                'desc' => $request->desc,
+                'thumb' => parse_url($request->thumb)['path'],
+            ]);
+
+            // Alert::success(
+            //     trans('categories.alert.create.title'),
+            //     trans('categories.alert.create.message.success')
+            // );
+            return redirect()->route('categories.index')->withSuccess(trans('categories.alert.create.message.success'));
+        } catch (\Throwable $th) {
+            if ($request->has('parent_category')) {
+                $request['parent_category'] = Category::select('id', 'title')->find($request->parent_category);
+            }
+
+            Alert::error(
+                trans('categories.alert.create.title'),
+                trans('categories.alert.create.message.error', ['error' => $th->getMessage()])
+            );
+
+            // SWEET ALERT ERROR
+            // return redirect()->back()->with('errors', $validator->messages()->all()[0])->withInput($request->all());
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        }
+
+        dd($request->all());
     }
 
     /**
@@ -105,6 +156,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $categories = Category::findOrFail('id');
+        $categories->delete();
+
+        return redirect()->back()->with('success', 'Data Deleted Successfully');
     }
 }

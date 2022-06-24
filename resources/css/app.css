@@ -55,6 +55,15 @@ html {
     @apply mr-2 inline-flex items-center rounded-full bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-green-600 focus:outline-none;
 }
 
+.is-invalid {
+    @apply bg-red-100 !important;
+}
+
+.title-required::after {
+    @apply w-[1px] h-[1px] p-1 inline-flex absolute ml-2 mt-1 rounded-full bg-green-500;
+    content: "";
+}
+
 /** Select2 **/
 
 .select2-container--default .select2-selection--single {

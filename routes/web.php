@@ -43,4 +43,9 @@ Route::middleware(["auth"])->group(function () {
         "/categories",
         \App\Http\Controllers\CategoryController::class
     );
+
+    // Filemanager
+    Route::group(['prefix' => 'filemanager'], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 });
