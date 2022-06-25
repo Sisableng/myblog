@@ -2,7 +2,12 @@
 // Leanguage : English
 
 return [
-    "title" => "Category",
+    "title" => [
+        "index" => "Category",
+        "create" => "Create Category",
+        "update" => "Update Category",
+        "show" => "Show Category",
+    ],
     "addBtn" => "Add Category",
     "create" => [
         "title" => "Add Category",
@@ -30,17 +35,25 @@ return [
         "update" => [
             "title" => "Update Category",
             "message" => [
-                "success" => "Hore, Category updated successfully.",
-                "error" => "Hmm, category failed to update. :error"
+                "success" => "Great! Category updated successfully.",
+                "error" => "Oops, category failed to update. :error"
             ]
         ],
         "delete" => [
             "title" => "Delete Category",
             "message" => [
                 "confirm" => "Are you sure want to delete this :title category ?",
-                "success" => "Hore, Category :title deleted successfully",
-                "error" => "Hmm, Category :title failed to delete. :error"
+                "success" => "Great! Category :title deleted successfully",
+                "error" => "Oops, Category :title failed to delete. :error"
             ]
         ],
+        "btn" => [
+            "confirm" => "Yes!",
+            "cancel" => "Im not sure",
+        ]
+    ],
+
+    "show" => [
+        "no_image" => "Oops, No images available :(",
     ]
 ];

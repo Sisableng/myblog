@@ -2,10 +2,15 @@
 // Basa : Sunda
 
 return [
-    "title" => "Kategori",
-    "addBtn" => "Tambah Kategori",
+    "title" => [
+        "index" => "Kategori",
+        "create" => "Tambih Kategori",
+        "update" => "Apdet Kategori",
+        "show" => "Rinci Kategori",
+    ],
+    "addBtn" => "Tambih Kategori",
     "create" => [
-        "title" => "Damel Kategori",
+        "title" => "Tambih Kategori",
         "parent-category-label" => "Kategori Induk",
         "parent-category-placeholder" => "Pilih Kategori Induk",
         "slug-placeholder" => "Didamel Otomatis",
@@ -42,5 +47,12 @@ return [
                 "error" => "Aduh, Kategori :title gagal dihapus. :error"
             ]
         ],
+        "btn" => [
+            "confirm" => "Gass!",
+            "cancel" => "Teu jadi",
+        ]
+    ],
+    "show" => [
+        "no_image" => "Aduh, Teu aya gambaran euy :(",
     ]
 ];

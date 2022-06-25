@@ -2,7 +2,12 @@
 // Bahasa : Indonesia
 
 return [
-    "title" => "Kategori",
+    "title" => [
+        "index" => "Kategori",
+        "create" => "Tambah Kategori",
+        "update" => "Perbarui Kategori",
+        "show" => "Detail Kategori",
+    ],
     "addBtn" => "Tambah Kategori",
     "create" => [
         "title" => "Tambah Kategori",
@@ -42,5 +47,13 @@ return [
                 "error" => "Hmm, Kategori :title gagal dihapus. :error"
             ]
         ],
+        "btn" => [
+            "confirm" => "Oke",
+            "cancel" => "Gak jadi",
+        ]
+    ],
+
+    "show" => [
+        "no_image" => "Yahh, Tidak ada gambar :(",
     ]
 ];

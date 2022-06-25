@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $title = trans("categories.title");
+        $title = trans("categories.title.index");
         $categories = Category::onlyParent()
             ->with("descendants")
             ->get();
@@ -31,12 +31,12 @@ class CategoryController extends Controller
             $search = $request->q;
             $categories = Category::select("id", "title")
                 ->where("title", "LIKE", "%$search%")
-                ->limit(6)
+                ->limit(5)
                 ->get();
         } else {
             $categories = Category::select("id", "title")
                 ->onlyParent()
-                ->limit(6)
+                ->limit(5)
                 ->get();
         }
 
@@ -51,7 +51,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $title = trans("categories.create.title");
+        $title = trans("categories.title.create");
         return view("categories.create", compact("title", "categories"));
     }
 
@@ -79,7 +79,7 @@ class CategoryController extends Controller
             }
             // SWEET ALERT TOAST
             // return back()->with('toast_error', $validator->messages()->all()[0])->withInput($request->all());
-            return redirect()->back()->withInput($request->all())->withErrors($validator);
+            return redirect()->back()->withInput($request->all());
         }
 
         try {
@@ -91,11 +91,11 @@ class CategoryController extends Controller
                 'thumb' => parse_url($request->thumb)['path'],
             ]);
 
-            // Alert::success(
-            //     trans('categories.alert.create.title'),
-            //     trans('categories.alert.create.message.success')
-            // );
-            return redirect()->route('categories.index')->withSuccess(trans('categories.alert.create.message.success'));
+            Alert::toast(
+                trans('categories.alert.create.message.success'),
+                'success'
+            );
+            return redirect()->route('categories.index');
         } catch (\Throwable $th) {
             if ($request->has('parent_category')) {
                 $request['parent_category'] = Category::select('id', 'title')->find($request->parent_category);
@@ -122,7 +122,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $title = trans("categories.title.show");
+        return view("categories.show", compact("category", "title"));
     }
 
     /**
@@ -133,7 +134,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $title = trans("categories.title.update");
+        return view("categories.edit", compact("category", "title"));
     }
 
     /**
@@ -145,7 +147,55 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        // Validasi
+        $validator = Validator::make(
+            $request->all(),
+            [
+                "title" => "required|string|max:60",
+                "slug" => "required|string|unique:categories,slug," . $category->id,
+                "desc" => "required",
+                "thumb" => "required|string|max:150",
+            ]
+        );
+
+        if ($validator->fails()) {
+            if ($request->has('parent_category')) {
+                $request['parent_category'] = Category::select('id', 'title')->find($request->parent_category);
+            }
+            // SWEET ALERT TOAST
+            // return back()->with('toast_error', $validator->messages()->all()[0])->withInput($request->all());
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        }
+
+        // Input
+        try {
+            $category->update([
+                'title' => $request->title,
+                'slug' => $request->slug,
+                'parent_id' => $request->parent_category,
+                'desc' => $request->desc,
+                'thumb' => parse_url($request->thumb)['path'],
+            ]);
+
+            // Alert::success(
+            //     trans('categories.alert.create.title'),
+            //     trans('categories.alert.create.message.success')
+            // );
+            return redirect()->route('categories.index')->withSuccess(trans('categories.alert.update.message.success'));
+        } catch (\Throwable $th) {
+            if ($request->has('parent_category')) {
+                $request['parent_category'] = Category::select('id', 'title')->find($request->parent_category);
+            }
+
+            Alert::error(
+                trans('categories.alert.update.title'),
+                trans('categories.alert.update.message.error', ['error' => $th->getMessage()])
+            );
+
+            // SWEET ALERT ERROR
+            // return redirect()->back()->with('errors', $validator->messages()->all()[0])->withInput($request->all());
+            return redirect()->back()->withInput($request->all());
+        }
     }
 
     /**
@@ -156,9 +206,18 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $categories = Category::findOrFail('id');
-        $categories->delete();
-
-        return redirect()->back()->with('success', 'Data Deleted Successfully');
+        try {
+            $category->delete();
+            Alert::toast(
+                trans('categories.alert.delete.message.success', ['title' => $category->title]),
+                'success'
+            );
+        } catch (\Throwable $th) {
+            Alert::error(
+                trans('categories.alert.delete.title'),
+                trans('categories.alert.delete.message.error', ['error' => $th->getMessage(), 'title' => $category->title])
+            );
+        }
+        return redirect()->back();
     }
 }

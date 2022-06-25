@@ -44,7 +44,7 @@ html {
 }
 
 .search-form {
-    @apply block w-full rounded-full border border-slate-300 bg-slate-50 p-2.5 pl-10 text-sm text-slate-900 transition-all duration-500  ease-out focus:border-green-500 focus:ring-green-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500;
+    @apply block w-full rounded-full border border-slate-300 bg-slate-50 p-2.5 pl-10 text-sm text-slate-900 transition-all duration-500 ease-out focus:border-green-500 focus:ring-green-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500;
 }
 
 .search-btn {
