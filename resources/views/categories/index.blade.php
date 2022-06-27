@@ -8,27 +8,35 @@
                 {{ trans('categories.addBtn') }}
             </a>
             <div class="sm:w-full">
-                <form class="flex items-center mb-0">
-                    <label for="simple-search" class="sr-only">Search</label>
+                <form action="{{ route('categories.index') }}" method="GET" class="flex items-center mb-0">
                     <div class="relative w-full">
                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                             <i class="fad fa-magnifying-glass"></i>
                         </div>
-                        <input type="text" id="simple-search" class="search-form"
-                            placeholder="{{ trans('dashboard.index.search') }}" required="">
+                        <input type="text" name="keyword" class="search-form"
+                            placeholder="{{ trans('dashboard.index.search') }}" value="{{ request()->get('keyword') }}">
                     </div>
                     <button type="submit" class="search-btn"><i class="fad fa-magnifying-glass"></i></button>
+
                 </form>
             </div>
         </div>
 
         <ul class="w-full py-2 dark:border-gray-600">
-            @include('categories._category-list', [
-                'categories' => $categories,
-                'count' => 0,
-            ])
+            @if (count($categories))
+                @include('categories._category-list', [
+                    'categories' => $categories,
+                    'count' => 0,
+                ])
+            @else
+                @if (request()->get('keyword'))
+                    <p class="text-center">
+                        {{ trans('categories.index.empty.search', ['keyword' => request()->get('keyword')]) }}</p>
+                @else
+                    <p class="text-center">{{ trans('categories.index.empty.fetch') }}</p>
+                @endif
+            @endif
         </ul>
-
     </div>
 @endsection
 

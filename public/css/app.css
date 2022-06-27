@@ -2165,6 +2165,10 @@ select {
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
 }
+.group:focus .group-focus\:text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(14 159 110 / var(--tw-text-opacity));
+}
 .dark .dark\:divide-slate-600 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-divide-opacity));

@@ -8,6 +8,12 @@ return [
         "update" => "Update Category",
         "show" => "Show Category",
     ],
+    "index" => [
+        "empty" => [
+            'fetch' => "No category data yet",
+            "search" => "Oops, :keyword not found :("
+        ]
+    ],
     "addBtn" => "Add Category",
     "create" => [
         "title" => "Add Category",

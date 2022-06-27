@@ -15,13 +15,19 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $categories = Category::with("descendants");
+        if ($request->has('keyword') && trim($request->keyword)) {
+            $categories->search($request->keyword);
+        } else {
+            $categories->onlyParent();
+        }
         $title = trans("categories.title.index");
-        $categories = Category::onlyParent()
-            ->with("descendants")
-            ->get();
-        return view("categories.index", compact("title", "categories"));
+        return view("categories.index", [
+            "categories" => $categories->get(),
+            "title" => $title
+        ]);
     }
 
     public function select(Request $request)
@@ -136,6 +142,7 @@ class CategoryController extends Controller
     {
         $title = trans("categories.title.update");
         return view("categories.edit", compact("category", "title"));
+        // dd($category->parent());
     }
 
     /**

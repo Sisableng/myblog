@@ -8,6 +8,12 @@ return [
         "update" => "Apdet Kategori",
         "show" => "Rinci Kategori",
     ],
+    "index" => [
+        "empty" => [
+            'fetch' => "Data kategori teu acan aya",
+            "search" => "Hmmm, Data :keyword henteu kapendak :("
+        ]
+    ],
     "addBtn" => "Tambih Kategori",
     "create" => [
         "title" => "Tambih Kategori",

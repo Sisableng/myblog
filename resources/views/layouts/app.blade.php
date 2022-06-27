@@ -56,7 +56,7 @@
                         <i class="fad fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
                             <span
-                                class="text-[15px] w-full text-slate-800 group-hover:text-green-500 focus:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</span>
+                                class="text-[15px] w-full text-slate-800 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</span>
                             <span class="text-sm rotate-180" id="arrow">
                                 <i class="fas fa-caret-down text-green-500"></i>
                             </span>

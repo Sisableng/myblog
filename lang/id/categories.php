@@ -8,6 +8,12 @@ return [
         "update" => "Perbarui Kategori",
         "show" => "Detail Kategori",
     ],
+    "index" => [
+        "empty" => [
+            'fetch' => "Data kategori belum ada",
+            "search" => "Hmmm, Data :keyword tidak ditemukan :("
+        ]
+    ],
     "addBtn" => "Tambah Kategori",
     "create" => [
         "title" => "Tambah Kategori",
