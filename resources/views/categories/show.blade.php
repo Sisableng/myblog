@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="self-start w-full">
-                <h1 class="text-xl font-bold mb-7">{{ trans('categories.form.desc') }}</h1>
+                <h1 class="text-slate-500 mb-5">{{ trans('categories.form.desc') }}</h1>
                 <div class="block p-5 sm:p-2.5 border border-slate-300 rounded-3xl">
                     <p>{{ $category->desc }}</p>
                 </div>

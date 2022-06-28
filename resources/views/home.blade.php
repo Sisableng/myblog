@@ -9,8 +9,8 @@
                         <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span
                                 class="text-slate-500">{{ Auth::user()->name }}</span></h1>
                         <div>
-                            <a href="https://www.youtube.com/watch?v=AGBdKpGlOpg&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=41&ab_channel=Ilmukita"
-                                class="text-green-500" target="_blank">Hanca : 41 (Proses hapus data kategori)</a>
+                            <a href="https://www.youtube.com/watch?v=raF4GPUO0-o&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=45"
+                                class="text-green-500" target="_blank">Hanca : 44 (Menambahkan pagination data kategori)</a>
                         </div>
 
                         <div class="flex justify-between content-center sm:flex-col sm:space-y-5">
@@ -92,7 +92,7 @@
     </div>
 
     <div id="toast-top-right"
-        class="absolute top-5 right-5 w-full max-w-xs p-4 text-gray-900 bg-slate-300/30 backdrop-blur rounded-lg shadow-2xl dark:bg-gray-800 dark:text-gray-300"
+        class="absolute top-5 right-5 w-full max-w-xs p-4 text-gray-900 bg-slate-300/30 backdrop-blur rounded-lg shadow-2xl dark:bg-gray-800 z-50 dark:text-gray-300"
         role="alert">
         <div class="flex items-center mb-3">
             <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">New notification</span>

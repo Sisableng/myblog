@@ -69,9 +69,11 @@
                 {{-- parent_category --}}
                 <div class="mb-10 flex sm:flex-col items-start relative">
                     <label for="select_category_parent"
-                        class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.create.parent-category-label') }}</label>
+                        class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.create.parent-category-label') }}
+                        <span class="text-red-500 italic">(Bugs)</span> </label>
                     <select id="select_category_parent" name="parent_category"
-                        class="absolute w-full @error('parent_category') is-invalid @enderror">
+                        class="absolute w-full @error('parent_category') is-invalid @enderror"
+                        data-placeholder="{{ __('Bugs Selected') }}" disabled>
                         @if (old('parent_category', $category->parent))
                             <option value="{{ old('parent_category', $category->parent)->id }}" selected>
                                 {{ old('parent_category', $category->parent)->title }}

@@ -2,6 +2,10 @@
 module.exports = {
     content: ["./resources/**/*.blade.php", "./resources/**/*.js"],
     theme: {
+        fontFamily: {
+            'poppins' : ['Poppins', 'sans-serif'],
+            'montserrat' : ['Montserrat', 'sans-serif'],
+        },
         container: {
             center: true,
         },

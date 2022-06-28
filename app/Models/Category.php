@@ -23,7 +23,7 @@ class Category extends Model
 
     public function parent()
     {
-        return $this->belongsTo(self::class);
+        return $this->belongsTo(self::class, "parent_id")->where('parent_id', 0);
     }
 
     public function children()

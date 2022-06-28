@@ -25,7 +25,7 @@ class CategoryController extends Controller
         }
         $title = trans("categories.title.index");
         return view("categories.index", [
-            "categories" => $categories->get(),
+            "categories" => $categories->paginate(5)->appends(['keyword' => $request->get('keyword')]),
             "title" => $title
         ]);
     }

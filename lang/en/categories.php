@@ -6,7 +6,7 @@ return [
         "index" => "Category",
         "create" => "Create Category",
         "update" => "Update Category",
-        "show" => "Show Category",
+        "show" => "Details Category",
     ],
     "index" => [
         "empty" => [

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <title>{{ $title }}</title>
 @section('content')
-    <div class="container space-y-5">
+    <div class="container space-y-5 mb-5">
         <div class="flex justify-between items-center sm:flex-col sm:space-y-5 sm:items-start">
             <a href="{{ 'categories/create' }}" role="button" class="mybtn">
                 <i class="fad fa-plus mr-2 -ml-1"></i>
@@ -28,6 +28,9 @@
                     'categories' => $categories,
                     'count' => 0,
                 ])
+                <div class="flex justify-end mt-7">
+                    {{ $categories->links('vendor.pagination.tailwind') }}
+                </div>
             @else
                 @if (request()->get('keyword'))
                     <p class="text-center">

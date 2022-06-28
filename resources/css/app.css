@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 html {
-    @apply font-medium text-slate-800;
+    @apply font-medium text-slate-700;
 }
 
 #mydropdown {
     transform: translate(-125px, 15px) !important;
+}
+
+@media (max-width: 1024px) {
+    #mydropdown {
+    transform: translate(-65px, 15px) !important;
+}
 }
 
 .navbar-fixed {
@@ -24,7 +30,7 @@ html {
 }
 
 .sidebar-items {
-    @apply mt-3 flex items-center rounded-md p-2.5 px-4 text-slate-800 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white;
+    @apply mt-3 flex items-center rounded-md p-2.5 px-4 text-slate-400 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white;
 }
 
 .sidebar-items.active {
