@@ -30,11 +30,11 @@ html {
 }
 
 .sidebar-items {
-    @apply mt-3 flex items-center rounded-md p-2.5 px-4 text-slate-400 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white;
+    @apply mt-3 flex items-center rounded-full p-2.5 px-4 text-slate-400 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white;
 }
 
 .sidebar-items.active {
-    @apply text-green-500;
+    @apply text-green-500 bg-slate-700/50;
 }
 
 .sidebar-items.active a {

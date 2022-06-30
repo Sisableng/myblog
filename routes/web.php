@@ -44,6 +44,12 @@ Route::middleware(["auth"])->group(function () {
         \App\Http\Controllers\CategoryController::class
     );
 
+    // Tags
+    Route::resource(
+        "/tags",
+        \App\Http\Controllers\TagController::class
+    );
+
     // Filemanager
     Route::group(['prefix' => 'filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

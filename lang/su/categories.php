@@ -34,14 +34,14 @@ return [
         "create" => [
             "title" => "Tambah Kategori",
             "message" => [
-                "success" => "Aseekk, Kategori parantos ditambahkeun",
+                "success" => "Mantap, Kategori parantos ditambahkeun",
                 "error" => "Aduh, Kategori gagal ditambahkeun euy. :error"
             ]
         ],
         "update" => [
             "title" => "Apdet Kategori",
             "message" => [
-                "success" => "Aseekk, Apdet kategori beres.",
+                "success" => "Mantap, Apdet kategori beres.",
                 "error" => "Aduh, Apdet kategori gagal. :error"
             ]
         ],

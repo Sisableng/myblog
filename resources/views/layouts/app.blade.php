@@ -76,10 +76,11 @@
                             {{ trans('dashboard.menu.trash') }}
                         </a>
                     </div>
-                    <div class="group sidebar-items">
+                    <div
+                        class="group sidebar-items {{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
                         <i class="fad fa-tags w-[50px]"></i>
-                        <span
-                            class="text-[15px] w-full text-slate-300 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.tags') }}</span>
+                        <a href="{{ url('tags') }}"
+                            class="text-[15px] w-full text-slate-300 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.tags') }}</a>
                     </div>
                     <div
                         class="group sidebar-items {{ Request::is('categories', 'categories/create', 'categories/*/edit', 'categories/*') ? 'active' : '' }}">
