@@ -50,18 +50,21 @@
                             </div>
                         </li>
                     @endforeach
-                    {{-- <div class="flex justify-end mt-7">
-                        {{ $tags->links('vendor.pagination.tailwind') }}
-                    </div> --}}
                 @else
                     <p class="text-center">
-                        {{ __('tags.index.empty.fetch') }}
-                    </p>
-                    <p class="text-center">
-                        {{ __('tags.index.empty.search') }}
+                        @if (request()->get('keyword'))
+                            {!! __('tags.index.empty.search', ['keyword' => request()->get('keyword')]) !!}
+                        @else
+                            {{ __('tags.index.empty.fetch') }}
+                        @endif
                     </p>
                 @endif
             </ul>
+            @if ($tags->hasPages())
+                <div class="flex justify-end mt-7">
+                    {{ $tags->links('vendor.pagination.tailwind') }}
+                </div>
+            @endif
         </div>
     </div>
 @endsection

@@ -25,12 +25,21 @@ html {
     @apply text-slate-800 transition-all duration-300 ease-in-out hover:text-green-500;
 }
 
+.active{
+    @apply text-green-500 font-bold !important;
+}
+
+.active:before{
+    @apply w-2 h-2 p-2 bg-green-500 absolute -left-[28px] top-[12px] rounded-full;
+    content: '';
+}
+
 .sidebar {
     @apply z-50;
 }
 
 .sidebar-items {
-    @apply mt-3 flex items-center rounded-full p-2.5 px-4 text-slate-400 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white;
+    @apply mt-3 flex items-center rounded-full p-2.5 px-4 text-slate-400 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white relative;
 }
 
 .sidebar-items.active {

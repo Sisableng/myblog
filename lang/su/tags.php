@@ -11,8 +11,8 @@ return [
     "index" => [
         "addBtn" => "Tambih Tag",
         "empty" => [
-            'fetch' => "Data kategori teu acan aya",
-            "search" => "Hmmm, Data :keyword henteu kapendak :("
+            'fetch' => "Data Tag teu acan aya",
+            "search" => "Hmmm, Data <b>:keyword</b> henteu kapendak :("
         ]
     ],
     "create" => [
@@ -38,14 +38,14 @@ return [
         "update" => [
             "title" => "Apdet Tag",
             "message" => [
-                "success" => "Mantap, Apdet kategori beres.",
-                "error" => "Aduh, Apdet kategori gagal. :error"
+                "success" => "Mantap, Apdet Tag beres.",
+                "error" => "Aduh, Apdet Tag gagal. :error"
             ]
         ],
         "delete" => [
             "title" => "Hapus Tag",
             "message" => [
-                "confirm" => "Ente yakin hoyong ngahapus kategori :title ieu?",
+                "confirm" => "Ente yakin hoyong ngahapus Tag :title ieu?",
                 "success" => "Oke, Tag :title parantos dihapus",
                 "error" => "Aduh, Tag :title gagal dihapus. :error"
             ]

@@ -9,6 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class TagController extends Controller
 {
+    private $perPage = 10;
     /**
      * Display a listing of the resource.
      *
@@ -16,13 +17,12 @@ class TagController extends Controller
      */
     public function index(Request $request)
     {
-        $tags = Tag::all();
-        if ($request->has('keyword') && trim($request->keyword)) {
-            $tags->search($request->keyword);
-        }
+        $tags = $request->get('keyword')
+            ? Tag::search($request->keyword)->paginate($this->perPage)
+            : Tag::paginate($this->perPage);
         $title = __('tags.title.index');
         return view("tags.index", [
-            "tags" => $tags,
+            "tags" => $tags->appends(['keyword' => $request->keyword]),
             "title" => $title
         ]);
     }

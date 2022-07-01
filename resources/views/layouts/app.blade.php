@@ -41,8 +41,6 @@
                     <div class="text-slate-100 text-xl">
                         <div class="p-2.5 mt-1 flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
-                            {{-- <h1 class="font-bold text-slate-200 text-2xl ml-3 sm:text-[15px]">
-                                {{ config('app.name') }}</h1> --}}
                             <h1 class="font-bold text-slate-200 text-2xl ml-3 sm:text-[15px]">
                                 <span class="font-light">Ciloa</span>Media
                             </h1>
@@ -57,11 +55,12 @@
                             {{ trans('dashboard.menu.dashboard') }}
                         </a>
                     </div>
-                    <div class="group sidebar-items cursor-pointer" onclick="dropdown()">
+                    <div class="group sidebar-items cursor-pointer {{ Request::is('posts') ? 'active' : '' }}"
+                        onclick="dropdown()">
                         <i class="fad fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
-                            <span
-                                class="text-[15px] w-full text-slate-300 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</span>
+                            <a href="{{ url('posts') }}"
+                                class="text-[15px] text-slate-300 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</a>
                             <span class="text-sm rotate-180" id="arrow">
                                 <i class="fas fa-caret-down text-green-500"></i>
                             </span>
@@ -69,7 +68,8 @@
                     </div>
                     <div class="text-left text-sm mt-2 w-[90%] mx-auto flex flex-col px-4 py-3 bg-slate-700 rounded-xl"
                         id="submenu">
-                        <a href="" class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500">
+                        <a href="{{ url('posts') }}"
+                            class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500 {{ Request::is('posts') ? 'active' : '' }}">
                             {{ trans('dashboard.menu.data') }}
                         </a>
                         <a href="" class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500">
@@ -109,7 +109,7 @@
             </div>
         @endif
         <div class="lg:pl-[20rem] max-w-8xl mx-auto lg:px-16 sm:px-6 md:px-8">
-            <div class="container w-full flex justify-between sm:justify-end mt-5 border-b border-slate-200 pb-5">
+            <div class="container w-full flex justify-between sm:justify-end mt-5">
 
 
                 @guest

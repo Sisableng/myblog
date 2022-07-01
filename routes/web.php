@@ -48,7 +48,10 @@ Route::middleware(["auth"])->group(function () {
     Route::resource(
         "/tags",
         \App\Http\Controllers\TagController::class
-    );
+    )->except(['show']);
+
+    // Posts
+    Route::resource("/posts", \App\Http\Controllers\PostController::class);
 
     // Filemanager
     Route::group(['prefix' => 'filemanager'], function () {
