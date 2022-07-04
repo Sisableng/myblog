@@ -9,9 +9,9 @@
                         <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span
                                 class="text-slate-500">{{ Auth::user()->name }}</span></h1>
                         <div>
-                            <a href="https://www.youtube.com/watch?v=1ajTxQYenLw&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=53&ab_channel=Ilmukita"
-                                class="text-green-500" target="_blank">Hanca : 53 (Membuat fitur hapus data tag)</a>
-                            <p class="text-red-500">Bug Search (Tags Index)</p>
+                            <a href="https://www.youtube.com/watch?v=YY8nh_xB-UQ&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=58&ab_channel=Ilmukita"
+                                class="text-green-500" target="_blank">Hanca : 58 (Menampilkan data post)</a>
+                            <p class="text-red-500 hidden">Bug Search (Tags Index)</p>
                         </div>
 
 

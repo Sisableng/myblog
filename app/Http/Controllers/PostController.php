@@ -15,7 +15,11 @@ class PostController extends Controller
     public function index()
     {
         $title = 'Post';
-        return view('posts.index', compact('title'));
+        $posts = Post::all();
+        return view('posts.index', [
+            "title" => $title,
+            "posts" => $posts
+        ]);
     }
 
     /**
