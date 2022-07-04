@@ -14,7 +14,7 @@
                 {{-- Title --}}
                 <div class="mb-10 mt-10 flex sm:flex-col items-start">
                     <label for="category_title"
-                        class="title-required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.title') }}</label>
+                        class="required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.title') }}</label>
                     <input id="category_title" value="{{ old('title') }}" name="title" type="text"
                         class="form-control @error('title') is-invalid @enderror">
 
@@ -100,7 +100,7 @@
                 {{-- desc --}}
                 <div class="mb-10 flex sm:flex-col items-start">
                     <label for="descrypt"
-                        class="title-required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.desc') }}</label>
+                        class="required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.desc') }}</label>
                     <textarea id="descrypt" type="text" value="" name="desc"
                         class="block w-full rounded-xl border-none bg-slate-100 p-2.5 pl-5 text-slate-900 focus:border-green-400 focus:ring-transparent dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500 @error('desc') is-invalid @enderror"
                         maxlength="150">{{ old('desc') }}</textarea>
@@ -127,7 +127,7 @@
                 {{-- thumb --}}
                 <div class="flex sm:flex-col justify-center items-start w-full">
                     <label for=""
-                        class="title-required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.thumb') }}</label>
+                        class="required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.form.thumb') }}</label>
                     <div class="w-full items-center">
                         <label for=""
                             class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-3xl border-2 border-gray-300 border-dashed dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 @error('thumb') is-invalid @enderror">

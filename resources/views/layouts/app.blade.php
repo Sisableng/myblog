@@ -26,6 +26,8 @@
     <!-- Select2 Css -->
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
 
+    @stack('css-internal')
+
 </head>
 
 <body>
@@ -55,7 +57,7 @@
                             {{ trans('dashboard.menu.dashboard') }}
                         </a>
                     </div>
-                    <div class="group sidebar-items cursor-pointer {{ Request::is('posts') ? 'active' : '' }}"
+                    <div class="group sidebar-items cursor-pointer {{ Request::is('posts', 'posts/create') ? 'active' : '' }}"
                         onclick="dropdown()">
                         <i class="fad fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
@@ -69,7 +71,7 @@
                     <div class="text-left text-sm mt-2 w-[90%] mx-auto flex flex-col px-4 py-3 bg-slate-700 rounded-xl"
                         id="submenu">
                         <a href="{{ url('posts') }}"
-                            class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500 {{ Request::is('posts') ? 'active' : '' }}">
+                            class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500 {{ Request::is('posts', 'posts/create') ? 'active' : '' }}">
                             {{ trans('dashboard.menu.data') }}
                         </a>
                         <a href="" class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500">
@@ -242,6 +244,7 @@
             @yield('auth')
         </main>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         // Sidebar app.blade.php
@@ -315,6 +318,7 @@
     @stack('javascript-internal')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
     <!-- Flowbite -->
     <script src="{{ asset('js/flowbite.js') }}"></script>
     <!-- Select2 Js -->

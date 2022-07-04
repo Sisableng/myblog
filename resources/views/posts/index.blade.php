@@ -4,10 +4,10 @@
     <div class="container space-y-7">
         <div class="flex justify-between items-center content-center sm:flex-col sm:space-y-5">
             <div>
-                <button type="button" class="mybtn">
+                <a href="{{ route('posts.create') }}" class="mybtn">
                     <i class="fad fa-plus mr-2 -ml-1"></i>
                     Add Post
-                </button>
+                </a>
 
                 <div
                     class="inline-flex text-sm font-medium text-center border-b border-gray-200 dark:border-gray-700 mt-7 ml-3">

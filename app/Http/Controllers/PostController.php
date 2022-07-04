@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $title = 'Post';
+        $title = 'Posts';
         $posts = Post::all();
         return view('posts.index', [
             "title" => $title,
@@ -29,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Create Posts';
+        return view('posts.create', compact('title'));
     }
 
     /**

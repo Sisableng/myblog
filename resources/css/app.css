@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    @apply bg-transparent dark:bg-slate-800;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-transparent dark:bg-slate-700;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-green-500;
+}
+
 html {
     @apply font-medium text-slate-700;
 }
@@ -29,7 +49,7 @@ html {
     @apply text-green-500 font-bold !important;
 }
 
-.active:before{
+.sidebar-items.active:before{
     @apply w-2 h-2 p-2 bg-green-500 absolute -left-[28px] top-[12px] rounded-full;
     content: '';
 }
@@ -62,6 +82,14 @@ html {
     @apply block w-full rounded-full border-transparent bg-slate-100 p-2.5 pl-5 text-slate-900 focus:border-green-400 focus:ring-transparent dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500;
 }
 
+.form-check {
+    @apply w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600;
+}
+
+.form-check-label{
+    @apply ml-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+}
+
 .search-form {
     @apply block w-full rounded-full border-transparent ring-transparent focus:ring-transparent bg-slate-100 p-2.5 pl-10 text-sm text-slate-900 transition-all duration-500 ease-out focus:border-green-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400;
 }
@@ -78,7 +106,7 @@ html {
     @apply bg-red-100 !important;
 }
 
-.title-required::after {
+.required::after {
     @apply w-[1px] h-[1px] p-1 inline-flex absolute ml-2 mt-1 rounded-full bg-green-500;
     content: "";
 }
@@ -142,7 +170,53 @@ html {
     margin: 5px 0 5px 0 !important;
 }
 
+/* End Select2 */
+
 textarea,
 select {
     @apply rounded-full bg-slate-100;
 }
+
+/* Summernote Custom Style */
+
+.note-editor.note-airframe,
+.note-editor.note-frame {
+    @apply rounded-3xl border border-transparent dark:border-slate-800 !important;
+}
+
+.note-frame {
+    @apply dark:text-slate-100 !important;
+}
+
+.note-toolbar {
+    @apply flex justify-center rounded-t-3xl border-none py-4 dark:bg-slate-800 !important;
+}
+
+.note-btn {
+    @apply rounded-none border-none bg-transparent hover:text-green-500 dark:text-slate-100 !important;
+}
+
+.note-btn.active,
+.note-btn:active {
+    @apply text-green-500 shadow-none !important;
+}
+
+.note-dropdown-menu {
+    @apply rounded-xl border-none shadow-none dark:bg-slate-700 !important;
+}
+
+.note-editor .note-editing-area .note-editable {
+    @apply bg-white dark:bg-slate-900 !important;
+}
+
+.note-editor.note-airframe .note-statusbar,
+.note-editor.note-frame .note-statusbar {
+    @apply border-none bg-transparent !important;
+}
+
+.note-editor.note-airframe .note-statusbar .note-resizebar .note-icon-bar,
+.note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar {
+    @apply border-t border-slate-500 !important;
+}
+
+/* End Summernote Custom Style */

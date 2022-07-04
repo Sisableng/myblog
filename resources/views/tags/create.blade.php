@@ -13,7 +13,7 @@
                 {{-- Title --}}
                 <div class="mb-10 mt-10 flex sm:flex-col items-start">
                     <label for="tags_title"
-                        class="title-required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ __('tags.create.form.title') }}</label>
+                        class="required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ __('tags.create.form.title') }}</label>
                     <input id="tags_title" value="{{ old('title') }}" name="title" type="text"
                         class="form-control @error('title') is-invalid @enderror">
 
