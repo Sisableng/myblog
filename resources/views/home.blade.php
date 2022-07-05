@@ -9,8 +9,9 @@
                         <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span
                                 class="text-slate-500">{{ Auth::user()->name }}</span></h1>
                         <div>
-                            <a href="https://www.youtube.com/watch?v=K0tugCvb_xc&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=59&ab_channel=Ilmukita"
-                                class="text-green-500" target="_blank">Hanca : 59 (Membuat halaman tambah post)</a>
+                            <a href="https://www.youtube.com/watch?v=9SqqqQ4Efj0&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=63&ab_channel=Ilmukita"
+                                class="text-green-500" target="_blank">Hanca : 63 (Implementasi plugin TinyMCE5 pada input
+                                content)</a>
                             <p class="text-red-500 hidden">Bug Search (Tags Index)</p>
                         </div>
 

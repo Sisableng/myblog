@@ -87,7 +87,7 @@ html {
 }
 
 .form-check-label{
-    @apply ml-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+    @apply ml-4 text-sm font-medium text-gray-900 dark:text-gray-300;
 }
 
 .search-form {
@@ -176,47 +176,3 @@ textarea,
 select {
     @apply rounded-full bg-slate-100;
 }
-
-/* Summernote Custom Style */
-
-.note-editor.note-airframe,
-.note-editor.note-frame {
-    @apply rounded-3xl border border-transparent dark:border-slate-800 !important;
-}
-
-.note-frame {
-    @apply dark:text-slate-100 !important;
-}
-
-.note-toolbar {
-    @apply flex justify-center rounded-t-3xl border-none py-4 dark:bg-slate-800 !important;
-}
-
-.note-btn {
-    @apply rounded-none border-none bg-transparent hover:text-green-500 dark:text-slate-100 !important;
-}
-
-.note-btn.active,
-.note-btn:active {
-    @apply text-green-500 shadow-none !important;
-}
-
-.note-dropdown-menu {
-    @apply rounded-xl border-none shadow-none dark:bg-slate-700 !important;
-}
-
-.note-editor .note-editing-area .note-editable {
-    @apply bg-white dark:bg-slate-900 !important;
-}
-
-.note-editor.note-airframe .note-statusbar,
-.note-editor.note-frame .note-statusbar {
-    @apply border-none bg-transparent !important;
-}
-
-.note-editor.note-airframe .note-statusbar .note-resizebar .note-icon-bar,
-.note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar {
-    @apply border-t border-slate-500 !important;
-}
-
-/* End Summernote Custom Style */

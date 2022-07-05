@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -26,7 +27,10 @@
     <!-- Select2 Css -->
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
 
+    @stack('css-external')
     @stack('css-internal')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -34,7 +38,7 @@
     <div id="app" class="">
         @if (Auth::check())
             <div>
-                <div class="z-10 relative text-white top-6 left-7 peer transition cursor-pointer hidden sm:block px-3 py-1 bg-slate-900 rounded-full"
+                <div class="z-10 fixed text-white top-6 left-7 peer transition cursor-pointer hidden sm:block px-3 py-1 bg-slate-900 rounded-full"
                     onclick="Open()">
                     <p>Menu<i class="fad fa-bars-staggered ml-3"></i></p>
                 </div>
@@ -244,8 +248,6 @@
             @yield('auth')
         </main>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         // Sidebar dropdown
         function dropdown() {
@@ -316,6 +318,7 @@
 
         });
     </script>
+    @stack('javascript-external')
     @stack('javascript-internal')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

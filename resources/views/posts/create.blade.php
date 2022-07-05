@@ -40,10 +40,12 @@
                         @enderror
                     </div>
 
-                    {{-- Desc --}}
+                    {{-- Content --}}
                     <div>
-                        <textarea name="desc" id="mysummernote" cols="30" rows="10"></textarea>
-                        @error('desc')
+                        <textarea id="input_post_content" name="content" rows="41"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Your message..."></textarea>
+                        @error('content')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -82,7 +84,20 @@
 
                     {{-- catgeory --}}
                     <div class="mb-10">
-                        @include('posts._category-list')
+                        <label for="input_post_category" class="font-weight-bold">
+                            Category
+                        </label>
+                        <div
+                            class="block w-full rounded-xl border-transparent bg-gray-100 p-2.5 pl-5 text-slate-900 focus:border-green-400 focus:ring-transparent dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-green-500 dark:focus:ring-green-500 overflow-auto mt-5 h-24 overflow-y-auto shadow-inner">
+                            <!-- List category -->
+                            <ul class="pl-1 my-1" style="list-style: none;">
+                                @include('posts._category-list', [
+                                    'categories' => $categories,
+                                    'count' => 0,
+                                ])
+                            </ul>
+                            <!-- List category -->
+                        </div>
                     </div>
 
                     {{-- Tags --}}
@@ -145,38 +160,16 @@
 @endsection
 
 @push('css-internal')
-    {{-- Summernote Css --}}
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+@endpush
+
+@push('javascript-external')
+    <script src="{{ asset('vendor/tinymce5/tinymce.min.js') }}"></script>
+    <script src="{{ asset('vendor/tinymce5/jquery.tinymce.min.js') }}"></script>
 @endpush
 
 @push('javascript-internal')
-    {{-- Summernote Js --}}
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.js"></script>
     <script>
         $(document).ready(function() {
-            $("#mysummernote").summernote({
-                placeholder: 'type your content here...',
-                height: 450,
-                popatmouse: true,
-                toolbar: [
-                    ['para', ['paragraph']],
-                    ['fontsize', ['fontsize']],
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough']],
-                    ['height', ['height']],
-                    ['insert', ['link', 'picture']],
-                    ['misc', ['undo', 'redo', 'print', 'codeview', 'fullscreen']]
-                ],
-                popover: {
-                    air: [
-                        ['color', ['color']],
-                        ['font', ['bold', 'underline', 'clear']]
-                    ]
-                },
-                print: {
-                    //'stylesheetUrl': 'url_of_stylesheet_for_printing'
-                }
-            });
 
             // Generate Slug
             $("#post_title").change(function(event) {
@@ -192,6 +185,20 @@
 
             // Filemanager
             $('#post_thumb').filemanager('image');
+
+            // tinymce
+            $("#input_post_content").tinymce({
+                relative_urls: false,
+                language: "en",
+                plugins: [
+                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime media nonbreaking save table directionality",
+                    "emoticons template paste textpattern",
+                ],
+                toolbar2: "link | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo",
+            });
+
         });
     </script>
 @endpush

@@ -1454,6 +1454,10 @@ input[type="range"]::-ms-fill-lower {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1728,10 +1732,6 @@ input[type="range"]::-ms-fill-lower {
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
-}
-.underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -2048,7 +2048,7 @@ html {
   --tw-ring-color: rgb(28 100 242 / var(--tw-ring-opacity));
 }
 .form-check-label {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
@@ -2231,87 +2231,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
-/* Summernote Custom Style */
-.note-editor.note-airframe, 
-.note-editor.note-frame {
-  border-radius: 1.5rem !important;
-  border-width: 1px !important;
-  border-color: transparent !important;
-}
-.dark .note-editor.note-airframe, .dark 
-.note-editor.note-frame {
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(30 41 59 / var(--tw-border-opacity)) !important;
-}
-.dark .note-frame {
-  --tw-text-opacity: 1 !important;
-  color: rgb(241 245 249 / var(--tw-text-opacity)) !important;
-}
-.note-toolbar {
-  display: flex !important;
-  justify-content: center !important;
-  border-top-left-radius: 1.5rem !important;
-  border-top-right-radius: 1.5rem !important;
-  border-style: none !important;
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
-}
-.dark .note-toolbar {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity)) !important;
-}
-.note-btn {
-  border-radius: 0px !important;
-  border-style: none !important;
-  background-color: transparent !important;
-}
-.note-btn:hover {
-  --tw-text-opacity: 1 !important;
-  color: rgb(14 159 110 / var(--tw-text-opacity)) !important;
-}
-.dark .note-btn {
-  --tw-text-opacity: 1 !important;
-  color: rgb(241 245 249 / var(--tw-text-opacity)) !important;
-}
-.note-btn.active, 
-.note-btn:active {
-  --tw-text-opacity: 1 !important;
-  color: rgb(14 159 110 / var(--tw-text-opacity)) !important;
-  --tw-shadow: 0 0 #0000 !important;
-  --tw-shadow-colored: 0 0 #0000 !important;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-}
-.note-dropdown-menu {
-  border-radius: 0.75rem !important;
-  border-style: none !important;
-  --tw-shadow: 0 0 #0000 !important;
-  --tw-shadow-colored: 0 0 #0000 !important;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-}
-.dark .note-dropdown-menu {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity)) !important;
-}
-.note-editor .note-editing-area .note-editable {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
-}
-.dark .note-editor .note-editing-area .note-editable {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity)) !important;
-}
-.note-editor.note-airframe .note-statusbar, 
-.note-editor.note-frame .note-statusbar {
-  border-style: none !important;
-  background-color: transparent !important;
-}
-.note-editor.note-airframe .note-statusbar .note-resizebar .note-icon-bar, 
-.note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar {
-  border-top-width: 1px !important;
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(100 116 139 / var(--tw-border-opacity)) !important;
-}
-/* End Summernote Custom Style */
 .odd\:bg-white:nth-child(odd) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2403,12 +2322,12 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(49 196 141 / var(--tw-border-opacity));
 }
-.focus\:border-transparent:focus {
-  border-color: transparent;
-}
 .focus\:border-blue-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
+}
+.focus\:border-transparent:focus {
+  border-color: transparent;
 }
 .focus\:border-blue-300:focus {
   --tw-border-opacity: 1;

@@ -33,7 +33,7 @@ class PostController extends Controller
         $title = 'Create Posts';
         return view('posts.create', [
             'title' => $title,
-            'categories' => Category::with('descendant')->onlyParent()->get(),
+            'categories' => Category::with('descendants')->onlyParent()->get(),
         ]);
     }
 
