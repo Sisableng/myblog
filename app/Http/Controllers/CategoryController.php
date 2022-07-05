@@ -142,7 +142,7 @@ class CategoryController extends Controller
     {
         $title = trans("categories.title.update");
         return view("categories.edit", compact("category", "title"));
-        // dd($category->parent());
+        // dd($category);
     }
 
     /**

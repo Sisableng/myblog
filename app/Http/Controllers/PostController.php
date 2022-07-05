@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Tag;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -31,7 +31,10 @@ class PostController extends Controller
     public function create()
     {
         $title = 'Create Posts';
-        return view('posts.create', compact('title'));
+        return view('posts.create', [
+            'title' => $title,
+            'categories' => Category::with('descendant')->onlyParent()->get(),
+        ]);
     }
 
     /**

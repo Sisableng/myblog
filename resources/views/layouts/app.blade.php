@@ -34,12 +34,12 @@
     <div id="app" class="">
         @if (Auth::check())
             <div>
-                <div class="z-10 fixed text-white top-6 left-7 cursor-pointer hidden sm:block px-3 py-1 bg-slate-900 rounded-full"
+                <div class="z-10 relative text-white top-6 left-7 peer transition cursor-pointer hidden sm:block px-3 py-1 bg-slate-900 rounded-full"
                     onclick="Open()">
                     <p>Menu<i class="fad fa-bars-staggered ml-3"></i></p>
                 </div>
                 <asside
-                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 px-5 w-[250px] sm:w-[300px] overflow-y-auto overflow-x-hidden bg-slate-800">
+                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 px-5 w-[250px] sm:w-[300px] overflow-y-auto overflow-x-hidden bg-slate-800 peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
                     <div class="text-slate-100 text-xl">
                         <div class="p-2.5 mt-1 flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
@@ -247,13 +247,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        // Sidebar app.blade.php
+        // Sidebar dropdown
         function dropdown() {
             document.querySelector("#submenu").classList.toggle("hidden");
             document.querySelector("#arrow").classList.toggle("rotate-0");
         }
         dropdown();
 
+        // Sidebar
         function Open() {
             document.querySelector(".sidebar").classList.toggle("left-[-300px]");
         }
