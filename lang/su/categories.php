@@ -32,7 +32,7 @@ return [
     ],
     "alert" => [
         "create" => [
-            "title" => "Tambah Kategori",
+            "title" => "Tambih Kategori",
             "message" => [
                 "success" => "Mantap, Kategori parantos ditambahkeun",
                 "error" => "Aduh, Kategori gagal ditambahkeun euy. :error"

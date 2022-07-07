@@ -45,6 +45,10 @@ Route::middleware(["auth"])->group(function () {
     );
 
     // Tags
+    Route::get("/tags/select", [
+        \App\Http\Controllers\TagController::class,
+        "select",
+    ])->name("tags.select");
     Route::resource(
         "/tags",
         \App\Http\Controllers\TagController::class

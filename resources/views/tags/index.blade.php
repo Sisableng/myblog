@@ -26,13 +26,13 @@
                     @foreach ($tags as $tag)
                         <li
                             class="group flex items-center justify-between w-full px-4 py-10 border-b border-slate-200 hover:border-green-400 dark:border-gray-600">
-                            <h1
+                            <p
                                 class="mt-auto mb-auto group-hover:text-lg group-hover:text-green-500 transition duration-500 ease-in-out">
                                 {{ $tag->title }}
                                 <span
                                     class="text-green-500 italic text-sm opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
                                     - {{ $tag->created_at->format('d F Y') }}</span>
-                            </h1>
+                            </p>
                             <div class="space-x-7">
                                 <a href="{{ route('tags.edit', ['tag' => $tag]) }}" role="button"
                                     class="text-slate-500 hover:text-amber-500"><i class="fad fa-pen-to-square"></i></a>

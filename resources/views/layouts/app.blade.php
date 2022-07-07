@@ -34,7 +34,7 @@
 
 </head>
 
-<body>
+<body class="bg-gray-100 dark:bg-slate-900">
     <div id="app" class="">
         @if (Auth::check())
             <div>
@@ -43,7 +43,7 @@
                     <p>Menu<i class="fad fa-bars-staggered ml-3"></i></p>
                 </div>
                 <asside
-                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 px-5 w-[250px] sm:w-[300px] overflow-y-auto overflow-x-hidden bg-slate-800 peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 px-5 w-[250px] sm:w-[300px] overflow-y-auto bg-slate-800 peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
                     <div class="text-slate-100 text-xl">
                         <div class="p-2.5 mt-1 flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
@@ -61,7 +61,7 @@
                             {{ trans('dashboard.menu.dashboard') }}
                         </a>
                     </div>
-                    <div class="group sidebar-items cursor-pointer {{ Request::is('posts', 'posts/create') ? 'active' : '' }}"
+                    <div class="group sidebar-items cursor-pointer {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}"
                         onclick="dropdown()">
                         <i class="fad fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
@@ -75,7 +75,7 @@
                     <div class="text-left text-sm mt-2 w-[90%] mx-auto flex flex-col px-4 py-3 bg-slate-700 rounded-xl"
                         id="submenu">
                         <a href="{{ url('posts') }}"
-                            class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500 {{ Request::is('posts', 'posts/create') ? 'active' : '' }}">
+                            class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500 {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}">
                             {{ trans('dashboard.menu.data') }}
                         </a>
                         <a href="" class="py-3 text-slate-300 dark:text-slate-300 hover:text-green-500">
@@ -172,24 +172,24 @@
                             </button>
                             <!-- Dropdown menu -->
                             <div id="setlang"
-                                class=" z-10 hidden bg-slate-100 rounded-lg shadow w-[150px] dark:bg-slate-700">
+                                class=" z-10 hidden bg-slate-200 rounded-lg shadow w-[150px] dark:bg-slate-700">
                                 <ul class="text-base sm:text-lg text-center text-slate-700 dark:text-slate-200"
                                     aria-labelledby="dropdownDefault">
                                     <li>
                                         <a href="{{ route('localization.switch', ['language' => 'en']) }}"
-                                            class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-t-lg dark:hover:bg-slate-600 dark:hover:text-white">
+                                            class="text-base block px-4 py-2 hover:bg-slate-300 hover:rounded-t-lg dark:hover:bg-slate-600 dark:hover:text-white">
                                             {{ trans('localization.en') }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('localization.switch', ['language' => 'id']) }}"
-                                            class="text-base block px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-600 dark:hover:text-white">
+                                            class="text-base block px-4 py-2 hover:bg-slate-300 dark:hover:bg-slate-600 dark:hover:text-white">
                                             {{ trans('localization.id') }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('localization.switch', ['language' => 'su']) }}"
-                                            class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-b-lg dark:hover:bg-slate-600 dark:hover:text-white">
+                                            class="text-base block px-4 py-2 hover:bg-slate-300 hover:rounded-b-lg dark:hover:bg-slate-600 dark:hover:text-white">
                                             {{ trans('localization.su') }}
                                         </a>
                                     </li>
@@ -206,7 +206,7 @@
                                 <i class="fad fa-user w-8 h-8 text-base pt-1 text-white"></i>
                             </button>
                             <!-- Dropdown menu -->
-                            <div class="hidden z-50 my-4 text-base list-none bg-slate-100 rounded-lg divide-y divide-slate-200 shadow dark:bg-slate-700 dark:divide-slate-600"
+                            <div class="hidden z-50 my-4 text-base list-none bg-slate-200 rounded-lg divide-y divide-slate-300 shadow dark:bg-slate-700 dark:divide-slate-600"
                                 id="mydropdown">
                                 <div class="py-3 px-4">
                                     <span
@@ -217,10 +217,10 @@
                                 <ul class="py-1" aria-labelledby="dropdown">
                                     <li>
                                         <a href="#"
-                                            class="block py-2 px-4 text-sm text-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 dark:text-slate-200 dark:hover:text-white">{{ trans('dashboard.menu.settings') }}</a>
+                                            class="block py-2 px-4 text-sm text-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 dark:text-slate-200 dark:hover:text-white">{{ trans('dashboard.menu.settings') }}</a>
                                     </li>
                                     <li>
-                                        <a class="block py-2 px-4 text-sm text-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 dark:text-slate-200 dark:hover:text-white"
+                                        <a class="block py-2 px-4 text-sm text-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 dark:text-slate-200 dark:hover:text-white"
                                             href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
