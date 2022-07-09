@@ -2,9 +2,9 @@
 <title>{{ __('Login') }}</title>
 @section('auth')
     <div class="container">
-        <div class="flex flex-col justify-center h-[80vh] w-full items-center">
+        <div class="flex flex-col justify-center h-screen w-full items-center">
             <div class="col-md-8">
-                <div class=" w-80">
+                <div class="w-80">
                     <div class="text-4xl text-center font-bold text-slate-800 mb-10">{{ __('Login') }}</div>
 
                     <div class="card-body">

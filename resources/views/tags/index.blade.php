@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <title>{{ $title }}</title>
 @section('content')
-    <div class="container space-y-5 mb-5">
+    <div class="container space-y-7 mb-5">
         <div class="flex justify-between items-center sm:flex-col sm:space-y-5 sm:items-start">
             <a href="{{ route('tags.create') }}" role="button" class="mybtn">
                 <i class="fad fa-plus mr-2 -ml-1"></i>
@@ -20,14 +20,13 @@
                 </form>
             </div>
         </div>
-        <div>
+        <div class="bg-white px-7 pb-7 sm:px-5 sm:pb-5 rounded-3xl shadow-xl shadow-slate-200">
             <ul class="w-full py-2 dark:border-gray-600">
                 @if (count($tags))
                     @foreach ($tags as $tag)
                         <li
                             class="group flex items-center justify-between w-full px-4 py-10 border-b border-slate-200 hover:border-green-400 dark:border-gray-600">
-                            <p
-                                class="mt-auto mb-auto group-hover:text-lg group-hover:text-green-500 transition duration-500 ease-in-out">
+                            <p class="mt-auto mb-auto group-hover:text-green-500 transition duration-500 ease-in-out">
                                 {{ $tag->title }}
                                 <span
                                     class="text-green-500 italic text-sm opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">

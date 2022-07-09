@@ -2,8 +2,8 @@
 <title>{{ $title }}</title>
 @section('content')
     <div class="container space-y-7">
-        <div class="flex justify-between items-center content-center sm:flex-col sm:space-y-5">
-            <div>
+        <div class="flex justify-between items-center content-center sm:flex-col-reverse sm:space-y-5">
+            <div class="sm:w-full">
                 <a href="{{ route('posts.create') }}" class="mybtn">
                     <i class="fad fa-plus mr-2 -ml-1"></i>
                     {{ __('posts.index.addBtn') }}
@@ -25,7 +25,7 @@
                 </div>
 
             </div>
-            <div>
+            <div class="sm:w-full">
                 <form class="flex items-center mb-0 mt-5">
                     <label for="simple-search" class="sr-only">{{ __('posts.index.search') }}</label>
                     <div class="relative w-full">
@@ -41,17 +41,17 @@
             </div>
         </div>
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg rounded-3xl">
+        <div class="relative overflow-x-auto shadow-xl shadow-slate-300/50 sm:rounded-lg rounded-3xl">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-slate-300 uppercase bg-white dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3 w-[30rem]">
                             {{ __('posts.index.table.title') }}
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 sm:px-3 py-3">
                             {{ __('posts.index.table.author') }}
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 sm:px-3 py-3">
                             {{ __('posts.index.table.date') }}
                         </th>
                         <th scope="col" class="px-6 py-3 w-28">
@@ -61,29 +61,30 @@
                 <tbody>
                     @forelse ($posts as $post)
                         <tr
-                            class=" dark:bg-gray-800 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                            class=" dark:bg-gray-800 odd:bg-white even:bg-slate-100 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                class="px-6 py-4 font-medium text-gray-700 dark:text-white whitespace-nowrap">
                                 <h4 class="text-lg">{{ $post->title }}</h4>
                                 <p class="text-slate-500">{{ $post->desc }}</p>
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-gray-600 font-medium">
                                 {{ $post->user_id = Auth::user()->name }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-gray-600 font-medium">
                                 {{ $post->created_at->format('d M Y - h:i') }}
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <div class="flex space-x-7 justify-end items-center">
+                                <div class="flex space-x-3 justify-end items-center">
                                     <a href="{{ route('posts.show', ['post' => $post]) }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                        class="font-medium text-green-500 hover:underline p-2 hover:bg-slate-200 rounded-xl">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    <a href="{{ route('posts.edit', ['post' => $post]) }}"
+                                        class="font-medium text-orange-400 hover:underline p-2 hover:bg-slate-200 rounded-xl">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <form class="mb-0" action="" method="POST">
-                                        <button type="submit" class="">
+                                        <button type="submit" class="p-2 hover:bg-slate-200 rounded-xl text-red-500">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>

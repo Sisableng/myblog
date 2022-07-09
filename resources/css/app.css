@@ -78,11 +78,11 @@ h6 {
 }
 
 .sidebar-items {
-    @apply mt-3 flex items-center rounded-full p-2.5 px-4 text-slate-400 duration-300 hover:text-green-600 focus:text-green-600 dark:text-white relative;
+    @apply relative mt-3 flex items-center rounded-full p-2.5 px-4 text-slate-600 duration-300 hover:text-green-600 focus:text-green-600 dark:text-slate-400;
 }
 
 .sidebar-items.active {
-    @apply text-green-500 bg-slate-700/50;
+    @apply text-green-500 bg-gray-100 dark:bg-slate-700/50;
 }
 
 .sidebar-items.active a {
@@ -110,7 +110,7 @@ h6 {
 }
 
 .search-form {
-    @apply block w-full rounded-full border-transparent ring-transparent focus:ring-transparent bg-slate-200 p-2.5 pl-10 text-sm text-slate-900 transition-all duration-500 ease-out focus:border-green-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400;
+    @apply block w-full rounded-full border-transparent ring-transparent focus:ring-transparent bg-slate-200 p-2.5 pl-10 text-sm text-slate-900 transition duration-500 ease-out focus:border-2 focus:border-green-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400;
 }
 
 .search-btn {
@@ -140,6 +140,14 @@ h6 {
 .required::after {
     @apply w-[1px] h-[1px] p-1 inline-flex absolute ml-2 mt-1 rounded-full bg-green-500;
     content: "";
+}
+
+.sub {
+    @apply invisible opacity-0 -my-[56px];
+}
+
+.myShadow {
+    @apply shadow-xl shadow-slate-200 ;
 }
 
 /** Select2 **/

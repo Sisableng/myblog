@@ -136,7 +136,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $title = 'Edit';
+        return view('posts.edit', [
+            'title' => $title,
+            'post' => $post,
+            'categories' => Category::with('descendants')->onlyParent()->get(),
+            'statuses' => $this->statuses()
+        ]);
     }
 
     /**
@@ -148,7 +154,62 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => 'required|string|max:60',
+                'slug' => 'required|string|unique:posts,slug,' . $post->id,
+                'thumb' => 'required',
+                'desc' => 'required|max:250',
+                'content' => 'required',
+                'category' => 'required',
+                'tag' => 'required',
+                'status' => 'required'
+            ],
+        );
+
+        if ($validator->fails()) {
+            if ($request['tag']) {
+                $request['tag'] = Tag::select('id', 'title')->whereIn('id', $request->tag)->get();
+            }
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        }
+
+        DB::beginTransaction();
+        try {
+            $post->update([
+                'title' => $request->title,
+                'slug' => $request->slug,
+                'thumb' => parse_url($request->thumb)['path'],
+                'desc' => $request->desc,
+                'content' => $request->content,
+                'status' => $request->status,
+                'user_id' => Auth::user()->id,
+            ]);
+
+            $post->tags()->sync($request->tag);
+            $post->categories()->sync($request->category);
+
+            Alert::toast(
+                __('posts.alert.update.message.success'),
+                'success'
+            );
+            return redirect()->route('posts.index');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::toast(
+                __('posts.alert.update.message.error', ['error' => $th->getMessage()]),
+                'errors'
+            );
+            if ($validator->fails()) {
+                if ($request['tag']) {
+                    $request['tag'] = Tag::select('id', 'title')->whereIn('id', $request->tag)->get();
+                }
+                return redirect()->back()->withInput($request->all());
+            }
+        } finally {
+            DB::commit();
+        }
     }
 
     /**

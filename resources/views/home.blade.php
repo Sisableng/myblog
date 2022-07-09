@@ -8,12 +8,46 @@
                     <div class="card-body space-y-10 p-0 m-0">
                         <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span
                                 class="text-slate-500">{{ Auth::user()->name }}</span></h1>
-                        <div>
-                            <a href="https://www.youtube.com/watch?v=DY94h7VxTwQ&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=71&ab_channel=Ilmukita"
-                                class="text-green-500" target="_blank">Hanca : 71 (Membuat detail post )</a>
-                            <p class="text-red-500 hidden">Bug Search (Tags Index)</p>
+
+                        <div
+                            class="w-full h-auto bg-gradient-to-r from-slate-800 via-slate-700 to-rose-600 rounded-3xl p-16 sm:p-10 shadow-xl">
+                            <div class="relative flex sm:flex-col sm:space-y-7 lg:justify-between lg:items-center">
+                                <div class="group flex items-center space-x-7">
+                                    <a href="https://www.youtube.com/watch?v=7vCOCXo5q9U&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=73&ab_channel=Ilmukita"
+                                        class="z-20 w-20 h-20 p-5 bg-slate-200 rounded-full flex justify-center items-center text-4xl group-hover:bg-rose-600 transition-colors ease-in-out duration-500 shadow-lg"
+                                        target="_blank"><i
+                                            class="fas fa-play group-hover:-rotate-12 group-hover:text-slate-200"></i>
+                                    </a>
+                                    <span class="absolute -left-5 w-16 h-16 bg-white/50 rounded-full animate-ping"></span>
+                                    <p
+                                        class="z-10 uppercase opacity-0 transform -translate-x-28 group-hover:transform-none group-hover:opacity-100 text-slate-200 transition-all ease-in-out duration-500">
+                                        Lanjut slur</p>
+                                </div>
+                                <div class="text-white lg:w-1/2">
+                                    <p class="lg:text-right text-xl opacity-70">Hanca : 73</p>
+                                    <h1 class="lg:text-right font-bold">Proses update post</h1>
+                                </div>
+                            </div>
                         </div>
 
+                        <div
+                            class="relative max-w-full h-auto sm:h-48 overflow-hidden bg-gradient-to-r from-amber-500 to-slate-800 p-10 rounded-3xl shadow-xl text-white">
+                            <div class="flex justify-between items-center">
+                                <div class="lg:w-1/2">
+                                    <p class="text-white/50">Bug::</p>
+                                    <p class="text-lg font-medium mt-2">Edit kategori old value <span
+                                            class="font-bold">(parent
+                                            kategori)</span>
+                                    </p>
+                                </div>
+                                <div class="absolute -right-10 sm:top-16 opacity-20">
+                                    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_ppfj5jxd.json"
+                                        background="transparent" speed="1"
+                                        class="w-[400px] h-[400px] sm:w-[200px] sm:h-[200px]" loop autoplay>
+                                    </lottie-player>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -51,3 +85,6 @@
         </div>
     </div>
 @endsection
+@push('javascript-external')
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+@endpush

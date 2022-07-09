@@ -15,6 +15,10 @@ module.exports = {
                 sm: { max: "1024px" },
                 "2xl": "1230px",
             },
+            transitionProperty: {
+                'height': 'height',
+                'spacing': 'margin, padding',
+              },
         },
     },
     plugins: [require("flowbite/plugin", "prettier-plugin-tailwindcss")],

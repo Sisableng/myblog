@@ -2,7 +2,8 @@
 <title>{{ $title }}</title>
 @section('content')
     <div class="container relative">
-        <form action="{{ route('posts.store') }}" method="POST">
+        <form action="{{ route('posts.update', ['post' => $post]) }}" method="POST">
+            @method('PUT')
             @csrf
             <div class="w-full flex justify-between mb-10">
                 <div class="flex items-center">
@@ -18,7 +19,7 @@
                 <div class="col-span-2">
                     {{-- Title --}}
                     <div class="mb-10 flex sm:flex-col items-start">
-                        <input id="post_title" value="{{ old('title') }}" name="title" type="text"
+                        <input id="post_title" value="{{ old('title', $post->title) }}" name="title" type="text"
                             class="text-slate-800 dark:text-white border-none bg-transparent text-5xl focus:ring-transparent block w-full p-2.5 @error('title') is-invalid @enderror"
                             placeholder="{{ __('posts.create.form.title') }}">
 
@@ -45,7 +46,7 @@
                         <textarea id="input_post_content" name="content" rows="41"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
                             @error('content') is-invalid @enderror"
-                            placeholder="{{ __('posts.create.form.content') }}">{{ old('content') }}</textarea>
+                            placeholder="{{ __('posts.create.form.content') }}">{{ old('content', $post->content) }}</textarea>
                         @error('content')
                             <div id="toast-content"
                                 class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
@@ -72,7 +73,7 @@
                     <div class="mb-10">
                         <label for="post_slug" class="text-gray-900 dark:text-gray-300">{{ __('Slug') }}
                             <span class="text-slate-500 italic">(Permalink)</span></label>
-                        <input id="post_slug" value="{{ old('slug') }}" name="slug" type="text"
+                        <input id="post_slug" value="{{ old('slug', $post->slug) }}" name="slug" type="text"
                             class="block w-full rounded-full border-transparent focus:border-transparent focus:ring-transparent bg-slate-300 p-2.5 pl-5 text-slate-900 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 mt-5 @error('slug') is-invalid @enderror"
                             placeholder="{{ __('posts.create.form.slug') }}" readonly />
 
@@ -101,7 +102,7 @@
                         <textarea type="text" id="desc_post" name="desc" rows="6" cols="50" maxlength="250"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5
                             @error('desc') is-invalid @enderror"
-                            placeholder="{{ __('posts.create.form.desc.placeholder') }}">{{ old('desc') }}</textarea>
+                            placeholder="{{ __('posts.create.form.desc.placeholder') }}">{{ old('desc', $post->desc) }}</textarea>
                         @error('desc')
                             <div id="toast-desc"
                                 class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
@@ -131,7 +132,10 @@
                             <ul class="pl-1 my-1" style="list-style: none;">
                                 @include('posts._category-list', [
                                     'categories' => $categories,
-                                    'categoryChecked' => old('category'),
+                                    'categoryChecked' => old(
+                                        'category',
+                                        $post->categories->pluck('id')->toArray()
+                                    ),
                                     'count' => 0,
                                 ])
                             </ul>
@@ -165,8 +169,8 @@
                             data-placeholder="{{ __('posts.create.form.tag.placeholder') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('tag') is-invalid @enderror"
                             multiple>
-                            @if (old('tag'))
-                                @foreach (old('tag') as $tag)
+                            @if (old('tag', $post->tags))
+                                @foreach (old('tag', $post->tags) as $tag)
                                     <option value="{{ $tag->id }}" selected>{{ $tag->title }}</option>
                                 @endforeach
                             @endif
@@ -205,7 +209,8 @@
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)
                                 </p>
                             </div>
-                            <input id="post_file" type="text" name="thumb" value="{{ old('thumb') }}"
+                            <input id="post_file" type="text" name="thumb"
+                                value="{{ old('thumb', asset($post->thumb)) }}"
                                 class="border-transparent focus:border-transparent focus:ring-transparent bg-transparent w-full"
                                 readonly>
                         </label>
@@ -233,7 +238,8 @@
                         <select id="status" name="status"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 @error('status') is-invalid @enderror">
                             @foreach ($statuses as $key => $value)
-                                <option value="{{ $key }}" {{ old('status') == $key ? 'selected' : null }}>
+                                <option value="{{ $key }}"
+                                    {{ old('status', $post->status) == $key ? 'selected' : null }}>
                                     {{ $value }}
                                 </option>
                             @endforeach
