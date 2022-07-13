@@ -35,12 +35,12 @@ $(document).ready(function () {
   $('#fab').fab({
     buttons: [
       {
-        icon: 'fas fa-upload',
+        icon: 'fad fa-cloud-arrow-up',
         label: lang['nav-upload'],
         attrs: {id: 'upload'}
       },
       {
-        icon: 'fas fa-folder',
+        icon: 'fad fa-folders',
         label: lang['nav-new'],
         attrs: {id: 'add-folder'}
       }
@@ -53,7 +53,7 @@ $(document).ready(function () {
         $('<a>').addClass('nav-link d-none')
           .attr('data-action', action.name)
           .attr('data-multiple', action.multiple)
-          .append($('<i>').addClass('fas fa-fw fa-' + action.icon))
+          .append($('<i>').addClass('me-3 fal fa-fw fa-' + action.icon))
           .append($('<span>').text(action.label))
       )
     );
@@ -62,7 +62,7 @@ $(document).ready(function () {
   sortings.forEach(function (sort) {
     $('#nav-buttons .dropdown-menu').append(
       $('<a>').addClass('dropdown-item').attr('data-sortby', sort.by)
-        .append($('<i>').addClass('fas fa-fw fa-' + sort.icon))
+        .append($('<i>').addClass('far fa-fw fa-' + sort.icon))
         .append($('<span>').text(sort.label))
         .click(function() {
           sort_type = sort.by;
@@ -246,7 +246,7 @@ function setOpenFolders() {
     var should_open = ($('#working_dir').val() + '/').startsWith($(folder).data('path') + '/');
     $(folder).children('i')
       .toggleClass('fa-folder-open', should_open)
-      .toggleClass('fa-folder', !should_open);
+      .toggleClass('fa-folders', !should_open);
   });
 
   $('#tree .nav-item').removeClass('active');
@@ -598,7 +598,7 @@ function preview(items) {
 
     carouselItem.find('.carousel-label').attr('target', '_blank').attr('href', item.url)
       .append(item.name)
-      .append($('<i class="fas fa-external-link-alt ml-2"></i>'));
+      .append($('<i class="fas fa-arrow-up-right-from-square ms-3"></i>'));
 
     carousel.children('.carousel-inner').append(carouselItem);
 

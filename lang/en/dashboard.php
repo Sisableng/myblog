@@ -5,7 +5,9 @@ return [
     "title" => "Dashboard",
     "index" => [
         "welcome" => "Welcome",
-        "search" => "Search Here...",
+        "search" => [
+            "placeholder" => "Search Here..."
+        ],
     ],
     "menu" => [
         "dashboard" => "Dashboard",
@@ -15,6 +17,8 @@ return [
         "tags" => "Tags",
         "category" => "Category",
         "settings" => "Settings",
+        "general" => "General",
+        "filemanager" => "File Manager",
         "view_site" => "View Site",
         "logout" => "Logout",
     ],

@@ -20,7 +20,7 @@
                 </form>
             </div>
         </div>
-        <div class="bg-white px-7 pb-7 sm:px-5 sm:pb-5 rounded-3xl shadow-xl shadow-slate-200">
+        <div class="bg-white px-7 pb-7 sm:px-5 sm:pb-5 rounded-3xl border border-slate-100">
             <ul class="w-full py-2 dark:border-gray-600">
                 @if (count($tags))
                     @foreach ($tags as $tag)

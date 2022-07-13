@@ -4,7 +4,8 @@ return [
     'index' => [
         'title' => 'Data Post',
         'addBtn' => 'Add Post',
-        'search' => 'Search here...',
+        'search' => 'Search Here...',
+        'null' => 'No data available',
         'tabs' => [
             'publish' => 'Published',
             'draft' => 'Drafts'
@@ -13,7 +14,14 @@ return [
             'title' => 'Title',
             'author' => 'Author',
             'date' => 'Date'
+        ],
+        'status' => [
+            'publish' => 'Publish',
+            'draft' => 'Draft'
         ]
+    ],
+    'search' => [
+        'null' => 'Data not found'
     ],
 
     'create' => [
@@ -70,7 +78,7 @@ return [
         "delete" => [
             "title" => "Delete Post",
             "message" => [
-                "confirm" => "Are you sure want to delete this :title category ?",
+                "confirm" => "Are you sure want to delete <b>:title</b> ?",
                 "success" => "Great! Post :title deleted successfully",
                 "error" => "Oops, Post :title failed to delete. :error"
             ]

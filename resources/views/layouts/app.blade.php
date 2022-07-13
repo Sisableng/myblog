@@ -1,5 +1,4 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -34,17 +33,18 @@
 
 </head>
 
-<body class="bg-gray-100 dark:bg-slate-900">
+<body class="dark:bg-slate-900">
     <div id="app" class="">
         @if (Auth::check())
             <div>
-                <div class="z-40 fixed text-slate-800 text-2xl top-8 left-7 peer transition cursor-pointer hidden sm:block"
+                <div id="hamburger"
+                    class="z-40 fixed text-slate-800 text-2xl top-8 left-7 peer transition cursor-pointer hidden sm:block"
                     onclick="Open()">
                     <p><i class="fad fa-bars-staggered"></i></p>
                 </div>
                 <asside
-                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 p-2 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300">
-                    <div class="text-slate-700 text-xl">
+                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 p-2 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 border-r border-slate-100">
+                    <div class="text-slate-700 text-xl mb-3">
                         <div class="p-2.5 mt-1 flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
                             <h1 class="font-bold dark:text-slate-200 text-2xl ml-3 sm:text-[15px]">
@@ -52,10 +52,10 @@
                             </h1>
                             <i class="fa fa-xmark ml-28 lg:hidden" onclick="Close()"></i>
                         </div>
-                        <div class="my-5 bg-slate-200 mx-auto w-[90%] dark:bg-slate-800 h-[1px]"></div>
+                        <div class="mt-1 bg-slate-100 mx-auto w-[90%] dark:bg-slate-800 h-[1px]"></div>
                     </div>
                     <div class="group sidebar-items {{ Request::is('home') ? 'active' : '' }}">
-                        <i class="fad fa-chart-tree-map w-[50px]"></i>
+                        <i class="far fa-chart-tree-map w-[50px]"></i>
                         <a href="{{ url('home') }}"
                             class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
                             {{ trans('dashboard.menu.dashboard') }}
@@ -63,7 +63,7 @@
                     </div>
                     <div class="group z-20 bg-white sidebar-items cursor-pointer {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
                         onclick="dropdown()">
-                        <i class="fad fa-file-lines w-[50px]"></i>
+                        <i class="far fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
                             <a href="{{ url('posts') }}"
                                 class="text-[15px] text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</a>
@@ -86,23 +86,45 @@
                     </div>
                     <div
                         class="group sidebar-items {{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
-                        <i class="fad fa-tags w-[50px]"></i>
+                        <i class="far fa-tags w-[50px]"></i>
                         <a href="{{ url('tags') }}"
                             class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.tags') }}</a>
                     </div>
                     <div
                         class="group sidebar-items {{ Request::is('categories', 'categories/create', 'categories/*/edit', 'categories/*') ? 'active' : '' }}">
-                        <i class="fas fa-bookmark w-[50px]"></i>
+                        <i class="far fa-bookmark w-[50px]"></i>
                         <a href="{{ url('categories') }}"
                             class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
                             {{ trans('dashboard.menu.category') }}
                         </a>
                     </div>
-                    <div class="group sidebar-items">
-                        <i class="fad fa-gears w-[50px]"></i>
-                        <span
-                            class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.settings') }}</span>
+                    <div class="group z-20 bg-white sidebar-items cursor-pointer {{ Request::is('filemanager/index') ? 'active' : '' }}"
+                        onclick="dropdown2()">
+                        <i class="far fa-gears w-[50px]"></i>
+                        <div class="flex justify-between w-full items-center">
+                            <span
+                                class="text-[15px] text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
+                                {{ trans('dashboard.menu.settings') }}
+                            </span>
+                            <span class="text-sm" id="arrow2">
+                                <i class="fas fa-caret-down text-green-500"></i>
+                            </span>
+                        </div>
                     </div>
+                    <div class="sub z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl"
+                        id="submenu2">
+                        <div class="flex flex-col">
+                            <a href="{{ url('posts') }}"
+                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
+                                {{ trans('dashboard.menu.general') }}
+                            </a>
+                            <a href="{{ route('filemanager.index') }}"
+                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('filemanager/index') ? 'active' : '' }}">
+                                {{ trans('dashboard.menu.filemanager') }}
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="sm:hidden group sidebar-items cursor-pointer" onclick="collaps()">
                         <i class="fas fa-circle-caret-left text-xl text-slate-300"></i>
                     </div>
@@ -110,7 +132,7 @@
                         <div>
                             <a href="{{ '/' }}" target="_blank"
                                 class="group mb-5 flex items-center justify-center w-52 rounded-full bg-green-500 p-2.5 px-4 text-slate-100 duration-300 hover:bg-green-600 dark:text-white">
-                                <i class="fad fa-arrow-up-right-from-square"></i>
+                                <i class="far fa-arrow-up-right-from-square"></i>
                                 <span
                                     class="text-[15px] ml-4 text-slate-100 group-hover:text-green-300 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.view_site') }}</span>
                             </a>
@@ -120,15 +142,39 @@
                 </asside>
 
                 <div id="collapse"
-                    class="invisible sm:hidden fixed top-0 bottom-0 lg:left-0 z-40 bg-white w-16 flex-col space-y-20 px-2 py-5 justify-center">
-                    <img src="{{ asset('images/logo.png') }}" class="w-7 h-7 mx-auto" alt="logo">
-                    <div class="text-2xl text-center w-full">
-                        <ul class=" space-y-10">
-                            <li><a href="{{ url('/home') }}"><i class="fad fa-chart-tree-map"></i></a></li>
-                            <li><a href="{{ url('/posts') }}"><i class="fad fa-file-lines"></i></a></li>
-                            <li><a href="{{ url('/tags') }}"><i class="fad fa-tags"></i></a></li>
-                            <li><a href="{{ url('/category') }}"><i class="fas fa-bookmark"></i></a></li>
-                            <li><a href="{{ url('#') }}"><i class="fad fa-gears"></i></a></li>
+                    class="invisible sm:hidden fixed top-0 bottom-0 lg:left-0 z-40 bg-white w-16 flex-col space-y-20 px-3 py-5 justify-center">
+                    <p class="text-center font-normal p-2 bg-slate-200 rounded-full">C<span class="font-bold">M</span>
+                    </p>
+                    <div class="text-xl text-center w-full">
+                        <ul class="text-slate-400 space-y-10">
+                            <li>
+                                <a href="{{ url('/home') }}" class="{{ Request::is('home') ? 'active' : '' }}">
+                                    <i class="far fa-chart-tree-map"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/posts') }}"
+                                    class="{{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}">
+                                    <i class="far fa-file-lines"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/tags') }}"
+                                    class="{{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
+                                    <i class="far fa-tags"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/category') }}"
+                                    class="{{ Request::is('categories', 'categories/create', 'categories/*/edit', 'categories/*') ? 'active' : '' }}">
+                                    <i class="far fa-bookmark"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('#') }}">
+                                    <i class="far fa-gears"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="cursor-pointer text-2xl text-center w-full" onclick="collaps()">
@@ -141,7 +187,7 @@
         <div id="contain" class="lg:pl-[20rem] transition-spacing max-w-8xl mx-auto lg:px-16 sm:px-6 md:px-8">
             @if (Auth::check())
                 <div id="topNav"
-                    class="fixed left-0 top-0 w-full z-30 flex justify-between sm:justify-end pt-5 pb-5 lg:pl-[20rem] lg:pr-16 sm:pr-5 bg-gray-100 transition-spacing">
+                    class="fixed left-0 top-0 w-full z-30 flex justify-between sm:justify-end py-5 lg:pl-[20rem] lg:pr-16 sm:pr-5 transition-spacing bg-white">
 
                     @guest
                         <ul class="hidden">
@@ -281,6 +327,11 @@
             document.querySelector("#arrow").classList.toggle('rotate-180');
         }
 
+        function dropdown2() {
+            document.querySelector("#submenu2").classList.toggle('sub');
+            document.querySelector("#arrow2").classList.toggle('rotate-180');
+        }
+
         // Sidebar Collapse
         function collaps() {
             document.querySelector("#collapse").classList.toggle("invisible");
@@ -301,12 +352,21 @@
         // Fixed Top Nav
         window.onscroll = function() {
             const header = document.querySelector("#topNav");
+            const hmbgr = document.querySelector("#hamburger");
             const fixedNav = header.offsetTop;
 
             if (window.pageYOffset > fixedNav) {
                 header.classList.add("myShadow");
+                header.classList.remove("py-5");
+                header.classList.add("py-3");
+                hmbgr.classList.remove("top-8");
+                hmbgr.classList.add("top-6");
             } else {
                 header.classList.remove("myShadow");
+                header.classList.add("py-5");
+                header.classList.remove("py-3");
+                hmbgr.classList.add("top-8");
+                hmbgr.classList.remove("top-6");
             }
         };
     </script>

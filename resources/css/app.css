@@ -4,7 +4,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 0;
 }
 
 /* Track */
@@ -14,7 +14,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-transparent dark:bg-slate-700;
+    @apply absolute rounded-full bg-transparent dark:bg-slate-700;
 }
 
 /* Handle on hover */
@@ -65,7 +65,7 @@ h6 {
 }
 
 .active{
-    @apply text-green-500 font-bold !important;
+    @apply text-green-500 !important;
 }
 
 .sidebar-items.active:before{
@@ -78,15 +78,16 @@ h6 {
 }
 
 .sidebar-items {
-    @apply relative mt-3 flex items-center rounded-full p-2.5 px-4 text-slate-600 duration-300 hover:text-green-600 focus:text-green-600 dark:text-slate-400;
+    @apply relative mt-5 flex items-center rounded-full p-2.5 px-4 text-slate-500 duration-300 hover:text-green-600 focus:text-green-600 dark:text-slate-400;
 }
 
 .sidebar-items.active {
     @apply text-green-500 bg-gray-100 dark:bg-slate-700/50;
 }
 
-.sidebar-items.active a {
-    @apply font-bold text-green-500;
+.sidebar-items.active a,
+.sidebar-items.active span {
+    @apply text-green-500;
 }
 
 .tabs.active{
@@ -110,7 +111,7 @@ h6 {
 }
 
 .search-form {
-    @apply block w-full rounded-full border-transparent ring-transparent focus:ring-transparent bg-slate-200 p-2.5 pl-10 text-sm text-slate-900 transition duration-500 ease-out focus:border-2 focus:border-green-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400;
+    @apply block w-full rounded-full border-transparent ring-transparent focus:ring-transparent bg-gray-100 p-2.5 pl-10 text-sm text-slate-900 transition duration-500 ease-out focus:border focus:border-green-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400;
 }
 
 .search-btn {
@@ -147,7 +148,7 @@ h6 {
 }
 
 .myShadow {
-    @apply shadow-xl shadow-slate-200 ;
+    @apply shadow-lg shadow-slate-300/10 border-b border-slate-100;
 }
 
 /** Select2 **/
@@ -210,8 +211,3 @@ h6 {
 }
 
 /* End Select2 */
-
-textarea,
-select {
-    @apply rounded-full bg-slate-100;
-}

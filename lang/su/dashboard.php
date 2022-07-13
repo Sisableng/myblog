@@ -15,6 +15,8 @@ return [
         "tags" => "Tag",
         "category" => "Kategori",
         "settings" => "Pangaturan",
+        "general" => "Umum",
+        "filemanager" => "Pangaturan Berkas",
         "view_site" => "Tingali Web",
         "logout" => "Kaluar",
     ],

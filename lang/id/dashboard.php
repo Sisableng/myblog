@@ -15,6 +15,8 @@ return [
         "tags" => "Tag",
         "category" => "Kategori",
         "settings" => "Pengaturan",
+        "general" => "Umum",
+        "filemanager" => "Pengaturan Berkas",
         "view_site" => "Lihat Web",
         "logout" => "Keluar",
     ],

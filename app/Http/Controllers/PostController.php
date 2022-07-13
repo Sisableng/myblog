@@ -18,13 +18,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = __('posts.index.title');
-        $posts = Post::all();
+        $statusSelected = in_array($request->get('status'), ['publish', 'draft']) ? $request->get('status') : "publish";
+        $posts = $statusSelected == "publish" ? Post::publish() : Post::draft();
+        if ($request->get('keyword')) {
+            $posts->search($request->get('keyword'));
+        }
         return view('posts.index', [
             "title" => $title,
-            "posts" => $posts
+            "posts" => $posts->paginate(1)->withQueryString(),
+            "statuses" => $this->statuses(),
+            "statusSelected" => $statusSelected
         ]);
     }
 
@@ -220,14 +226,35 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $post->tags()->detach();
+            $post->categories()->detach();
+
+            $post->delete();
+
+            Alert::toast(
+                __('posts.alert.delete.message.success', ['title' => $post->title]),
+                'success'
+            );
+            return redirect()->route('posts.index');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::toast(
+                __('posts.alert.delete.message.error', ['error' => $th->getMessage()]),
+                'errors'
+            );
+        } finally {
+            DB::commit();
+            return redirect()->back();
+        }
     }
 
     private function statuses()
     {
         return [
-            'draft' => __('posts.create.form.status.draft'),
-            'publish' => __('posts.create.form.status.publish')
+            'publish' => __('posts.index.status.publish'),
+            'draft' => __('posts.index.status.draft')
         ];
     }
 }

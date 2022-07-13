@@ -5,6 +5,7 @@ return [
         'title' => 'Data Postingan',
         'addBtn' => 'Tambah Pos',
         'search' => 'Cari disini...',
+        'null' => 'Hmmm, Tidak ada data yang tersedia',
         'tabs' => [
             'publish' => 'Diterbitkan',
             'draft' => 'Konsep'
@@ -13,7 +14,14 @@ return [
             'title' => 'Judul',
             'author' => 'Penulis',
             'date' => 'Tanggal'
+        ],
+        'status' => [
+            'publish' => 'Umum',
+            'draft' => 'Draf'
         ]
+    ],
+    'search' => [
+        'null' => 'Hmm, Data tidak ditemukan'
     ],
 
     'create' => [

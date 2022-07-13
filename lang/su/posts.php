@@ -5,6 +5,7 @@ return [
         'title' => 'Data Posting',
         'addBtn' => 'Tambih Post',
         'search' => 'Pilari didieu...',
+        'null' => 'Aduh, Teu acan aya data',
         'tabs' => [
             'publish' => 'Umum',
             'draft' => 'Draf'
@@ -13,7 +14,14 @@ return [
             'title' => 'Judul',
             'author' => 'pangarang',
             'date' => 'kaping'
+        ],
+        'status' => [
+            'publish' => 'Umum',
+            'draft' => 'Ditunda'
         ]
+    ],
+    'search' => [
+        'null' => 'Aduh, Data henteu kapendak'
     ],
 
     'create' => [
