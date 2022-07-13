@@ -42,9 +42,10 @@
                     onclick="Open()">
                     <p><i class="fad fa-bars-staggered"></i></p>
                 </div>
+                <div class="overlay hidden" onclick="Close()"></div>
                 <asside
                     class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 p-2 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 border-r border-slate-100">
-                    <div class="text-slate-700 text-xl mb-3">
+                    <div class="text-slate-700 text-xl mb-3 sticky top-0 z-50 bg-white">
                         <div class="p-2.5 mt-1 flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
                             <h1 class="font-bold dark:text-slate-200 text-2xl ml-3 sm:text-[15px]">
@@ -61,18 +62,20 @@
                             {{ trans('dashboard.menu.dashboard') }}
                         </a>
                     </div>
-                    <div class="group z-20 bg-white sidebar-items cursor-pointer {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
+
+                    {{-- Dropdown --}}
+                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
                         onclick="dropdown()">
                         <i class="far fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
-                            <a href="{{ url('posts') }}"
-                                class="text-[15px] text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</a>
+                            <span
+                                class="text-[15px] text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</span>
                             <span class="text-sm" id="arrow">
                                 <i class="fas fa-caret-down text-green-500"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="sub z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl"
+                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'visible' : 'sub' }}"
                         id="submenu">
                         <div class="flex flex-col">
                             <a href="{{ url('posts') }}"
@@ -84,6 +87,7 @@
                             </a>
                         </div>
                     </div>
+
                     <div
                         class="group sidebar-items {{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
                         <i class="far fa-tags w-[50px]"></i>
@@ -98,7 +102,9 @@
                             {{ trans('dashboard.menu.category') }}
                         </a>
                     </div>
-                    <div class="group z-20 bg-white sidebar-items cursor-pointer {{ Request::is('filemanager/index') ? 'active' : '' }}"
+
+                    {{-- Dropdown2 --}}
+                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*') ? 'active' : '' }}"
                         onclick="dropdown2()">
                         <i class="far fa-gears w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
@@ -111,12 +117,19 @@
                             </span>
                         </div>
                     </div>
-                    <div class="sub z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl"
+                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl {{ Request::is('filemanager/index', 'roles', 'roles/*') ? 'block' : 'sub2' }}"
                         id="submenu2">
                         <div class="flex flex-col">
                             <a href="{{ url('posts') }}"
                                 class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
                                 {{ trans('dashboard.menu.general') }}
+                            </a>
+                            <a href="#" class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
+                                {{ trans('dashboard.menu.user') }}
+                            </a>
+                            <a href="{{ route('roles.index') }}"
+                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('roles', 'roles/*') ? 'active' : '' }}">
+                                {{ trans('dashboard.menu.roles') }}
                             </a>
                             <a href="{{ route('filemanager.index') }}"
                                 class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('filemanager/index') ? 'active' : '' }}">
@@ -127,16 +140,6 @@
 
                     <div class="sm:hidden group sidebar-items cursor-pointer" onclick="collaps()">
                         <i class="fas fa-circle-caret-left text-xl text-slate-300"></i>
-                    </div>
-                    <div class="bottom-0 absolute w-full left-3 sm:left-10 right-0 px-2">
-                        <div>
-                            <a href="{{ '/' }}" target="_blank"
-                                class="group mb-5 flex items-center justify-center w-52 rounded-full bg-green-500 p-2.5 px-4 text-slate-100 duration-300 hover:bg-green-600 dark:text-white">
-                                <i class="far fa-arrow-up-right-from-square"></i>
-                                <span
-                                    class="text-[15px] ml-4 text-slate-100 group-hover:text-green-300 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.view_site') }}</span>
-                            </a>
-                        </div>
                     </div>
 
                 </asside>
@@ -328,7 +331,7 @@
         }
 
         function dropdown2() {
-            document.querySelector("#submenu2").classList.toggle('sub');
+            document.querySelector("#submenu2").classList.toggle('sub2');
             document.querySelector("#arrow2").classList.toggle('rotate-180');
         }
 
@@ -343,10 +346,12 @@
         // Sidebar
         function Open() {
             document.querySelector(".sidebar").classList.toggle("transform-none");
+            document.querySelector(".overlay").classList.toggle("hidden");
         }
 
         function Close() {
             document.querySelector(".sidebar").classList.toggle("transform-none");
+            document.querySelector(".overlay").classList.toggle("hidden");
         }
 
         // Fixed Top Nav

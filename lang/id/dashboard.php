@@ -16,6 +16,8 @@ return [
         "category" => "Kategori",
         "settings" => "Pengaturan",
         "general" => "Umum",
+        "user" => "Pengguna",
+        "roles" => "Hak Akses",
         "filemanager" => "Pengaturan Berkas",
         "view_site" => "Lihat Web",
         "logout" => "Keluar",

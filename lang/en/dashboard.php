@@ -18,6 +18,8 @@ return [
         "category" => "Category",
         "settings" => "Settings",
         "general" => "General",
+        "user" => "Users",
+        "roles" => "Roles",
         "filemanager" => "File Manager",
         "view_site" => "View Site",
         "logout" => "Logout",

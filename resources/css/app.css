@@ -74,7 +74,11 @@ h6 {
 }
 
 .sidebar {
-    @apply z-50;
+    @apply z-50 overflow-y-auto;
+}
+
+.overlay {
+    @apply w-full h-screen bg-slate-700/30 absolute top-0 z-40 backdrop-blur-md;
 }
 
 .sidebar-items {
@@ -145,6 +149,10 @@ h6 {
 
 .sub {
     @apply invisible opacity-0 -my-[56px];
+}
+
+.sub2 {
+    @apply invisible opacity-0 -mt-[30px] -mb-[170px];
 }
 
 .myShadow {

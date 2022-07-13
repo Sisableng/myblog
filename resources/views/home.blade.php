@@ -13,7 +13,7 @@
                             class="w-full h-auto bg-gradient-to-r from-slate-800 via-slate-700 to-rose-600 rounded-3xl p-16 sm:p-10 shadow-xl">
                             <div class="relative flex sm:flex-col sm:space-y-7 lg:justify-between lg:items-center">
                                 <div class="group flex items-center space-x-7">
-                                    <a href="https://www.youtube.com/watch?v=7vCOCXo5q9U&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=73&ab_channel=Ilmukita"
+                                    <a href="https://www.youtube.com/watch?v=w0h0-_Z42ls&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=83&ab_channel=Ilmukita"
                                         class="z-20 w-20 h-20 p-5 bg-slate-200 rounded-full flex justify-center items-center text-4xl group-hover:bg-rose-600 transition-colors ease-in-out duration-500 shadow-lg"
                                         target="_blank"><i
                                             class="fas fa-play group-hover:-rotate-12 group-hover:text-slate-200"></i>
@@ -24,8 +24,8 @@
                                         Lanjut slur</p>
                                 </div>
                                 <div class="text-white lg:w-1/2">
-                                    <p class="lg:text-right text-xl opacity-70">Hanca : 73</p>
-                                    <h1 class="lg:text-right font-bold">Proses update post</h1>
+                                    <p class="lg:text-right text-xl opacity-70">Hanca : 83</p>
+                                    <h1 class="lg:text-right font-bold">Menampilkan detail role user</h1>
                                 </div>
                             </div>
                         </div>

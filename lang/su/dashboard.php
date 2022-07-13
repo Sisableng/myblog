@@ -16,6 +16,8 @@ return [
         "category" => "Kategori",
         "settings" => "Pangaturan",
         "general" => "Umum",
+        "user" => "Pangurus",
+        "roles" => "Hak Akses",
         "filemanager" => "Pangaturan Berkas",
         "view_site" => "Tingali Web",
         "logout" => "Kaluar",
