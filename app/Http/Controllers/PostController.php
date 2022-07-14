@@ -45,7 +45,7 @@ class PostController extends Controller
         return view('posts.create', [
             'title' => $title,
             'categories' => Category::with('descendants')->onlyParent()->get(),
-            'statuses' => $this->statuses()
+            'status' => $this->status()
         ]);
     }
 
@@ -255,6 +255,14 @@ class PostController extends Controller
         return [
             'publish' => __('posts.index.status.publish'),
             'draft' => __('posts.index.status.draft')
+        ];
+    }
+
+    private function status()
+    {
+        return [
+            'publish' => __('posts.create.form.status.publish'),
+            'draft' => __('posts.create.form.status.draft')
         ];
     }
 }

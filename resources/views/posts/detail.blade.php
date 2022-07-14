@@ -26,7 +26,7 @@
                     <p class="text-lg text-slate-500">{{ $post->created_at->format('d F Y') }}</p>
                 </div>
             </div>
-            <div class="flex justify-between items-center w-full">
+            <div class="flex justify-start space-x-7 items-center w-full">
                 <div>
                     <p class="mb-3 text-sm text-slate-500">{{ __('posts.detail.show.category') }}</p>
                     @foreach ($categories as $category)
@@ -40,23 +40,9 @@
                     @endforeach
                 </div>
             </div>
-            <div class="self-start w-full">
-                <div class="relative border-4 bg-gray-300 border-slate-300 rounded-3xl">
-                    <div
-                        class="w-full h-10 bg-slate-300 absolute -top-1 rounded-t-3xl flex justify-between items-center px-5">
-                        <div class="inline-flex space-x-3">
-                            <span class="rounded-full w-2 h-2 p-2 bg-red-400"></span>
-                            <span class="rounded-full w-2 h-2 p-2 bg-yellow-200"></span>
-                            <span class="rounded-full w-2 h-2 p-2 bg-green-400"></span>
-                        </div>
-                        <div class="h-2 w-10 bg-slate-400 rounded-full"></div>
-                        <p class="text-slate-500">{{ __('posts.detail.show.content') }}</p>
-                    </div>
-                    <div
-                        class="p-5 sm:p-2.5 mt-10 overflow-y-auto sm:h-[650px] rounded-t-2xl rounded-b-3xl bg-gray-100  shadow-inner">
-                        <p>{!! $post->content !!}</p>
-                    </div>
-                </div>
+            {{-- <p class="text-slate-500">{{ __('posts.detail.show.content') }}</p> --}}
+            <div class="w-full p-5 border border-slate-200 rounded-3xl">
+                <p>{!! $post->content !!}</p>
             </div>
         </div>
     </div>

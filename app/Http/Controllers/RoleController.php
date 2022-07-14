@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Role;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+
 
 class RoleController extends Controller
 {
@@ -29,7 +32,11 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $title = __('roles.create.title');
+        return view('roles.create', [
+            'title' => $title,
+            'authorities' => config('permission.authorities')
+        ]);
     }
 
     /**
@@ -40,7 +47,42 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => "required|string|max:50|unique:roles,name",
+                'permissions' => "required"
+            ],
+            [],
+            $this->attributes()
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        }
+
+        DB::beginTransaction();
+        try {
+            $role = Role::create(['name' => $request->name]);
+            $role->givePermissionTo($request->permissions);
+
+            Alert::toast(
+                trans('roles.alert.create.message.success'),
+                'success'
+            );
+
+            return redirect()->route('roles.index');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error(
+                trans('roles.alert.create.title'),
+                trans('roles.alert.create.message.error', ['error' => $th->getMessage()])
+            );
+
+            return redirect()->back()->withInput($request->all());
+        } finally {
+            DB::commit();
+        }
     }
 
     /**
@@ -68,7 +110,13 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        $title = __('roles.edit.title');
+        return view('roles.edit', [
+            'title' => $title,
+            'authorities' => config('permission.authorities'),
+            'role' => $role,
+            'permissionChecked' => $role->permissions->pluck('name')->toArray()
+        ]);
     }
 
     /**
@@ -80,7 +128,43 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => "required|string|max:50|unique:roles,name," . $role->id,
+                'permissions' => "required"
+            ],
+            [],
+            $this->attributes()
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        }
+
+        DB::beginTransaction();
+        try {
+            $role->name = $request->name;
+            $role->syncPermissions($request->permissions);
+            $role->save();
+
+            Alert::toast(
+                trans('roles.alert.update.message.success'),
+                'success'
+            );
+
+            return redirect()->route('roles.index');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error(
+                trans('roles.alert.update.title'),
+                trans('roles.alert.update.message.error', ['error' => $th->getMessage()])
+            );
+
+            return redirect()->back()->withInput($request->all());
+        } finally {
+            DB::commit();
+        }
     }
 
     /**
@@ -91,6 +175,33 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $role->revokePermissionTo($role->permissions->pluck('name')->toArray());
+            $role->delete();
+
+            Alert::toast(
+                trans('roles.alert.delete.message.success', ['title' => $role->name]),
+                'success'
+            );
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error(
+                trans('roles.alert.delete.title'),
+                trans('roles.alert.delete.message.error', ['error' => $th->getMessage()])
+            );
+        } finally {
+            DB::commit();
+        }
+
+        return redirect()->route('roles.index');
+    }
+
+    private function attributes()
+    {
+        return [
+            'name' => __('Nama'),
+            'permissions' => __('Hak Akses'),
+        ];
     }
 }

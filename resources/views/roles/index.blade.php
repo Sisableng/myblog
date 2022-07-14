@@ -8,11 +8,21 @@
                     class="group bg-amber-400 first:bg-rose-500 last:bg-emerald-500 p-5 flex flex-col justify-between items-end relative rounded-xl h-40 hover:bg-slate-500 transition duration-300 ease-in-out">
                     <div
                         class="inline-flex text-white/80 transform -translate-y-10 invisible group-hover:transform-none group-hover:visible transition-all ease-in-out">
-                        <a class="p-2 rounded-2xl hover:text-yellow-300 hover:bg-slate-600" role="button">
+
+                        {{-- Edit --}}
+                        <a href="{{ route('roles.edit', ['role' => $role]) }}"
+                            class="p-2 rounded-2xl hover:text-yellow-300 hover:bg-slate-600" role="button">
                             <i class="fas fa-edit"></i>
                         </a>
 
-                        <form class="mb-0" action="" method="POST">
+                        {{-- Delete --}}
+                        <form class="mb-0" action="{{ route('roles.destroy', ['role' => $role]) }}" method="POST"
+                            role="alert" alert-title="{{ trans('roles.alert.delete.title') }}"
+                            alert-text="{{ trans('roles.alert.delete.message.confirm', ['title' => $role->name]) }}"
+                            alert-btn-yes="{{ trans('roles.alert.btn.confirm') }}"
+                            alert-btn-cancel="{{ trans('roles.alert.btn.cancel') }}">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="p-2 rounded-2xl hover:text-rose-400 hover:bg-slate-600">
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -30,6 +40,8 @@
                             <i class="fad fa-user-police text-[120px] group-hover:text-[130px] transition-all"></i>
                         @elseif ($role->id == '3')
                             <i class="fad fa-user-pen text-[120px] group-hover:text-[130px] transition-all"></i>
+                        @else
+                            <i class="fad fa-layer-plus text-[120px] group-hover:text-[130px] transition-all"></i>
                         @endif
                     </span>
                 </div>
@@ -39,8 +51,8 @@
         </div>
 
         <div class="mt-7">
-            <a href="#"
-                class="text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-full text-sm px-5 py-2.5 text-center flex items-center mr-2  float-right"
+            <a href="{{ route('roles.create') }}"
+                class="text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-full text-sm px-5 py-2.5 text-center flex items-center float-right"
                 role="button">
                 <i class="fad fa-plus mr-2"></i>
                 {{ __('roles.index.addBtn') }}
@@ -48,3 +60,27 @@
         </div>
     </div>
 @endsection
+@push('javascript-internal')
+    <script>
+        $(document).ready(function() {
+            $("form[role='alert']").submit(function(event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: $(this).attr('alert-title'),
+                    text: $(this).attr('alert-text'),
+                    icon: 'warning',
+                    allowOutsideClick: false,
+                    showCancelButton: true,
+                    cancelButtonText: $(this).attr('alert-btn-cancel'),
+                    reverseButtons: true,
+                    confirmButtonText: $(this).attr('alert-btn-yes'),
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        event.target.submit();
+                    }
+                });
+
+            });
+        })
+    </script>
+@endpush

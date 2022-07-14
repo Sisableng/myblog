@@ -11,6 +11,7 @@
                 class="text-slate-500 hover:text-green-600"><i class="fad fa-eye"></i></a>
             <a href="{{ route('categories.edit', ['category' => $category]) }}" role="button"
                 class="text-slate-500 hover:text-amber-500"><i class="fad fa-pen-to-square"></i></a>
+
             <form class="inline" action="{{ route('categories.destroy', ['category' => $category]) }}" role="alert"
                 method="POST" alert-title="{{ trans('categories.alert.delete.title') }}"
                 alert-text="{{ trans('categories.alert.delete.message.confirm', ['title' => $category->title]) }}"
@@ -23,6 +24,8 @@
                 </button>
             </form>
         </div>
+
+        {{-- Mobile Action --}}
         <div class="lg:hidden md:hidden">
             <button id="dropdownBottomButton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom"
                 class="bg-slate-200 hover:bg-slate-300 font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center"

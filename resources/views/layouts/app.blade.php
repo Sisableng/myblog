@@ -56,7 +56,7 @@
                         <div class="mt-1 bg-slate-100 mx-auto w-[90%] dark:bg-slate-800 h-[1px]"></div>
                     </div>
                     <div class="group sidebar-items {{ Request::is('home') ? 'active' : '' }}">
-                        <i class="far fa-chart-tree-map w-[50px]"></i>
+                        <i class="far fa-objects-column w-[50px]"></i>
                         <a href="{{ url('home') }}"
                             class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
                             {{ trans('dashboard.menu.dashboard') }}
@@ -152,7 +152,7 @@
                         <ul class="text-slate-400 space-y-10">
                             <li>
                                 <a href="{{ url('/home') }}" class="{{ Request::is('home') ? 'active' : '' }}">
-                                    <i class="far fa-chart-tree-map"></i>
+                                    <i class="far fa-objects-column"></i>
                                 </a>
                             </li>
                             <li>
