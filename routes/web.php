@@ -65,4 +65,7 @@ Route::middleware(["auth"])->group(function () {
 
     // Roles
     Route::resource('/roles', \App\Http\Controllers\RoleController::class);
+
+    // Users
+    Route::resource('/users', \App\Http\Controllers\UserController::class);
 });

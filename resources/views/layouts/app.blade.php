@@ -29,11 +29,12 @@
     @stack('css-external')
     @stack('css-internal')
 
+    @stack('loader')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
-<body class="dark:bg-slate-900">
+<body class="dark:bg-slate-900" onload="showLoading()">
     <div id="app" class="">
         @if (Auth::check())
             <div>
@@ -44,7 +45,7 @@
                 </div>
                 <div class="overlay hidden" onclick="Close()"></div>
                 <asside
-                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 p-2 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 border-r border-slate-100">
+                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 border-r border-slate-100">
                     <div class="text-slate-700 text-xl mb-3 sticky top-0 z-50 bg-white">
                         <div class="p-2.5 mt-1 flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
@@ -104,7 +105,7 @@
                     </div>
 
                     {{-- Dropdown2 --}}
-                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*') ? 'active' : '' }}"
+                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users') ? 'active' : '' }}"
                         onclick="dropdown2()">
                         <i class="far fa-gears w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
@@ -117,14 +118,15 @@
                             </span>
                         </div>
                     </div>
-                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl {{ Request::is('filemanager/index', 'roles', 'roles/*') ? 'block' : 'sub2' }}"
+                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users') ? 'block' : 'sub2' }}"
                         id="submenu2">
                         <div class="flex flex-col">
                             <a href="{{ url('posts') }}"
                                 class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
                                 {{ trans('dashboard.menu.general') }}
                             </a>
-                            <a href="#" class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
+                            <a href="{{ route('users.index') }}"
+                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('users') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.user') }}
                             </a>
                             <a href="{{ route('roles.index') }}"

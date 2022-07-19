@@ -60,32 +60,32 @@ return [
         ]
     ],
 
-    "alert" => [
-        "create" => [
-            "title" => "Tambih Posting",
-            "message" => [
-                "success" => "Mantap, Posting parantos ditambahkeun",
-                "error" => "Aduh, Posting gagal ditambahkeun euy. :error"
+    'alert' => [
+        'create' => [
+            'title' => 'Tambih Posting',
+            'message' => [
+                'success' => 'Mantap, Posting parantos ditambahkeun',
+                'error' => 'Aduh, Posting gagal ditambahkeun euy. :error'
             ]
         ],
-        "update" => [
-            "title" => "Apdet Posting",
-            "message" => [
-                "success" => "Mantap, Apdet posting beres.",
-                "error" => "Aduh, Apdet posting gagal. :error"
+        'update' => [
+            'title' => 'Apdet Posting',
+            'message' => [
+                'success' => 'Mantap, Apdet posting beres.',
+                'error' => 'Aduh, Apdet posting gagal. :error'
             ]
         ],
-        "delete" => [
-            "title" => "Hapus Posting",
-            "message" => [
-                "confirm" => "Ente yakin hoyong ngahapus posting :title ieu?",
-                "success" => "Oke, Posting :title parantos dihapus",
-                "error" => "Aduh, Posting :title gagal dihapus. :error"
+        'delete' => [
+            'title' => 'Hapus Posting',
+            'message' => [
+                'confirm' => 'Ente yakin hoyong ngahapus posting :title ieu?',
+                'success' => 'Oke, Posting :title parantos dihapus',
+                'error' => 'Aduh, Posting :title gagal dihapus. :error'
             ]
         ],
-        "btn" => [
-            "confirm" => "Gass!",
-            "cancel" => "Teu jadi",
+        'btn' => [
+            'confirm' => 'Gass!',
+            'cancel' => 'Teu jadi',
         ]
     ],
 ];

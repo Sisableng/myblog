@@ -1,6 +1,12 @@
 @extends('layouts.app')
 <title>{{ $title }}</title>
 @section('content')
+    {{-- Loading Screen --}}
+    <section id="loading">
+        <div id="loading-content"></div>
+    </section>
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -13,7 +19,7 @@
                             class="w-full h-auto bg-gradient-to-r from-slate-800 via-slate-700 to-rose-600 rounded-3xl p-16 sm:p-10 shadow-xl">
                             <div class="relative flex sm:flex-col sm:space-y-7 lg:justify-between lg:items-center">
                                 <div class="group flex items-center space-x-7">
-                                    <a href="https://www.youtube.com/watch?v=--imI45Y_dk&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=90&ab_channel=Ilmukita"
+                                    <a href="https://www.youtube.com/watch?v=-wlYB9qX66k&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=95&ab_channel=Ilmukita"
                                         class="z-20 w-20 h-20 p-5 bg-slate-200 rounded-full flex justify-center items-center text-4xl group-hover:bg-rose-600 transition-colors ease-in-out duration-500 shadow-lg"
                                         target="_blank"><i
                                             class="fas fa-play group-hover:-rotate-12 group-hover:text-slate-200"></i>
@@ -24,8 +30,8 @@
                                         Lanjut slur</p>
                                 </div>
                                 <div class="text-white lg:w-1/2">
-                                    <p class="lg:text-right text-xl opacity-70">Hanca : 90</p>
-                                    <h1 class="lg:text-right font-bold">Membuat konfirmasi hapus data role</h1>
+                                    <p class="lg:text-right text-xl opacity-70">Hanca : 95</p>
+                                    <h1 class="lg:text-right font-bold">Menampilkan data user</h1>
                                 </div>
                             </div>
                         </div>
@@ -85,6 +91,19 @@
         </div>
     </div>
 @endsection
+@push('loader')
+    <script>
+        function showLoading() {
+            document.querySelector('#loading').classList.add('loading');
+            document.querySelector('#loading-content').classList.add('loading-content');
+        }
+
+        setTimeout(function hideLoading() {
+            document.querySelector('#loading').classList.remove('loading');
+            document.querySelector('#loading-content').classList.remove('loading-content');
+        }, 2000);
+    </script>
+@endpush
 @push('javascript-external')
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 @endpush

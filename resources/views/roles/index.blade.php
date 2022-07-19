@@ -31,7 +31,7 @@
                     <div class="text-right w-2/3">
                         <p class="text-sm text-white/50">{{ __('roles.index.title') }}</p>
                         <a href="{{ route('roles.show', ['role' => $role]) }}"
-                            class="text-2xl text-white">{{ $role->name }}</a>
+                            class="text-2xl text-white hover:text-white/50 transition">{{ $role->name }}</a>
                     </div>
                     <span class="absolute -bottom-1 left-5 opacity-30">
                         @if ($role->id == '1')

@@ -13,10 +13,10 @@
                 class="text-slate-500 hover:text-amber-500"><i class="fad fa-pen-to-square"></i></a>
 
             <form class="inline" action="{{ route('categories.destroy', ['category' => $category]) }}" role="alert"
-                method="POST" alert-title="{{ trans('categories.alert.delete.title') }}"
-                alert-text="{{ trans('categories.alert.delete.message.confirm', ['title' => $category->title]) }}"
-                alert-btn-yes="{{ trans('categories.alert.btn.confirm') }}"
-                alert-btn-cancel="{{ trans('categories.alert.btn.cancel') }}">
+                method="POST" alert-title="{{ __('categories.alert.delete.title') }}"
+                alert-text="{{ __('categories.alert.delete.message.confirm', ['title' => $category->title]) }}"
+                alert-btn-yes="{{ __('categories.alert.btn.confirm') }}"
+                alert-btn-cancel="{{ __('categories.alert.btn.cancel') }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="text-slate-500 hover:text-red-600">
@@ -36,23 +36,23 @@
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownBottomButton">
                     <li>
                         <a href="{{ route('categories.show', ['category' => $category]) }}" role="button"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ trans('categories.title.show') }}</a>
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('categories.title.show') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('categories.edit', ['category' => $category]) }}" role="button"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ trans('categories.title.update') }}</a>
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('categories.title.update') }}</a>
                     </li>
                     <li>
                         <form class="inline" action="{{ route('categories.destroy', ['category' => $category]) }}"
-                            role="alert" method="POST" alert-title="{{ trans('categories.alert.delete.title') }}"
-                            alert-text="{{ trans('categories.alert.delete.message.confirm', ['title' => $category->title]) }}"
-                            alert-btn-yes="{{ trans('categories.alert.btn.confirm') }}"
-                            alert-btn-cancel="{{ trans('categories.alert.btn.cancel') }}">
+                            role="alert" method="POST" alert-title="{{ __('categories.alert.delete.title') }}"
+                            alert-text="{{ __('categories.alert.delete.message.confirm', ['title' => $category->title]) }}"
+                            alert-btn-yes="{{ __('categories.alert.btn.confirm') }}"
+                            alert-btn-cancel="{{ __('categories.alert.btn.cancel') }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                {{ trans('categories.alert.delete.title') }}
+                                {{ __('categories.alert.delete.title') }}
                             </button>
                         </form>
                     </li>

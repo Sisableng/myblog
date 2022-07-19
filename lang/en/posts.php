@@ -60,32 +60,32 @@ return [
         ]
     ],
 
-    "alert" => [
-        "create" => [
-            "title" => "Add Post",
-            "message" => [
-                "success" => "Great! Post created successfully",
-                "error" => "Oops, category failed to create. :error"
+    'alert' => [
+        'create' => [
+            'title' => 'Add Post',
+            'message' => [
+                'success' => 'Great! Post created successfully',
+                'error' => 'Oops, category failed to create. :error'
             ]
         ],
-        "update" => [
-            "title" => "Update Post",
-            "message" => [
-                "success" => "Great! Post updated successfully.",
-                "error" => "Oops, category failed to update. :error"
+        'update' => [
+            'title' => 'Update Post',
+            'message' => [
+                'success' => 'Great! Post updated successfully.',
+                'error' => 'Oops, category failed to update. :error'
             ]
         ],
-        "delete" => [
-            "title" => "Delete Post",
-            "message" => [
-                "confirm" => "Are you sure want to delete <b>:title</b> ?",
-                "success" => "Great! Post :title deleted successfully",
-                "error" => "Oops, Post :title failed to delete. :error"
+        'delete' => [
+            'title' => 'Delete Post',
+            'message' => [
+                'confirm' => 'Are you sure want to delete <b>:title</b> ?',
+                'success' => 'Great! Post :title deleted successfully',
+                'error' => 'Oops, Post :title failed to delete. :error'
             ]
         ],
-        "btn" => [
-            "confirm" => "Yes!",
-            "cancel" => "Im not sure",
+        'btn' => [
+            'confirm' => 'Yes!',
+            'cancel' => 'Im not sure',
         ]
     ],
 ];

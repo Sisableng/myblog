@@ -22,32 +22,32 @@ return [
         'name' => 'Role Name',
         'submit' => 'Sip lur!'
     ],
-    "alert" => [
-        "create" => [
-            "title" => "Tambih Role",
-            "message" => [
-                "success" => "Mantap, Role parantos ditambahkeun",
-                "error" => "Aduh, Role gagal ditambahkeun euy. :error"
+    'alert' => [
+        'create' => [
+            'title' => 'Tambih Role',
+            'message' => [
+                'success' => 'Mantap, Role parantos ditambahkeun',
+                'error' => 'Aduh, Role gagal ditambahkeun euy. :error'
             ]
         ],
-        "update" => [
-            "title" => "Apdet Role",
-            "message" => [
-                "success" => "Mantap, Apdet Role beres.",
-                "error" => "Aduh, Apdet Role gagal. :error"
+        'update' => [
+            'title' => 'Apdet Role',
+            'message' => [
+                'success' => 'Mantap, Apdet Role beres.',
+                'error' => 'Aduh, Apdet Role gagal. :error'
             ]
         ],
-        "delete" => [
-            "title" => "Hapus Role",
-            "message" => [
-                "confirm" => "Ente yakin hoyong ngahapus Role :title ieu?",
-                "success" => "Oke, Role :title parantos dihapus",
-                "error" => "Aduh, Role :title gagal dihapus. :error"
+        'delete' => [
+            'title' => 'Hapus Role',
+            'message' => [
+                'confirm' => 'Ente yakin hoyong ngahapus Role :title ieu?',
+                'success' => 'Oke, Role :title parantos dihapus',
+                'error' => 'Aduh, Role :title gagal dihapus. :error'
             ]
         ],
-        "btn" => [
-            "confirm" => "Gass!",
-            "cancel" => "Teu jadi",
+        'btn' => [
+            'confirm' => 'Gass!',
+            'cancel' => 'Teu jadi',
         ]
     ],
 ];

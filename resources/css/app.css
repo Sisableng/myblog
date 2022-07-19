@@ -45,11 +45,22 @@ h6 {
     @apply text-base leading-6;
 }
 
+/* Loading Screen */
+
+.loading {
+    @apply z-[99999] absolute top-0 left-[-5px] w-full h-screen bg-white/30 backdrop-blur-lg overflow-hidden;
+}
+
+.loading-content {
+    @apply absolute border-8 border-slate-300 border-t-8 border-t-green-500 rounded-full w-12 h-12 top-[40%] inset-x-1/2 animate-spin;
+	}
+/* End Loading Screen */
+
 #mydropdown {
     transform: translate(-125px, 15px) !important;
 }
 
-@media (max-width: 1024px) {
+    @media (max-width: 1024px) {
     #mydropdown {
     transform: translate(-65px, 15px) !important;
 }
@@ -219,3 +230,4 @@ h6 {
 }
 
 /* End Select2 */
+

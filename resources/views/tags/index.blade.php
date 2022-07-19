@@ -14,7 +14,8 @@
                             <i class="fad fa-magnifying-glass"></i>
                         </div>
                         <input type="text" name="keyword" class="search-form"
-                            placeholder="{{ trans('dashboard.index.search') }}" value="{{ request()->get('keyword') }}">
+                            placeholder="{{ trans('categories.index.search') }}"
+                            value="{{ request()->get('keyword') }}">
                     </div>
                     <button type="submit" class="search-btn"><i class="fad fa-magnifying-glass"></i></button>
                 </form>

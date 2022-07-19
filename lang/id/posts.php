@@ -60,32 +60,32 @@ return [
         ]
     ],
 
-    "alert" => [
-        "create" => [
-            "title" => "Tambah Pos",
-            "message" => [
-                "success" => "Hore, Pos berhasil dibuat",
-                "error" => "Hmm, Pos gagal dibuat nih. :error"
+    'alert' => [
+        'create' => [
+            'title' => 'Tambah Pos',
+            'message' => [
+                'success' => 'Hore, Pos berhasil dibuat',
+                'error' => 'Hmm, Pos gagal dibuat nih. :error'
             ]
         ],
-        "update" => [
-            "title" => "Edit Pos",
-            "message" => [
-                "success" => "Hore, Edit Posting berhasil.",
-                "error" => "Hmm, Edit Posting gagal nih. :error"
+        'update' => [
+            'title' => 'Edit Pos',
+            'message' => [
+                'success' => 'Hore, Edit Posting berhasil.',
+                'error' => 'Hmm, Edit Posting gagal nih. :error'
             ]
         ],
-        "delete" => [
-            "title" => "Hapus Pos",
-            "message" => [
-                "confirm" => "Kamu yakin mau hapus Pos :title ?",
-                "success" => "Hore, Pos :title berhasil dihapus",
-                "error" => "Hmm, Pos :title gagal dihapus. :error"
+        'delete' => [
+            'title' => 'Hapus Pos',
+            'message' => [
+                'confirm' => 'Kamu yakin mau hapus Pos :title ?',
+                'success' => 'Hore, Pos :title berhasil dihapus',
+                'error' => 'Hmm, Pos :title gagal dihapus. :error'
             ]
         ],
-        "btn" => [
-            "confirm" => "Oke",
-            "cancel" => "Gak jadi",
+        'btn' => [
+            'confirm' => 'Oke',
+            'cancel' => 'Gak jadi',
         ]
     ],
 ];

@@ -5,7 +5,7 @@
         <div class="flex justify-between items-center sm:flex-col sm:space-y-5 sm:items-start">
             <a href="{{ 'categories/create' }}" role="button" class="mybtn">
                 <i class="fad fa-plus mr-2 -ml-1"></i>
-                {{ trans('categories.addBtn') }}
+                {{ __('categories.addBtn') }}
             </a>
             <div class="sm:w-full">
                 <form action="{{ route('categories.index') }}" method="GET" class="flex items-center mb-0">
@@ -14,7 +14,7 @@
                             <i class="fad fa-magnifying-glass"></i>
                         </div>
                         <input type="text" name="keyword" class="search-form"
-                            placeholder="{{ trans('dashboard.index.search') }}" value="{{ request()->get('keyword') }}">
+                            placeholder="{{ __('categories.index.search') }}" value="{{ request()->get('keyword') }}">
                     </div>
                     <button type="submit" class="search-btn"><i class="fad fa-magnifying-glass"></i></button>
 
@@ -34,9 +34,9 @@
             @else
                 @if (request()->get('keyword'))
                     <p class="text-center">
-                        {{ trans('categories.index.empty.search', ['keyword' => request()->get('keyword')]) }}</p>
+                        {{ __('categories.index.empty.search', ['keyword' => request()->get('keyword')]) }}</p>
                 @else
-                    <p class="text-center">{{ trans('categories.index.empty.fetch') }}</p>
+                    <p class="text-center">{{ __('categories.index.empty.fetch') }}</p>
                 @endif
             @endif
         </ul>
