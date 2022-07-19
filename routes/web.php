@@ -64,6 +64,10 @@ Route::middleware(["auth"])->group(function () {
     });
 
     // Roles
+    Route::get("/roles/select", [
+        \App\Http\Controllers\RoleController::class,
+        "select",
+    ])->name("roles.select");
     Route::resource('/roles', \App\Http\Controllers\RoleController::class);
 
     // Users

@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark px-3" id="nav">
+    <nav class="navbar sticky-top navbar-dark px-3" id="nav">
         <div class="d-flex">
             <a class="navbar-brand d-none d-lg-inline" id="to-previous">
                 <i class="fas fa-arrow-left fa-fw"></i>

@@ -1,8 +1,8 @@
 @foreach ($categories as $category)
     <li
-        class="group flex items-center justify-between w-full px-4 py-10 border-b border-slate-200 hover:border-green-400 dark:border-gray-600">
+        class="group flex items-center justify-between w-full px-4 py-10 border-b border-b-slate-200 hover:border-b-green-400 dark:border-b-gray-600">
         <a href="{{ route('categories.show', ['category' => $category]) }}"
-            class="mt-auto mb-auto group-hover:text-lg group-hover:text-green-500 transition duration-500 ease-in-out">{{ str_repeat('•', $count) . ' ' . $category->title }}
+            class="mt-auto mb-auto group-hover:text-green-500 transition duration-500 ease-in-out">{{ str_repeat('•', $count) . ' ' . $category->title }}
             <span
                 class="text-green-500 italic text-sm opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
                 - {{ $category->created_at->format('d F Y') }}</span></a>

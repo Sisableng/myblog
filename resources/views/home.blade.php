@@ -19,7 +19,7 @@
                             class="w-full h-auto bg-gradient-to-r from-slate-800 via-slate-700 to-rose-600 rounded-3xl p-16 sm:p-10 shadow-xl">
                             <div class="relative flex sm:flex-col sm:space-y-7 lg:justify-between lg:items-center">
                                 <div class="group flex items-center space-x-7">
-                                    <a href="https://www.youtube.com/watch?v=-wlYB9qX66k&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=95&ab_channel=Ilmukita"
+                                    <a href="https://www.youtube.com/watch?v=waZ_ZOefyYk&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=98&ab_channel=Ilmukita"
                                         class="z-20 w-20 h-20 p-5 bg-slate-200 rounded-full flex justify-center items-center text-4xl group-hover:bg-rose-600 transition-colors ease-in-out duration-500 shadow-lg"
                                         target="_blank"><i
                                             class="fas fa-play group-hover:-rotate-12 group-hover:text-slate-200"></i>
@@ -30,27 +30,44 @@
                                         Lanjut slur</p>
                                 </div>
                                 <div class="text-white lg:w-1/2">
-                                    <p class="lg:text-right text-xl opacity-70">Hanca : 95</p>
-                                    <h1 class="lg:text-right font-bold">Menampilkan data user</h1>
+                                    <p class="lg:text-right text-xl opacity-70">Hanca : 98</p>
+                                    <h1 class="lg:text-right font-bold">Membuat validasi tambah user</h1>
                                 </div>
                             </div>
                         </div>
 
-                        <div
-                            class="relative max-w-full h-auto sm:h-48 overflow-hidden bg-gradient-to-r from-amber-500 to-slate-800 p-10 rounded-3xl shadow-xl text-white">
-                            <div class="flex justify-between items-center">
-                                <div class="lg:w-1/2">
-                                    <p class="text-white/50">Bug::</p>
-                                    <p class="text-lg font-medium mt-2">Edit kategori old value <span
-                                            class="font-bold">(parent
-                                            kategori)</span>
-                                    </p>
-                                </div>
-                                <div class="absolute -right-10 sm:top-16 opacity-20">
-                                    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_ppfj5jxd.json"
-                                        background="transparent" speed="1"
-                                        class="w-[400px] h-[400px] sm:w-[200px] sm:h-[200px]" loop autoplay>
-                                    </lottie-player>
+                        <div class="grid grid-cols-3 sm:grid-cols-1 gap-7">
+                            <div class="rounded-3xl p-5 bg-slate-200 shadow-lg">
+                                <h4 class="font-bold">Hanca</h4>
+                                <div class="block w-full h-1 bg-slate-300 mt-3 rounded-full"></div>
+                                <ul class="list-disc list-outside p-5">
+                                    <li>
+                                        <p>Set Bahasa User page (Index & Create)</p>
+                                    </li>
+                                    <li>
+                                        <p>Z-index untuk Toast Error</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-span-2">
+                                <div
+                                    class="relative max-w-full h-auto sm:h-48 overflow-hidden bg-gradient-to-r from-amber-500 to-slate-800 p-10 rounded-3xl shadow-lg text-white">
+                                    <div class="flex justify-between items-center">
+                                        <div class="lg:w-1/2">
+                                            <p class="text-white/50">Bug::</p>
+                                            <p class="text-lg font-medium mt-2">Edit kategori old value <span
+                                                    class="font-bold">(parent
+                                                    kategori)</span>
+                                            </p>
+                                        </div>
+                                        <div class="absolute -right-10 sm:top-16 opacity-20">
+                                            <lottie-player
+                                                src="https://assets10.lottiefiles.com/packages/lf20_ppfj5jxd.json"
+                                                background="transparent" speed="1"
+                                                class="w-[400px] h-[400px] sm:w-[200px] sm:h-[200px]" loop autoplay>
+                                            </lottie-player>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,19 +108,6 @@
         </div>
     </div>
 @endsection
-@push('loader')
-    <script>
-        function showLoading() {
-            document.querySelector('#loading').classList.add('loading');
-            document.querySelector('#loading-content').classList.add('loading-content');
-        }
-
-        setTimeout(function hideLoading() {
-            document.querySelector('#loading').classList.remove('loading');
-            document.querySelector('#loading-content').classList.remove('loading-content');
-        }, 2000);
-    </script>
-@endpush
 @push('javascript-external')
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 @endpush

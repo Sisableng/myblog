@@ -29,12 +29,11 @@
     @stack('css-external')
     @stack('css-internal')
 
-    @stack('loader')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
-<body class="dark:bg-slate-900" onload="showLoading()">
+<body class="dark:bg-slate-900">
     <div id="app" class="">
         @if (Auth::check())
             <div>
@@ -45,21 +44,22 @@
                 </div>
                 <div class="overlay hidden" onclick="Close()"></div>
                 <asside
-                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 border-r border-slate-100">
-                    <div class="text-slate-700 text-xl mb-3 sticky top-0 z-50 bg-white">
-                        <div class="p-2.5 mt-1 flex items-center">
-                            <img src="{{ asset('images/logo.png') }}" class="w-10 h-7" alt="logo">
-                            <h1 class="font-bold dark:text-slate-200 text-2xl ml-3 sm:text-[15px]">
+                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 py-5 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 rounded-r-3xl shadow-xl shadow-slate-200">
+                    <div class="text-slate-700 text-xl mb-10 sticky top-3 z-50 bg-white">
+                        <div class="relative p-2.5 mt-1 flex flex-col items-center">
+                            <img src="{{ asset('images/logo.png') }}" class="w-13 h-10" alt="logo">
+                            <h4 class="font-bold dark:text-slate-200 ml-3 mt-5 sm:text-[15px]">
                                 <span class="font-normal">Ciloa</span>Media
-                            </h1>
-                            <i class="fa fa-xmark ml-28 lg:hidden" onclick="Close()"></i>
+                            </h4>
+                            <div class="absolute -top-2 right-3">
+                                <i class="fa fa-xmark text-slate-300 active:text-emerald-500 lg:hidden"
+                                    onclick="Close()"></i>
+                            </div>
                         </div>
-                        <div class="mt-1 bg-slate-100 mx-auto w-[90%] dark:bg-slate-800 h-[1px]"></div>
                     </div>
                     <div class="group sidebar-items {{ Request::is('home') ? 'active' : '' }}">
                         <i class="far fa-objects-column w-[50px]"></i>
-                        <a href="{{ url('home') }}"
-                            class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
+                        <a href="{{ url('home') }}" class="w-full  group-hover:text-green-500 dark:text-slate-200">
                             {{ trans('dashboard.menu.dashboard') }}
                         </a>
                     </div>
@@ -70,20 +70,21 @@
                         <i class="far fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
                             <span
-                                class="text-[15px] text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.post') }}</span>
+                                class=" group-hover:text-green-500 dark:text-slate-200">{{ trans('dashboard.menu.post') }}</span>
                             <span class="text-sm" id="arrow">
                                 <i class="fas fa-caret-down text-green-500"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'visible' : 'sub' }}"
+                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-gray-100 dark:bg-slate-700 rounded-xl {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'visible' : 'sub' }}"
                         id="submenu">
                         <div class="flex flex-col">
                             <a href="{{ url('posts') }}"
-                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.data') }}
                             </a>
-                            <a href="" class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
+                            <a href="{{ url('posts?status=draft') }}"
+                                class="py-3  dark:text-slate-300 hover:text-green-500">
                                 {{ trans('dashboard.menu.trash') }}
                             </a>
                         </div>
@@ -93,24 +94,23 @@
                         class="group sidebar-items {{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
                         <i class="far fa-tags w-[50px]"></i>
                         <a href="{{ url('tags') }}"
-                            class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">{{ trans('dashboard.menu.tags') }}</a>
+                            class="w-full  group-hover:text-green-500 dark:text-slate-200">{{ trans('dashboard.menu.tags') }}</a>
                     </div>
                     <div
                         class="group sidebar-items {{ Request::is('categories', 'categories/create', 'categories/*/edit', 'categories/*') ? 'active' : '' }}">
                         <i class="far fa-bookmark w-[50px]"></i>
                         <a href="{{ url('categories') }}"
-                            class="text-[15px] w-full text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
+                            class="w-full  group-hover:text-green-500 dark:text-slate-200">
                             {{ trans('dashboard.menu.category') }}
                         </a>
                     </div>
 
                     {{-- Dropdown2 --}}
-                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users') ? 'active' : '' }}"
+                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'active' : '' }}"
                         onclick="dropdown2()">
                         <i class="far fa-gears w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
-                            <span
-                                class="text-[15px] text-slate-700 group-hover:text-green-500 dark:text-slate-200 font-semibold">
+                            <span class=" group-hover:text-green-500 dark:text-slate-200">
                                 {{ trans('dashboard.menu.settings') }}
                             </span>
                             <span class="text-sm" id="arrow2">
@@ -118,23 +118,22 @@
                             </span>
                         </div>
                     </div>
-                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-slate-200 dark:bg-slate-700 rounded-xl {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users') ? 'block' : 'sub2' }}"
+                    <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-gray-100 dark:bg-slate-700 rounded-xl {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'block' : 'sub2' }}"
                         id="submenu2">
                         <div class="flex flex-col">
-                            <a href="{{ url('posts') }}"
-                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500">
+                            <a href="{{ url('posts') }}" class="py-3  dark:text-slate-300 hover:text-green-500">
                                 {{ trans('dashboard.menu.general') }}
                             </a>
                             <a href="{{ route('users.index') }}"
-                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('users') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('users', 'users/create') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.user') }}
                             </a>
                             <a href="{{ route('roles.index') }}"
-                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('roles', 'roles/*') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('roles', 'roles/*') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.roles') }}
                             </a>
                             <a href="{{ route('filemanager.index') }}"
-                                class="py-3 text-slate-700 dark:text-slate-300 hover:text-green-500 {{ Request::is('filemanager/index') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('filemanager/index') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.filemanager') }}
                             </a>
                         </div>
@@ -189,10 +188,10 @@
 
             </div>
         @endif
-        <div id="contain" class="lg:pl-[20rem] transition-spacing max-w-8xl mx-auto lg:px-16 sm:px-6 md:px-8">
+        <div id="contain" class="lg:pl-[22rem] transition-spacing max-w-8xl mx-auto lg:px-16 sm:px-6 md:px-8">
             @if (Auth::check())
                 <div id="topNav"
-                    class="fixed left-0 top-0 w-full z-30 flex justify-between sm:justify-end py-5 lg:pl-[20rem] lg:pr-16 sm:pr-5 transition-spacing bg-white">
+                    class="fixed left-0 top-0 w-full z-30 flex justify-between sm:justify-end py-5 lg:pl-[22rem] lg:pr-16 sm:pr-5 transition-spacing bg-white">
 
                     @guest
                         <ul class="hidden">
@@ -249,24 +248,24 @@
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div id="setlang"
-                                    class="z-10 hidden bg-slate-200 rounded-lg shadow w-[150px] dark:bg-slate-700">
+                                    class="z-10 hidden bg-gray-100 rounded-lg shadow-xl w-[150px] dark:bg-slate-700">
                                     <ul class="text-base sm:text-lg text-center text-slate-700 dark:text-slate-200"
                                         aria-labelledby="dropdownDefault">
                                         <li>
                                             <a href="{{ route('localization.switch', ['language' => 'en']) }}"
-                                                class="text-base block px-4 py-2 hover:bg-slate-300 hover:rounded-t-lg dark:hover:bg-slate-600 dark:hover:text-white">
+                                                class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-t-lg dark:hover:bg-slate-600 dark:hover:text-white">
                                                 {{ trans('localization.en') }}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('localization.switch', ['language' => 'id']) }}"
-                                                class="text-base block px-4 py-2 hover:bg-slate-300 dark:hover:bg-slate-600 dark:hover:text-white">
+                                                class="text-base block px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-600 dark:hover:text-white">
                                                 {{ trans('localization.id') }}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('localization.switch', ['language' => 'su']) }}"
-                                                class="text-base block px-4 py-2 hover:bg-slate-300 hover:rounded-b-lg dark:hover:bg-slate-600 dark:hover:text-white">
+                                                class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-b-lg dark:hover:bg-slate-600 dark:hover:text-white">
                                                 {{ trans('localization.su') }}
                                             </a>
                                         </li>
@@ -276,11 +275,16 @@
                             <!-- End Set -->
                             <div>
                                 <button type="button"
-                                    class="flex text-xl bg-slate-800 rounded-full md:mr-0 focus:ring-4 focus:ring-slate-300 dark:focus:ring-slate-600"
+                                    class="flex text-xl bg-slate-800 rounded-full md:mr-0 ring-4 ring-slate-300 focus:ring-emerald-500 focus:ring-4 dark:focus:ring-slate-600"
                                     id="user-menu-button" aria-expanded="false" type="button"
                                     data-dropdown-toggle="mydropdown" data-dropdown-placement="left">
                                     <span class="sr-only">Open user menu</span>
-                                    <i class="fad fa-user w-8 h-8 text-base pt-1 text-white"></i>
+                                    @if (Auth::user()->id == 1)
+                                        <img src="{{ asset('storage/photos/1/User/super.jpg') }}"
+                                            class="w-8 h-8 rounded-full" alt="">
+                                    @else
+                                        <i class="fad fa-user w-8 h-8 text-base pt-1 text-white"></i>
+                                    @endif
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div class="hidden z-50 my-4 text-base list-none bg-slate-200 rounded-lg divide-y divide-slate-300 shadow dark:bg-slate-700 dark:divide-slate-600"
@@ -427,7 +431,24 @@
 
             // Event:Thumbnail
             $('#button_file').filemanager('image');
+        });
 
+        $(document).ready(function() {
+            // Show Hide Password
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("fa-eye-slash");
+                    $('#show_hide_password i').removeClass("fa-eye");
+                    $('#show_hide_password a').removeClass("show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("fa-eye-slash");
+                    $('#show_hide_password i').addClass("fa-eye");
+                    $('#show_hide_password a').addClass("show");
+                }
+            });
         });
     </script>
     @stack('javascript-external')

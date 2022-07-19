@@ -1,10 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./resources/**/*.blade.php", "./resources/**/*.js"],
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./node_modules/flowbite/**/*.js",
+    ],
     theme: {
         fontFamily: {
-            'poppins' : ['Poppins', 'sans-serif'],
-            'montserrat' : ['Montserrat', 'sans-serif'],
+            poppins: ["Poppins", "sans-serif"],
+            montserrat: ["Montserrat", "sans-serif"],
         },
         container: {
             center: true,
@@ -16,9 +20,9 @@ module.exports = {
                 "2xl": "1230px",
             },
             transitionProperty: {
-                'height': 'height',
-                'spacing': 'margin, padding',
-              },
+                height: "height",
+                spacing: "margin, padding",
+            },
         },
     },
     plugins: [require("flowbite/plugin", "prettier-plugin-tailwindcss")],
