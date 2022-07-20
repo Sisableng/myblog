@@ -29,11 +29,12 @@
                 <form action="" method="GET" class="flex mb-0 items-center">
                     <label class="mr-3 text-slate-400">Status :</label>
                     <select name="status"
-                        class="border-0 border-b border-slate-200 text-gray-900 text-sm py-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-0"
+                        class="border-0 border-b border-slate-200 text-gray-900 text-sm py-2.5 bg-transparent dark:placeholder-gray-400 dark:text-white focus:ring-0 cursor-pointer"
                         onchange='if(this.value != 0) { this.form.submit(); }'>
                         @foreach ($statuses as $value => $label)
                             <option value="{{ $value }}" {{ $statusSelected == $value ? 'selected' : null }}>
-                                {{ $label }}</option>
+                                {{ $label }}
+                            </option>
                         @endforeach
                     </select>
                 </form>
@@ -42,9 +43,9 @@
         </div>
 
         <div
-            class="relative overflow-x-auto shadow-lg shadow-slate-300/50 sm:rounded-lg rounded-3xl border border-slate-200">
+            class="relative overflow-x-auto shadow-lg shadow-slate-300/50 sm:rounded-lg rounded-3xl border border-slate-200 dark:border-slate-800 dark:shadow-black/30">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-slate-500 dark:bg-gray-700 border-b border-slate-200 dark:text-gray-400">
+                <thead class="text-slate-500 dark:bg-slate-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3 w-[30rem]">
                             {{ __('posts.index.table.title') }}

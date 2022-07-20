@@ -31,6 +31,19 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <script>
+        // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
+        if (
+            localStorage.getItem('color-theme') === 'dark' ||
+            (!('color-theme' in localStorage) &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
 </head>
 
 <body class="dark:bg-slate-900">
@@ -38,14 +51,16 @@
         @if (Auth::check())
             <div>
                 <div id="hamburger"
-                    class="z-40 fixed text-slate-800 text-2xl top-8 left-7 peer transition cursor-pointer hidden sm:block"
+                    class="z-40 fixed text-slate-800 dark:text-slate-500 text-2xl top-8 left-7 peer transition cursor-pointer hidden sm:block"
                     onclick="Open()">
                     <p><i class="fad fa-bars-staggered"></i></p>
                 </div>
                 <div class="overlay hidden" onclick="Close()"></div>
                 <asside
-                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 py-5 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 rounded-r-3xl shadow-xl shadow-slate-200">
-                    <div class="text-slate-700 text-xl mb-10 sticky top-3 z-50 bg-white">
+                    class="sidebar sm:shadow-2xl fixed top-0 bottom-0 lg:left-0 lg:transform-none transform -translate-x-96 py-5 px-5 w-[250px] sm:w-[300px] bg-white dark:bg-slate-800 peer-focus:left-0 peer:transition-all ease-out duration-300 rounded-r-3xl shadow-xl shadow-slate-200 dark:shadow-black/30">
+
+
+                    <div class="head w-full text-slate-700 text-xl mb-10 sticky top-3 z-50 bg-white dark:bg-slate-800 ">
                         <div class="relative p-2.5 mt-1 flex flex-col items-center">
                             <img src="{{ asset('images/logo.png') }}" class="w-13 h-10" alt="logo">
                             <h4 class="font-bold dark:text-slate-200 ml-3 mt-5 sm:text-[15px]">
@@ -59,20 +74,19 @@
                     </div>
                     <div class="group sidebar-items {{ Request::is('home') ? 'active' : '' }}">
                         <i class="far fa-objects-column w-[50px]"></i>
-                        <a href="{{ url('home') }}" class="w-full  group-hover:text-green-500 dark:text-slate-200">
+                        <a href="{{ url('home') }}" class="w-full  group-hover:text-emerald-500 ">
                             {{ trans('dashboard.menu.dashboard') }}
                         </a>
                     </div>
 
                     {{-- Dropdown --}}
-                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
+                    <div class="drop group z-20 bg-white drak:focus:bg-slate-700 dark:bg-slate-800 sidebar-items cursor-pointer select-none {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
                         onclick="dropdown()">
                         <i class="far fa-file-lines w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
-                            <span
-                                class=" group-hover:text-green-500 dark:text-slate-200">{{ trans('dashboard.menu.post') }}</span>
+                            <span class=" group-hover:text-emerald-500 ">{{ trans('dashboard.menu.post') }}</span>
                             <span class="text-sm" id="arrow">
-                                <i class="fas fa-caret-down text-green-500"></i>
+                                <i class="fas fa-caret-down text-emerald-500"></i>
                             </span>
                         </div>
                     </div>
@@ -80,11 +94,11 @@
                         id="submenu">
                         <div class="flex flex-col">
                             <a href="{{ url('posts') }}"
-                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500 {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.data') }}
                             </a>
                             <a href="{{ url('posts?status=draft') }}"
-                                class="py-3  dark:text-slate-300 hover:text-green-500">
+                                class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500">
                                 {{ trans('dashboard.menu.trash') }}
                             </a>
                         </div>
@@ -94,46 +108,46 @@
                         class="group sidebar-items {{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
                         <i class="far fa-tags w-[50px]"></i>
                         <a href="{{ url('tags') }}"
-                            class="w-full  group-hover:text-green-500 dark:text-slate-200">{{ trans('dashboard.menu.tags') }}</a>
+                            class="w-full  group-hover:text-emerald-500 ">{{ trans('dashboard.menu.tags') }}</a>
                     </div>
                     <div
                         class="group sidebar-items {{ Request::is('categories', 'categories/create', 'categories/*/edit', 'categories/*') ? 'active' : '' }}">
                         <i class="far fa-bookmark w-[50px]"></i>
-                        <a href="{{ url('categories') }}"
-                            class="w-full  group-hover:text-green-500 dark:text-slate-200">
+                        <a href="{{ url('categories') }}" class="w-full  group-hover:text-emerald-500 ">
                             {{ trans('dashboard.menu.category') }}
                         </a>
                     </div>
 
                     {{-- Dropdown2 --}}
-                    <div class="group z-20 bg-white sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'active' : '' }}"
+                    <div class="drop group z-20 bg-white dark:bg-slate-800 sidebar-items cursor-pointer select-none {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'active' : '' }}"
                         onclick="dropdown2()">
                         <i class="far fa-gears w-[50px]"></i>
                         <div class="flex justify-between w-full items-center">
-                            <span class=" group-hover:text-green-500 dark:text-slate-200">
+                            <span class=" group-hover:text-emerald-500 ">
                                 {{ trans('dashboard.menu.settings') }}
                             </span>
                             <span class="text-sm" id="arrow2">
-                                <i class="fas fa-caret-down text-green-500"></i>
+                                <i class="fas fa-caret-down text-emerald-500"></i>
                             </span>
                         </div>
                     </div>
                     <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-gray-100 dark:bg-slate-700 rounded-xl {{ Request::is('filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'block' : 'sub2' }}"
                         id="submenu2">
                         <div class="flex flex-col">
-                            <a href="{{ url('posts') }}" class="py-3  dark:text-slate-300 hover:text-green-500">
+                            <a href="{{ url('posts') }}"
+                                class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500">
                                 {{ trans('dashboard.menu.general') }}
                             </a>
                             <a href="{{ route('users.index') }}"
-                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('users', 'users/create') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500 {{ Request::is('users', 'users/create') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.user') }}
                             </a>
                             <a href="{{ route('roles.index') }}"
-                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('roles', 'roles/*') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500 {{ Request::is('roles', 'roles/*') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.roles') }}
                             </a>
                             <a href="{{ route('filemanager.index') }}"
-                                class="py-3  dark:text-slate-300 hover:text-green-500 {{ Request::is('filemanager/index') ? 'active' : '' }}">
+                                class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500 {{ Request::is('filemanager/index') ? 'active' : '' }}">
                                 {{ trans('dashboard.menu.filemanager') }}
                             </a>
                         </div>
@@ -146,8 +160,10 @@
                 </asside>
 
                 <div id="collapse"
-                    class="invisible sm:hidden fixed top-0 bottom-0 lg:left-0 z-40 bg-white w-16 flex-col space-y-20 px-3 py-5 justify-center">
-                    <p class="text-center font-normal p-2 bg-slate-200 rounded-full">C<span class="font-bold">M</span>
+                    class="invisible sm:hidden fixed top-0 bottom-0 lg:left-0 z-40 bg-white dark:bg-slate-800 w-16 flex-col space-y-20 px-3 py-5 justify-center">
+                    <p
+                        class="text-center font-normal p-2 bg-slate-200 dark:bg-slate-700 dark:text-slate-300 rounded-full">
+                        C<span class="font-bold">M</span>
                     </p>
                     <div class="text-xl text-center w-full">
                         <ul class="text-slate-400 space-y-10">
@@ -191,7 +207,7 @@
         <div id="contain" class="lg:pl-[22rem] transition-spacing max-w-8xl mx-auto lg:px-16 sm:px-6 md:px-8">
             @if (Auth::check())
                 <div id="topNav"
-                    class="fixed left-0 top-0 w-full z-30 flex justify-between sm:justify-end py-5 lg:pl-[22rem] lg:pr-16 sm:pr-5 transition-spacing bg-white">
+                    class="fixed left-0 top-0 w-full z-30 flex justify-between sm:justify-end py-5 lg:pl-[22rem] lg:pr-16 sm:pr-5 transition-spacing bg-white dark:bg-slate-900">
 
                     @guest
                         <ul class="hidden">
@@ -217,13 +233,24 @@
                             <span>-</span>
                             <p class="text-slate-500">{{ date('d M Y') }}</p>
                         </div>
-                        <div class="flex items-center space-x-1">
+                        <div class="flex items-center space-x-5">
+
+                            <!-- Dark mode switcher -->
+                            <button id="theme-toggle" type="button" class="text-gray-500 text-2xl dark:text-gray-400">
+                                <span id="theme-toggle-dark-icon" class="hidden">
+                                    <i class="fad fa-moon-cloud"></i>
+                                </span>
+                                <span id="theme-toggle-light-icon" class="hidden text-yellow-300">
+                                    <i class="fad fa-sun-bright"></i>
+                                </span>
+                            </button>
+                            <!-- Dark mode switcher end -->
 
                             <!-- Set Lang -->
                             <div>
                                 <button id="dropdownDefault" data-dropdown-toggle="setlang"
                                     data-dropdown-placement="bottom"
-                                    class=" font-medium rounded-full text-base px-4 py-2.5 text-center inline-flex items-center focus:bg-slate-200"
+                                    class=" font-medium rounded-full text-base px-4 py-2.5 text-center inline-flex items-center focus:bg-slate-200 dark:focus:bg-slate-800 dark:text-slate-500"
                                     type="button">
                                     @if (app()->getLocale())
                                     @endif
@@ -273,18 +300,14 @@
                                 </div>
                             </div>
                             <!-- End Set -->
+
                             <div>
                                 <button type="button"
-                                    class="flex text-xl bg-slate-800 rounded-full md:mr-0 ring-4 ring-slate-300 focus:ring-emerald-500 focus:ring-4 dark:focus:ring-slate-600"
+                                    class="flex text-xl bg-slate-800 rounded-full md:mr-0 ring-4 ring-slate-300 dark:ring-slate-700 focus:ring-emerald-500 focus:ring-4 dark:focus:ring-slate-600"
                                     id="user-menu-button" aria-expanded="false" type="button"
                                     data-dropdown-toggle="mydropdown" data-dropdown-placement="left">
                                     <span class="sr-only">Open user menu</span>
-                                    @if (Auth::user()->id == 1)
-                                        <img src="{{ asset('storage/photos/1/User/super.jpg') }}"
-                                            class="w-8 h-8 rounded-full" alt="">
-                                    @else
-                                        <i class="fad fa-user w-8 h-8 text-base pt-1 text-white"></i>
-                                    @endif
+                                    <img src="{{ Auth::user()->avatar }}" class="w-8 h-8 rounded-full" alt="">
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div class="hidden z-50 my-4 text-base list-none bg-slate-200 rounded-lg divide-y divide-slate-300 shadow dark:bg-slate-700 dark:divide-slate-600"
@@ -449,6 +472,51 @@
                     $('#show_hide_password a').addClass("show");
                 }
             });
+        });
+    </script>
+
+    {{-- DarkMode --}}
+    <script>
+        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        var themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+
+                // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+
         });
     </script>
     @stack('javascript-external')

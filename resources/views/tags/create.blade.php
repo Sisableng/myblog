@@ -19,7 +19,7 @@
 
                     @error('title')
                         <div id="toast-title"
-                            class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>

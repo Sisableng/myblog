@@ -21,7 +21,7 @@
 
                     @error('title')
                         <div id="toast-title"
-                            class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>
@@ -49,7 +49,7 @@
 
                     @error('slug')
                         <div id="toast-slug"
-                            class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>
@@ -69,21 +69,20 @@
                 {{-- parent_category --}}
                 <div class="mb-10 flex sm:flex-col items-start relative">
                     <label for="select_category_parent"
-                        class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.create.parent-category-label') }}
-                        <span class="text-red-500 italic">(Bugs)</span> </label>
+                        class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('categories.create.parent-category-label') }}</label>
                     <select id="select_category_parent" name="parent_category"
                         class="absolute w-full @error('parent_category') is-invalid @enderror"
-                        data-placeholder="{{ __('Bugs Selected') }}" disabled>
-                        @if (old('parent_category', $category->parent))
-                            <option value="{{ old('parent_category', $category->parent)->id }}" selected>
-                                {{ old('parent_category', $category->parent)->title }}
+                        data-placeholder="{{ __('categories.create.parent-category-placeholder') }}">
+                        @if ($category->parent)
+                            <option value="{{ $category->parent->id }}" selected>
+                                {{ $category->parent->title }}
                             </option>
                         @endif
                     </select>
 
                     @error('parent_category')
                         <div id="toast-parent"
-                            class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>
@@ -110,7 +109,7 @@
 
                     @error('desc')
                         <div id="toast-desc"
-                            class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>
@@ -153,7 +152,7 @@
 
                     @error('thumb')
                         <div id="toast-thumb"
-                            class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>

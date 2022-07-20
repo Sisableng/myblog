@@ -19,10 +19,11 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Admin',
-                'email' => 'wildanm2@admin.com',
+                'name' => 'Wildan Maulana',
+                'email' => 'irwildan8@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('nabillah48@'),
+                'avatar' => 'noimage.jpg',
                 'remember_token' => Str::random(10),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),

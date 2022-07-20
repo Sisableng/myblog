@@ -84,8 +84,8 @@ class CategoryController extends Controller
                 $request['parent_category'] = Category::select('id', 'title')->find($request->parent_category);
             }
             // SWEET ALERT TOAST
-            return back()->with('toast_error', $validator()->messages()->all()[0])->withInput($request->all());
-            // return redirect()->back()->withInput($request->all());
+            // return back()->with('toast_error', $validator()->messages->all()[0])->withInput($request->all());
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
         }
 
         try {
@@ -141,8 +141,10 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $title = trans("categories.title.update");
-        return view("categories.edit", compact("category", "title"));
-        // dd($category);
+        return view("categories.edit", [
+            "category" => $category,
+            "title" => $title
+        ]);
     }
 
     /**

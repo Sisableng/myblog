@@ -24,7 +24,7 @@
 
                         @error('title')
                             <div id="toast-title"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -48,7 +48,7 @@
                             placeholder="{{ __('posts.create.form.content') }}">{{ old('content') }}</textarea>
                         @error('content')
                             <div id="toast-content"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -78,7 +78,7 @@
 
                         @error('slug')
                             <div id="toast-slug"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -104,7 +104,7 @@
                             placeholder="{{ __('posts.create.form.desc.placeholder') }}">{{ old('desc') }}</textarea>
                         @error('desc')
                             <div id="toast-desc"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -139,7 +139,7 @@
                         </div>
                         @error('category')
                             <div id="toast-category"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -173,7 +173,7 @@
                         </select>
                         @error('tag')
                             <div id="toast-tag"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -211,7 +211,7 @@
                         </label>
                         @error('thumb')
                             <div id="toast-thumb"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
@@ -240,7 +240,7 @@
                         </select>
                         @error('status')
                             <div id="toast-stats"
-                                class="fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                                class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                                 role="alert">
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>

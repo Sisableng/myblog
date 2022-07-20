@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <a href="{{ route('users.create') }}" class="mybtn">{{ __('Add Users') }}</a>
+        <a href="{{ route('users.create') }}" class="mybtn">{{ __('users.index.addBtn') }}</a>
 
         <div class="mt-7 overflow-x-auto relative shadow-2xl shadow-slate-200 rounded-3xl sm:rounded-lg">
             <div class="flex justify-between items-center py-4 px-5 bg-emerald-500 dark:bg-gray-900">
@@ -11,10 +11,9 @@
                     <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction"
                         class="inline-flex items-center text-white bg-white/30 focus:border-0 focus:bg-emerald-600 font-medium rounded-full text-sm px-3 py-1.5"
                         type="button">
-                        <span class="sr-only">Action button</span>
                         Action
-                        <svg class="ml-2 w-3 h-3" aria-hidden="true" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="ml-2 w-3 h-3" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
@@ -46,7 +45,6 @@
                 </div>
 
                 {{-- Search --}}
-                <label for="table-search" class="sr-only">Search</label>
                 <div class="relative">
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                         <svg class="w-5 h-5 text-white dark:text-gray-400" aria-hidden="true" fill="currentColor"
@@ -58,7 +56,7 @@
                     </div>
                     <input type="text" id="table-search-users"
                         class="block p-2 pl-10 w-80 text-sm text-white bg-white/30 rounded-full border-0 placeholder:text-white/50 focus:border-0 focus:ring-0 focus:bg-emerald-600"
-                        placeholder="Search for users">
+                        placeholder="{{ __('users.index.search.placeholder') }}">
                 </div>
             </div>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -72,16 +70,16 @@
                             </div>
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Name
+                            {{ __('users.index.table.name') }}
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Position
+                            {{ __('users.index.table.roles') }}
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Status
+                            {{ __('users.index.table.status.title') }}
                         </th>
                         <th scope="col" class="py-3 px-6 w-36">
-                            Action
+
                         </th>
                     </tr>
                 </thead>
@@ -97,8 +95,7 @@
                             </td>
                             <th scope="row"
                                 class="flex items-center py-4 px-6 text-slate-700 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="{{ asset('storage/photos/1/User/super.jpg') }}"
-                                    alt="Jese image">
+                                <img class="w-10 h-10 rounded-full" src="{{ $user->avatar }}" alt="Jese image">
                                 <div class="pl-3">
                                     <p class="text-base font-semibold">{{ $user->name }}</p>
                                     <p class="font-normal text-gray-500">{{ $user->email }}</p>
@@ -118,7 +115,7 @@
                                         class="font-medium text-blue-600 dark:text-blue-500 p-2 rounded-full hover:bg-slate-200">
                                         <i class="fad fa-eye"></i>
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('users.edit', ['user' => $user]) }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 p-2 rounded-full hover:bg-slate-200">
                                         <i class="fad fa-pencil"></i>
                                     </a>

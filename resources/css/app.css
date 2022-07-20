@@ -22,6 +22,10 @@
     @apply bg-emerald-500;
 }
 
+option {
+    @apply cursor-pointer;
+}
+
 html {
     @apply font-poppins text-sm font-medium tracking-wide text-slate-600;
 }
@@ -93,7 +97,7 @@ h6 {
 }
 
 .sidebar-items {
-    @apply relative mt-5 flex items-center rounded-full p-2.5 px-4 text-slate-400 transition duration-300 hover:bg-gray-100 hover:text-emerald-600 focus:text-emerald-600 dark:text-slate-400;
+    @apply relative mt-5 flex items-center rounded-full p-2.5 px-4 text-slate-500 transition duration-300 hover:bg-gray-100 hover:text-emerald-600 focus:text-emerald-600 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-emerald-600;
 }
 
 .sidebar-items.active {
@@ -134,7 +138,7 @@ h6 {
 }
 
 .mybtn {
-    @apply mr-2 inline-flex items-center rounded-full bg-emerald-500 px-5 py-2.5 text-center text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-emerald-600 focus:outline-none;
+    @apply mr-2 inline-flex items-center rounded-full bg-emerald-500 px-5 py-2.5 text-center text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-emerald-600 focus:outline-none;
 }
 
 .badge-emerald {
@@ -167,12 +171,20 @@ h6 {
 }
 
 .myShadow {
-    @apply border-b border-slate-100 shadow-lg shadow-slate-300/10;
+    @apply border-b border-slate-100 shadow-lg shadow-slate-300/10 dark:border-slate-900 dark:shadow-black/30;
 }
 
-.show,
-.show i {
+.show {
     @apply bg-emerald-500 text-white;
+}
+
+.preview > img {
+    @apply h-32 w-32 !important;
+}
+
+.head,
+.drop {
+    @apply transition-all duration-300 ease-out;
 }
 
 /** Select2 **/
