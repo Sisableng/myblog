@@ -74,7 +74,7 @@ return [
             'message' => [
                 'confirm' => 'Ente yakin hoyong ngahapus posting :title ieu?',
                 'success' => 'Oke, Pangurus :title parantos dihapus',
-                'error' => 'Aduh, Pangurus :title gagal dihapus. :error'
+                'error' => 'Aduh, Pangurus :title gagal dihapus. :error',
             ]
         ],
         'btn' => [

@@ -42,4 +42,9 @@ class Post extends Model
     {
         return $query->where('status', "draft");
     }
+
+    public function getUserName()
+    {
+        return User::where('id', $this->user_id)->first()->name;
+    }
 }

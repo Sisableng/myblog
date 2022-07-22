@@ -42,7 +42,8 @@ return [
             'message' => [
                 'confirm' => 'Kamu yakin mau hapus Role :title ?',
                 'success' => 'Hore, Role :title berhasil dihapus',
-                'error' => 'Hmm, Role :title gagal dihapus. :error'
+                'error' => 'Hmm, Role :title gagal dihapus. :error',
+                "warning" => "Hmm, Role <b>:name</b> gak bisa dihapus nih, soalnya lagi digunakan :("
             ]
         ],
         'btn' => [

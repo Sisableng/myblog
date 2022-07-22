@@ -27,7 +27,11 @@ option {
 }
 
 html {
-    @apply font-poppins text-sm font-medium tracking-wide text-slate-600;
+    @apply font-poppins text-sm font-normal tracking-wide;
+}
+
+body {
+    @apply text-slate-600 dark:text-slate-300;
 }
 
 h1 {
@@ -89,7 +93,7 @@ h6 {
 }
 
 .sidebar {
-    @apply z-50 overflow-y-auto;
+    @apply z-50 overflow-y-auto overflow-x-hidden;
 }
 
 .overlay {
@@ -175,7 +179,10 @@ h6 {
 }
 
 .show {
-    @apply bg-emerald-500 text-white;
+    @apply bg-emerald-500 !important;
+}
+.show > i {
+    @apply text-white !important;
 }
 
 .preview > img {
@@ -187,10 +194,18 @@ h6 {
     @apply transition-all duration-300 ease-out;
 }
 
+.setting-items {
+    @apply mt-5 flex items-center space-x-20 sm:space-x-10;
+}
+
+.theme-active {
+    @apply border-4 border-dashed border-emerald-500;
+}
+
 /** Select2 **/
 
 .select2-container--default .select2-selection--single {
-    @apply rounded-full border-none bg-slate-100 !important;
+    @apply rounded-full border-none bg-slate-100 dark:bg-slate-700 !important;
 }
 
 .select2-container .select2-selection--single {
@@ -230,7 +245,7 @@ h6 {
 }
 
 .select2-dropdown {
-    @apply border-none bg-slate-300 !important;
+    @apply border-none bg-slate-300 dark:bg-slate-700 dark:text-slate-300 !important;
 }
 
 .select2-search--dropdown {
@@ -238,7 +253,7 @@ h6 {
 }
 
 .select2-container--default .select2-search--dropdown .select2-search__field {
-    @apply border-transparent !important;
+    @apply rounded-xl border-none dark:bg-slate-600 !important;
 }
 
 .select2-search--dropdown .select2-search__field {
@@ -247,3 +262,28 @@ h6 {
 }
 
 /* End Select2 */
+
+/* Sweet Alert */
+
+.swal2-popup {
+    @apply rounded-3xl dark:bg-slate-700 dark:text-slate-300 !important;
+}
+
+.swal2-icon.swal2-warning {
+    @apply border-rose-500 text-rose-500 !important;
+}
+
+.swal2-styled.swal2-confirm {
+    @apply bg-emerald-500 !important;
+}
+
+.swal2-styled.swal2-cancel {
+    @apply bg-slate-300 dark:bg-slate-500 !important;
+}
+
+.swal2-styled.swal2-confirm,
+.swal2-styled.swal2-cancel {
+    @apply rounded-full !important;
+}
+
+/* EndSweet Alert */

@@ -13,7 +13,7 @@ return [
         'addBtn' => 'Add Users',
         'search' => [
             'placeholder' => 'Search Here...',
-            'null' => 'Data Not Found'
+            'null' => '<span class="text-white mr-1">:keyword</span> Not Found'
         ],
         'table' => [
             'name' => 'Name',
@@ -72,7 +72,7 @@ return [
         'delete' => [
             'title' => 'Delete Users',
             'message' => [
-                'confirm' => 'Are you sure want to delete <b>:title</b> ?',
+                'confirm' => 'Are you sure want to delete :title ?',
                 'success' => 'Great! Users :title deleted successfully',
                 'error' => 'Oops, Users :title failed to delete. :error'
             ]

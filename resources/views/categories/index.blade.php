@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <ul class="w-full py-2">
+        <ul class="w-full dark:text-slate-300">
             @if (count($categories))
                 @include('categories._category-list', [
                     'categories' => $categories,

@@ -5,9 +5,9 @@
         <div class="grid grid-cols-3 gap-10 sm:grid-cols-1 sm:gap-4">
             @forelse ($roles as $role)
                 <div
-                    class="group bg-amber-400 first:bg-rose-500 last:bg-emerald-500 p-5 flex flex-col justify-between items-end relative rounded-xl h-40 hover:bg-slate-500 transition duration-300 ease-in-out">
+                    class="group bg-amber-400 first:bg-rose-500 last:bg-emerald-500 p-5 flex flex-col justify-between items-end relative rounded-xl h-40 hover:bg-slate-500 transition duration-300 ease-in-out overflow-hidden">
                     <div
-                        class="inline-flex text-white/80 transform -translate-y-10 invisible group-hover:transform-none group-hover:visible transition-all ease-in-out">
+                        class="inline-flex text-white/80 transform -translate-y-12 group-hover:transform-none transition-all ease-in-out">
 
                         {{-- Edit --}}
                         <a href="{{ route('roles.edit', ['role' => $role]) }}"
@@ -17,10 +17,9 @@
 
                         {{-- Delete --}}
                         <form class="mb-0" action="{{ route('roles.destroy', ['role' => $role]) }}" method="POST"
-                            role="alert" alert-title="{{ trans('roles.alert.delete.title') }}"
-                            alert-text="{{ trans('roles.alert.delete.message.confirm', ['title' => $role->name]) }}"
-                            alert-btn-yes="{{ trans('roles.alert.btn.confirm') }}"
-                            alert-btn-cancel="{{ trans('roles.alert.btn.cancel') }}">
+                            role="alert" alert-title="{{ __('roles.alert.delete.title') }}"
+                            alert-text="{!! __('roles.alert.delete.message.confirm', ['title' => $role->name]) !!}" alert-btn-yes="{{ __('roles.alert.btn.confirm') }}"
+                            alert-btn-cancel="{{ __('roles.alert.btn.cancel') }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="p-2 rounded-2xl hover:text-rose-400 hover:bg-slate-600">
@@ -50,9 +49,11 @@
             @endforelse
         </div>
 
+
+        {{-- Add Btn --}}
         <div class="mt-7">
             <a href="{{ route('roles.create') }}"
-                class="text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-full text-sm px-5 py-2.5 text-center flex items-center float-right"
+                class="text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-full text-sm px-5 py-2.5 text-center flex items-center float-right dark:bg-slate-600 dark:hover:bg-slate-700 dark:text-slate-300"
                 role="button">
                 <i class="fad fa-plus mr-2"></i>
                 {{ __('roles.index.addBtn') }}
@@ -68,7 +69,7 @@
                 Swal.fire({
                     title: $(this).attr('alert-title'),
                     text: $(this).attr('alert-text'),
-                    icon: 'warning',
+                    icon: 'question',
                     allowOutsideClick: false,
                     showCancelButton: true,
                     cancelButtonText: $(this).attr('alert-btn-cancel'),

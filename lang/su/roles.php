@@ -42,7 +42,8 @@ return [
             'message' => [
                 'confirm' => 'Ente yakin hoyong ngahapus Role :title ieu?',
                 'success' => 'Oke, Role :title parantos dihapus',
-                'error' => 'Aduh, Role :title gagal dihapus. :error'
+                'error' => 'Aduh, Role :title gagal dihapus. :error',
+                "warning" => "Aduh, Role <b>:name</b> teu tiasa dihapus euy, soalna nuju diangge :("
             ]
         ],
         'btn' => [

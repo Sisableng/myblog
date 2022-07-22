@@ -9,20 +9,30 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
+    private $perPage = 5;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $users = [];
+        if ($request->get('keyword')) {
+            $users = User::search($request->keyword)->paginate($this->perPage);
+        } else {
+            $users = User::paginate($this->perPage);
+        }
         $title = __('users.title.index');
         return view('users.index', [
             'title' => $title,
-            'users' => User::all()
+            'users' => $users->appends(['keyword' => $request->keyword])
         ]);
     }
 
@@ -140,7 +150,11 @@ class UserController extends Controller
             $request->all(),
             [
                 'name' => 'required|string|max:30',
-                'email' => 'required|email|exists:users,email',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('users')->ignore($user->id),
+                ],
                 'role' => 'required',
                 'avatar' => 'required|string|max:150'
             ],
@@ -196,7 +210,25 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $user->removeRole($user->roles->first());
+            $user->delete();
+
+            Alert::toast(
+                __('users.alert.delete.message.success', ['title' => $user->title]),
+                'success'
+            );
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::toast(
+                __('users.alert.delete.message.error', ['error' => $th->getMessage()]),
+                'errors'
+            );
+        } finally {
+            DB::commit();
+            return redirect()->back();
+        }
     }
 
     private function attributes()

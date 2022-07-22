@@ -7,7 +7,8 @@
             @csrf
             <div class="flex justify-between mb-10">
                 <div class="flex items-center mr-5">
-                    <a href="{{ url('users') }}" class="p-4 bg-slate-200 text-sm rounded-full hover:bg-slate-300">
+                    <a href="{{ url('users') }}"
+                        class="p-4 bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-300 text-sm rounded-full hover:bg-slate-300">
                         <i class="fad fa-arrow-left w-3 h-3"></i>
                     </a>
                 </div>
@@ -23,14 +24,14 @@
                     <div>
 
                         <div
-                            class="w-full flex flex-col justify-center p-10 bg-slate-200 rounded-3xl @error('avatar') is-invalid @enderror">
+                            class="w-full flex flex-col justify-center p-10 bg-slate-200 dark:bg-slate-800 rounded-3xl @error('avatar') is-invalid @enderror">
                             <div id="holder"
-                                class="preview mx-auto w-32 h-32 bg-slate-300 ring-8 ring-slate-300/50 rounded-full overflow-hidden">
+                                class="preview mx-auto w-32 h-32 bg-slate-300 dark:bg-slate-700 ring-8 ring-slate-300/50 rounded-full overflow-hidden">
                             </div>
                             <div class="mt-10">
                                 <input type="text" id="user-file" name="avatar" class="hidden">
                                 <button id="user_file" data-input="user-file" data-preview="holder"
-                                    class="block bg-blue-400 mx-auto p-2.5 px-5 text-white font-semibold rounded-full">{{ __('users.create.avatarBtn') }}</button>
+                                    class="block bg-emerald-500 mx-auto p-2.5 px-5 text-white font-bold rounded-full">{{ __('users.create.avatarBtn') }}</button>
                             </div>
                         </div>
 
@@ -174,7 +175,7 @@
                                     class="form-control mr-3 @error('password_confirmation') is-invalid @enderror"
                                     placeholder="•••••••••">
                                 <a href=""
-                                    class="group w-10 h-10 p-6 rounded-full bg-slate-200 hover:bg-slate-300 flex items-center justify-center transition-all ease-in-out">
+                                    class="group w-10 h-10 p-6 rounded-full bg-slate-200 hover:bg-slate-300 flex items-center justify-center transition-all ease-in-out dark:bg-slate-600 dark:hover:bg-slate-700">
                                     <i class="fad fa-eye text-slate-400 group-hover:text-slate-500"></i>
                                 </a>
                             </div>

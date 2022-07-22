@@ -42,7 +42,8 @@ return [
             'message' => [
                 'confirm' => 'Are you sure want to delete <b>:title</b> ?',
                 'success' => 'Great! Role :title deleted successfully',
-                'error' => 'Oops, Role :title failed to delete. :error'
+                'error' => 'Oops, Role :title failed to delete. :error',
+                "warning" => "Sorry, the <b>:name</b> role cannot be deleted, Because it's still in use :("
             ]
         ],
         'btn' => [

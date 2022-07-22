@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 
 class RoleController extends Controller
@@ -185,6 +186,14 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        if (User::role($role->name)->count()) {
+            alert()->html(
+                'Info',
+                trans('roles.alert.delete.message.warning', ['name' => $role->name]),
+                'warning'
+            );
+            return redirect()->route('roles.index');
+        }
         DB::beginTransaction();
         try {
             $role->revokePermissionTo($role->permissions->pluck('name')->toArray());

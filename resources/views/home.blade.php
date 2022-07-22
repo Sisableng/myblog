@@ -12,17 +12,21 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body space-y-10 p-0 m-0">
-                        <h1 class="font-bold text-4xl">{{ trans('dashboard.index.welcome') }}, <span
-                                class="text-slate-500">{{ Auth::user()->name }}</span></h1>
+                        <h1 class="font-semibold text-4xl text-slate-400">{{ trans('dashboard.index.welcome') }}, <span
+                                class="text-slate-600">
+                                {{ Auth::user()->name }}
+                            </span>
+                        </h1>
 
                         <div
                             class="w-full h-auto bg-gradient-to-r from-slate-800 via-slate-700 to-rose-600 rounded-3xl p-16 sm:p-10 shadow-xl">
                             <div class="relative flex sm:flex-col sm:space-y-7 lg:justify-between lg:items-center">
                                 <div class="group flex items-center space-x-7">
-                                    <a href="https://www.youtube.com/watch?v=FpsfjOYG4JQ&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=103&ab_channel=Ilmukita"
+                                    <a href="https://www.youtube.com/watch?v=aw0nOQ0wQGY&list=PLhG9IAaB9ArrTsTAOWNTi0D2jkLQ6vA5f&index=109&ab_channel=Ilmukita"
                                         class="z-20 w-20 h-20 p-5 bg-slate-200 rounded-full flex justify-center items-center text-4xl group-hover:bg-rose-600 transition-colors ease-in-out duration-500 shadow-lg"
-                                        target="_blank"><i
-                                            class="fas fa-play group-hover:-rotate-12 group-hover:text-slate-200"></i>
+                                        target="_blank">
+                                        <i
+                                            class="fas fa-play group-hover:-rotate-12 group-hover:text-slate-200 dark:text-slate-800 transition delay-300 ease-out"></i>
                                     </a>
                                     <span class="absolute -left-5 w-16 h-16 bg-white/50 rounded-full animate-ping"></span>
                                     <p
@@ -30,19 +34,35 @@
                                         Lanjut slur</p>
                                 </div>
                                 <div class="text-white lg:w-1/2">
-                                    <p class="lg:text-right text-xl opacity-70">Hanca : 103</p>
-                                    <h1 class="lg:text-right font-bold"> Proses update data user</h1>
+                                    <p class="lg:text-right text-xl opacity-70">Hanca : 109</p>
+                                    <h2 class="lg:text-right font-semibold"> Menerapkan permission pada manajemen posting
+                                    </h2>
                                 </div>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-3 sm:grid-cols-1 gap-7">
-                            <div class="rounded-3xl p-5 bg-slate-200 shadow-lg">
+                            <div class="rounded-3xl p-5 bg-slate-200 dark:bg-slate-800 shadow-lg">
                                 <h4 class="font-bold">Hanca</h4>
-                                <div class="block w-full h-1 bg-slate-300 mt-3 rounded-full"></div>
-                                <ul class="list-disc list-outside p-5">
+                                <div class="block w-full h-1 bg-slate-300 dark:bg-slate-700 mt-3 rounded-full"></div>
+                                <ul class="list-disc list-outside p-5 space-y-5">
                                     <li>
                                         <p>Stylize Dark Mode</p>
+                                    </li>
+                                    <li>
+                                        <p>Stylize Pagination button</p>
+                                    </li>
+                                    <li>
+                                        <p>Alert Html controller</p>
+                                    </li>
+                                    <li>
+                                        <p>Toast notif search not found (All)</p>
+                                    </li>
+                                    <li>
+                                        <p>Search Form (All)</p>
+                                    </li>
+                                    <li>
+                                        <p>Bahasa general setting</p>
                                     </li>
                                 </ul>
                             </div>
@@ -52,8 +72,7 @@
                                     <div class="flex justify-between items-center">
                                         <div class="lg:w-1/2">
                                             <p class="text-white/50">Bug::</p>
-                                            <p class="text-lg font-medium mt-2">Edit User email <span
-                                                    class="font-bold">(User Email)</span>
+                                            <p class="text-lg font-medium mt-2">Null <span class="font-bold"></span>
                                             </p>
                                         </div>
                                         <div class="absolute -right-10 sm:top-16 opacity-20">
