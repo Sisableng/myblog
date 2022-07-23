@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container">
@@ -24,9 +24,9 @@
                     <div>
 
                         <div
-                            class="w-full flex flex-col justify-center p-10 bg-slate-200 dark:bg-slate-800 rounded-3xl @error('avatar') is-invalid @enderror">
+                            class="w-full flex flex-col justify-center p-10 bg-slate-200 rounded-3xl dark:bg-slate-800 @error('avatar') is-invalid @enderror">
                             <div id="holder"
-                                class="preview mx-auto w-32 h-32 bg-slate-300 dark:bg-slate-700 ring-8 ring-slate-300/50 rounded-full overflow-hidden">
+                                class="preview mx-auto w-32 h-32 bg-slate-300 dark:bg-slate-700 ring-8 ring-slate-300/50 dark:ring-slate-700 rounded-full overflow-hidden">
                             </div>
                             <div class="mt-10">
                                 <input type="text" id="user-file" name="avatar" class="hidden">
@@ -212,6 +212,18 @@
 
     </div>
 @endsection
+
+@push('css-external')
+    <!-- Select2 Css -->
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+@endpush
+
+@push('javascript-external')
+    <!-- Select2 Js -->
+    <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+@endpush
 
 @push('javascript-internal')
     <script>

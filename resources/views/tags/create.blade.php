@@ -1,25 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container">
         <form action="{{ route('tags.store') }}" method="POST">
             @csrf
-            <div class="mb-10 p-10 sm:px-5 border border-slate-200 rounded-3xl relative">
+            <div class="mb-10 p-10 sm:px-5 border border-slate-200 rounded-3xl relative dark:border-slate-700">
                 <div class="absolute top-5 right-5 sm:right-0 flex items-center mr-5">
-                    <a href="{{ url('tags') }}" class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300 mb-5">
+                    <a href="{{ url('tags') }}"
+                        class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300 mb-5 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300">
                         <i class="fad fa-arrow-left w-3 h-3"></i>
                     </a>
                 </div>
                 {{-- Title --}}
                 <div class="mb-10 mt-10 flex sm:flex-col items-start">
                     <label for="tags_title"
-                        class="required text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ __('tags.create.form.title') }}</label>
+                        class="required text-slate-900 dark:text-slate-300 w-72 sm:pl-3 sm:mb-5">{{ __('tags.create.form.title') }}</label>
                     <input id="tags_title" value="{{ old('title') }}" name="title" type="text"
                         class="form-control @error('title') is-invalid @enderror">
 
                     @error('title')
                         <div id="toast-title"
-                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-200 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                            class="z-50 fixed top-10 right-10 flex items-center w-full max-w-xs p-4 mb-4 text-slate-500 bg-red-200 rounded-lg shadow dark:text-slate-400 dark:bg-slate-800"
                             role="alert">
                             <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                 <i class="fa-duotone fa-message-exclamation"></i>
@@ -38,10 +39,9 @@
                 {{-- slug --}}
                 <div class="mb-10 flex sm:flex-col items-start">
                     <label for="tags_slug"
-                        class="text-gray-900 dark:text-gray-300 w-72 sm:pl-3 sm:mb-5">{{ trans('tags.create.form.slug') }}
+                        class="text-slate-900 dark:text-slate-300 w-72 sm:pl-3 sm:mb-5">{{ trans('tags.create.form.slug') }}
                         <span class="text-slate-500 italic">(Permalink)</span></label>
-                    <input id="tags_slug" value="{{ old('slug') }}" name="slug" type="text"
-                        class="block w-full rounded-full border-none bg-slate-300 p-2.5 pl-5 text-slate-900 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400"
+                    <input id="tags_slug" value="{{ old('slug') }}" name="slug" type="text" class="form-control"
                         placeholder="{{ trans('tags.create.slug-placeholder') }}" readonly />
                 </div>
 

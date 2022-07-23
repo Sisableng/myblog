@@ -16,5 +16,23 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'login' => [
+        'title' => 'Hello, Mamang',
+        'sub' => 'Please login first, OK!',
+        'submit' => 'Ok!',
+        'theme' => 'Theme',
+        'forgot' => 'Forgot your password?'
+    ],
+    'reset' => [
+        'title' => 'Reset Password',
+        'email' => [
+            'title' => 'Email Address',
+            'placeholder' => 'mail@mail.com'
+        ],
+        'password' => 'Password',
+        'confirm_password' => 'Confirmation Password',
+        'submit' => 'Send Reset Link',
+        'submit2' => 'Ok!',
+    ]
 
 ];

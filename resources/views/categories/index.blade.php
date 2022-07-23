@@ -3,10 +3,14 @@
 @section('content')
     <div class="container space-y-5 mb-5">
         <div class="flex justify-between items-center sm:flex-col sm:space-y-5 sm:items-start">
-            <a href="{{ 'categories/create' }}" role="button" class="mybtn">
-                <i class="fad fa-plus mr-2 -ml-1"></i>
-                {{ __('categories.addBtn') }}
-            </a>
+
+            @can('category_create')
+                <a href="{{ 'categories/create' }}" role="button" class="mybtn">
+                    <i class="fad fa-plus mr-2 -ml-1"></i>
+                    {{ __('categories.addBtn') }}
+                </a>
+            @endcan
+
             <div class="sm:w-full">
                 <form action="{{ route('categories.index') }}" method="GET" class="flex items-center mb-0">
                     <div class="relative w-full">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container">
@@ -10,22 +10,27 @@
                         class="inline-flex text-white/80 transform -translate-y-12 group-hover:transform-none transition-all ease-in-out">
 
                         {{-- Edit --}}
-                        <a href="{{ route('roles.edit', ['role' => $role]) }}"
-                            class="p-2 rounded-2xl hover:text-yellow-300 hover:bg-slate-600" role="button">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                        @can('role_update')
+                            <a href="{{ route('roles.edit', ['role' => $role]) }}"
+                                class="p-2 rounded-2xl hover:text-yellow-300 hover:bg-slate-600" role="button">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        @endcan
 
                         {{-- Delete --}}
-                        <form class="mb-0" action="{{ route('roles.destroy', ['role' => $role]) }}" method="POST"
-                            role="alert" alert-title="{{ __('roles.alert.delete.title') }}"
-                            alert-text="{!! __('roles.alert.delete.message.confirm', ['title' => $role->name]) !!}" alert-btn-yes="{{ __('roles.alert.btn.confirm') }}"
-                            alert-btn-cancel="{{ __('roles.alert.btn.cancel') }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="p-2 rounded-2xl hover:text-rose-400 hover:bg-slate-600">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
+                        @can('role_delete')
+                            <form class="mb-0" action="{{ route('roles.destroy', ['role' => $role]) }}" method="POST"
+                                role="alert" alert-title="{{ __('roles.alert.delete.title') }}"
+                                alert-text="{!! __('roles.alert.delete.message.confirm', ['title' => $role->name]) !!}" alert-btn-yes="{{ __('roles.alert.btn.confirm') }}"
+                                alert-btn-cancel="{{ __('roles.alert.btn.cancel') }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="p-2 rounded-2xl hover:text-rose-400 hover:bg-slate-600">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        @endcan
+
                     </div>
                     <div class="text-right w-2/3">
                         <p class="text-sm text-white/50">{{ __('roles.index.title') }}</p>
@@ -34,13 +39,17 @@
                     </div>
                     <span class="absolute -bottom-1 left-5 opacity-30">
                         @if ($role->id == '1')
-                            <i class="fad fa-user-secret text-[120px] group-hover:text-[130px] transition-all"></i>
+                            <i
+                                class="fad fa-user-secret text-[120px] group-hover:text-[130px] text-slate-900 transition-all"></i>
                         @elseif ($role->id == '2')
-                            <i class="fad fa-user-police text-[120px] group-hover:text-[130px] transition-all"></i>
+                            <i
+                                class="fad fa-user-police text-[120px] group-hover:text-[130px] text-slate-900 transition-all"></i>
                         @elseif ($role->id == '3')
-                            <i class="fad fa-user-pen text-[120px] group-hover:text-[130px] transition-all"></i>
+                            <i
+                                class="fad fa-user-pen text-[120px] group-hover:text-[130px] text-slate-900 transition-all"></i>
                         @else
-                            <i class="fad fa-layer-plus text-[120px] group-hover:text-[130px] transition-all"></i>
+                            <i
+                                class="fad fa-layer-plus text-[120px] group-hover:text-[130px] text-slate-900 transition-all"></i>
                         @endif
                     </span>
                 </div>
@@ -51,14 +60,17 @@
 
 
         {{-- Add Btn --}}
-        <div class="mt-7">
-            <a href="{{ route('roles.create') }}"
-                class="text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-full text-sm px-5 py-2.5 text-center flex items-center float-right dark:bg-slate-600 dark:hover:bg-slate-700 dark:text-slate-300"
-                role="button">
-                <i class="fad fa-plus mr-2"></i>
-                {{ __('roles.index.addBtn') }}
-            </a>
-        </div>
+        @can('role_create')
+            <div class="mt-7">
+                <a href="{{ route('roles.create') }}"
+                    class="text-slate-500 bg-slate-200 hover:bg-slate-300 rounded-full text-sm px-5 py-2.5 text-center flex items-center float-right dark:bg-slate-600 dark:hover:bg-slate-700 dark:text-slate-300"
+                    role="button">
+                    <i class="fad fa-plus mr-2"></i>
+                    {{ __('roles.index.addBtn') }}
+                </a>
+            </div>
+        @endcan
+
     </div>
 @endsection
 @push('javascript-internal')

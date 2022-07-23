@@ -6,9 +6,10 @@
         <form action="{{ route('categories.update', ['category' => $category]) }}" method="POST">
             @method('PUT')
             @csrf
-            <div class="mb-10 p-10 sm:px-5 border border-slate-200 rounded-3xl relative">
+            <div class="relative mb-10 p-10 sm:px-5 border border-slate-200 rounded-3xl dark:border-slate-700">
                 <div class="absolute top-5 right-5 sm:right-0 flex items-center mr-5">
-                    <a href="{{ url('categories') }}" class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300 mb-5">
+                    <a href="{{ url('categories') }}"
+                        class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300 mb-5 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300">
                         <i class="fad fa-arrow-left w-3 h-3"></i>
                     </a>
                 </div>
@@ -147,7 +148,9 @@
                                 value="{{ old('thumb', asset($category->thumb)) }}"
                                 class="border-none bg-transparent w-1/2 text-center" readonly>
                         </label>
-                        <div id="holder" class="mt-5 p-3 border-2 border-dashed border-slate-300 rounded-xl"></div>
+                        <div id="holder"
+                            class="mt-5 p-3 border-2 border-dashed border-slate-300 rounded-xl dark:border-slate-700">
+                        </div>
                     </div>
 
                     @error('thumb')
@@ -178,3 +181,69 @@
         </form>
     </div>
 @endsection
+
+@push('css-external')
+    <!-- Select2 Css -->
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+@endpush
+
+@push('javascript-external')
+    <!-- Select2 Js -->
+    <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+@endpush
+
+@push('javascript-internal')
+    <script>
+        // Select2 Parent Category
+        $(function() {
+            // Generate Slug
+            function generateSlug(value) {
+                return value.trim()
+                    .toLowerCase()
+                    .replace(/[^a-z\d-]/gi, '-')
+                    .replace(/-+/g, '-').replace(/^-|-$/g, "");
+            }
+
+            // Select parent category
+            $('#select_category_parent').select2({
+                placeholder: $(this).attr('data-placeholder'),
+                language: "{{ app()->getLocale() }}",
+                allowClear: true,
+                ajax: {
+                    url: "{{ route('categories.select') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function(data) {
+                        return {
+                            results: $.map(data, function(item) {
+                                return {
+                                    text: item.title,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    }
+                }
+            });
+
+            // Input title
+            $('#category_title').change(function() {
+                let title = $(this).val();
+                let parent_category = $('#select_category_parent').val() ?? "";
+                $('#category_slug').val(generateSlug(title + " " + parent_category));
+            });
+
+            // input select parent category
+            $('#select_category_parent').change(function() {
+                let title = $('#category_title').val();
+                let parent_category = $(this).val() ?? "";
+                $('#category_slug').val(generateSlug(title + " " + parent_category));
+            });
+
+            // Event:Thumbnail
+            $('#button_file').filemanager('image');
+        });
+    </script>
+@endpush

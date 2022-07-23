@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container relative">
@@ -268,12 +268,18 @@
     </div>
 @endsection
 
-@push('css-internal')
+@push('css-external')
+    <!-- Select2 Css -->
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
 @endpush
 
 @push('javascript-external')
     <script src="{{ asset('vendor/tinymce5/tinymce.min.js') }}"></script>
     <script src="{{ asset('vendor/tinymce5/jquery.tinymce.min.js') }}"></script>
+    <!-- Select2 Js -->
+    <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
 @endpush
 
 @push('javascript-internal')
@@ -296,6 +302,10 @@
             $('#post_thumb').filemanager('image');
 
             // tinymce
+
+            var useDarkMode = localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches);
+
             $("#input_post_content").tinymce({
                 relative_urls: false,
                 language: "{{ app()->getLocale() }}",
@@ -306,6 +316,9 @@
                     "emoticons template paste textpattern",
                 ],
                 toolbar: "link | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo",
+                skin: useDarkMode ? 'oxide-dark' : 'oxide',
+                content_css: useDarkMode ? 'dark' : 'default',
+
                 file_picker_callback: function(callback, value, meta) {
                     let x = window.innerWidth || document.documentElement.clientWidth || document
                         .getElementsByTagName('body')[0].clientWidth;

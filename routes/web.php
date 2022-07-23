@@ -26,13 +26,21 @@ Route::get("/", function () {
 
 Auth::routes([
     "register" => false,
+    "reset" => true,
 ]);
 
-Route::middleware(["auth"])->group(function () {
-    Route::get("/home", [
-        App\Http\Controllers\HomeController::class,
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
+    Route::get("/", [
+        App\Http\Controllers\DashboardController::class,
         "index",
-    ])->name("home");
+    ])->name("dashboard.index");
+});
+
+Route::middleware(["auth"])->group(function () {
+    // Route::get("/home", [
+    //     App\Http\Controllers\HomeController::class,
+    //     "index",
+    // ])->name("home");
 
     // Categories
     Route::get("/categories/select", [

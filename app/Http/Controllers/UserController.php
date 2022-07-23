@@ -9,10 +9,18 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:user_show', ['only' => 'index']);
+        $this->middleware('permission:user_create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user_update', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user_detail', ['only' => 'show']);
+        $this->middleware('permission:user_delete', ['only' => 'destroy']);
+    }
 
     private $perPage = 5;
 
@@ -150,11 +158,7 @@ class UserController extends Controller
             $request->all(),
             [
                 'name' => 'required|string|max:30',
-                'email' => [
-                    'required',
-                    'email',
-                    Rule::unique('users')->ignore($user->id),
-                ],
+                'email' => 'required|email|unique:users,email,' . $user->id,
                 'role' => 'required',
                 'avatar' => 'required|string|max:150'
             ],
@@ -172,13 +176,16 @@ class UserController extends Controller
 
         DB::beginTransaction();
         try {
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'avatar' => parse_url($request->avatar)['path'],
-            ]);
+            // $user->update([
+            //     'name' => $request->name,
+            //     'email' => $request->email,
+            //     'avatar' => parse_url($request->avatar)['path'],
+            // ]);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->avatar = $request->avatar;
             $user->syncRoles($request->role);
+            $user->save();
 
             Alert::toast(
                 __('users.alert.update.message.success'),

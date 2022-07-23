@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container">
 
-        <a href="{{ route('users.create') }}" class="mybtn">{{ __('users.index.addBtn') }}</a>
+        {{-- Create --}}
+        @can('user_create')
+            <a href="{{ route('users.create') }}" class="mybtn">{{ __('users.index.addBtn') }}</a>
+        @endcan
 
         <div
             class="mt-7 overflow-x-auto relative shadow-2xl shadow-slate-200 dark:shadow-black/30 rounded-3xl sm:rounded-lg">
@@ -57,8 +60,9 @@
                     </div>
                 </form>
             </div>
+
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-white/50 uppercase bg-emerald-500">
+                <thead class="bg-emerald-500">
                     <tr>
                         <th scope="col" class="p-4">
                             <div class="flex items-center">
@@ -94,7 +98,7 @@
                             <th scope="row" class="flex items-center py-4 px-6 text-slate-700 dark:text-slate-300">
                                 <img class="w-10 h-10 rounded-full" src="{{ $user->avatar }}" alt="Jese image">
                                 <div class="pl-3">
-                                    <p class="text-base font-bold">{{ $user->name }}</p>
+                                    <p class="text-base font-semibold">{{ $user->name }}</p>
                                     <p class="font-normal text-slate-500">{{ $user->email }}</p>
                                 </div>
                             </th>
@@ -108,22 +112,31 @@
                             </td>
                             <td class="py-4 px-6">
                                 <div class="flex space-x-3">
-                                    <a href="{{ route('users.edit', ['user' => $user]) }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-600">
-                                        <i class="fad fa-pencil"></i>
-                                    </a>
-                                    <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST"
-                                        class="m-0" role="alert" alert-title="{{ __('users.alert.delete.title') }}"
-                                        alert-text="{!! __('users.alert.delete.message.confirm', ['title' => $user->name]) !!}"
-                                        alert-btn-yes="{{ __('users.alert.btn.confirm') }}"
-                                        alert-btn-cancel="{{ __('users.alert.btn.cancel') }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
+
+                                    {{-- Edit --}}
+                                    @can('user_update')
+                                        <a href="{{ route('users.edit', ['user' => $user]) }}"
                                             class="font-medium text-blue-600 dark:text-blue-500 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-600">
-                                            <i class="fad fa-trash"></i>
-                                        </button>
-                                    </form>
+                                            <i class="fad fa-pencil"></i>
+                                        </a>
+                                    @endcan
+
+                                    {{-- Delete --}}
+                                    @can('user_delete')
+                                        <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST"
+                                            class="m-0" role="alert" alert-title="{{ __('users.alert.delete.title') }}"
+                                            alert-text="{!! __('users.alert.delete.message.confirm', ['title' => $user->name]) !!}"
+                                            alert-btn-yes="{{ __('users.alert.btn.confirm') }}"
+                                            alert-btn-cancel="{{ __('users.alert.btn.cancel') }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="font-medium text-blue-600 dark:text-blue-500 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-600">
+                                                <i class="fad fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endcan
+
                                 </div>
                             </td>
                         </tr>
@@ -133,8 +146,8 @@
                         <div id="toast-notif"
                             class="fixed top-10 right-10 z-[99999] flex items-center justify-between p-4 space-x-4 w-full max-w-xs text-slate-300 bg-slate-700 rounded-lg divide-slate-200 shadow dark:bg-slate-800"
                             role="alert">
-                            <div>
-                                <i class="fa-solid fa-face-sad-tear text-yellow-300 pr-2"></i>
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-face-sad-tear text-yellow-300 pr-3 text-xl"></i>
                                 <p class="pl-4 text-sm font-normal inline-flex border-l border-slate-500">
                                     {!! __('users.index.search.null', ['keyword' => request()->get('keyword')]) !!}</p>
                             </div>
@@ -147,8 +160,8 @@
                         <div id="toast-notif"
                             class="fixed top-10 right-10 z-[99999] flex items-center justify-between p-4 space-x-4 w-full max-w-xs text-slate-300 bg-slate-700 rounded-lg divide-slate-200 shadow dark:bg-slate-800"
                             role="alert">
-                            <div>
-                                <i class="fa-solid fa-face-sad-cry text-yellow-300 pr-2"></i>
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-face-sad-cry text-yellow-300 pr-3 text-xl"></i>
                                 <p class="pl-4 text-sm font-normal inline-flex border-l border-slate-500">
                                     {!! __('No data Yet') !!}</p>
                             </div>

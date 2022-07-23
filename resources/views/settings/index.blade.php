@@ -1,18 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container">
-        <div class="space-y-20">
+        <div class="divide-y divide-slate-200 dark:divide-slate-700">
 
             {{-- Language --}}
-            <div>
-                <h1>Language</h1>
+            <div class="py-10">
+                <h1>{{ __('settings.languange.title') }}</h1>
 
-                <p class="mt-5 mb-10 text-slate-400">Pengaturan bahasa pada website, silahkan pilih sesuai kebutuhan.</p>
+                <p class="mt-5 mb-10 text-slate-400">
+                    {{ __('settings.languange.sub') }}
+                </p>
 
                 <ul>
                     <li class="setting-items">
-                        <p class="text-slate-500">pilih bahasa</p>
+                        <p class="text-slate-500">{{ __('settings.languange.select') }}</p>
                         <!-- Set Lang -->
                         <div class="">
                             <button id="dropdownDefault" data-dropdown-toggle="setlang" data-dropdown-placement="bottom"
@@ -72,25 +74,22 @@
             </div>
 
             {{-- Theme --}}
-            <div>
-                <h1>Theme</h1>
-                <p class="mt-5 mb-10 text-slate-400">
-                    Tersedia tema Terang dan Gelap,
-                    <br>
-                    Jika mata kamu mudah lelah ubah tema ke warna gelap sehingga dapat
-                    membuat mata kamu nyaman kembali.
+            <div class="py-10">
+                <h1>{{ __('settings.theme.title') }}</h1>
+                <p class="mt-5 mb-10 text-slate-400 w-3/4 leading-relaxed">
+                    {!! __('settings.theme.sub') !!}
                 </p>
                 <div class="grid grid-cols-2 gap-5 p-10 sm:p-5 bg-gray-100 dark:bg-slate-800 rounded-3xl">
                     <div class="">
                         <button id="theme-settings-light" class="w-full h-48 bg-slate-200 rounded-3xl dark:text-slate-600">
                             <i class="fa-duotone fa-cloud-sun text-7xl mb-5"></i>
-                            <p>I'm Light</p>
+                            <p>{{ __('settings.theme.light') }}</p>
                         </button>
                     </div>
                     <div class="">
                         <button id="theme-settings-dark" class="w-full h-48 bg-slate-700 rounded-3xl text-slate-300">
                             <i class="fa-duotone fa-moon-stars text-7xl mb-5"></i>
-                            <p>I'm Dark</p>
+                            <p>{{ __('settings.theme.dark') }}</p>
                         </button>
                     </div>
                 </div>
