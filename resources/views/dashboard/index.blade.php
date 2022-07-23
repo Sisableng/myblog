@@ -28,9 +28,8 @@
                                         Lanjut slur</p>
                                 </div>
                                 <div class="text-white lg:w-1/2">
-                                    <p class="lg:text-right text-xl opacity-70">Hanca : 109</p>
-                                    <h2 class="lg:text-right font-semibold"> Menerapkan permission pada manajemen posting
-                                    </h2>
+                                    <p class="lg:text-right text-xl opacity-70">Finish</p>
+                                    <h2 class="lg:text-right font-semibold">Finish</h2>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +55,10 @@
                                         <p>Search Form (All)</p>
                                     </li>
                                     <li>
-                                        <p>Bahasa general setting</p>
+                                        <p>Bahasa Blog</p>
+                                    </li>
+                                    <li>
+                                        <p>Stylize Blog</p>
                                     </li>
                                 </ul>
                             </div>

@@ -24,9 +24,8 @@
                 <div class="flex lg:justify-between lg:items-center px-5 sm:flex-col-reverse">
                     <div class="sm:mt-5">
                         <form action="" method="GET" class="flex mb-0 items-center">
-                            <label for="status" class="mr-3 text-white">Status :</label>
                             <select name="status" id="status"
-                                class="cursor-pointer bg-slate-700 border-0 text-white text-sm rounded-full w-48 p-2.5 focus:ring-0"
+                                class="cursor-pointer bg-emerald-600 text-slate-100 dark:bg-slate-700 border-0 dark:text-white text-sm rounded-full w-48 p-2.5 focus:ring-0"
                                 onchange='if(this.value != 0) { this.form.submit(); }'>
                                 @foreach ($statuses as $value => $label)
                                     <option value="{{ $value }}" {{ $statusSelected == $value ? 'selected' : null }}>
@@ -43,9 +42,10 @@
                         <label for="simple-search" class="sr-only">{{ __('posts.index.search') }}</label>
                         <div class="relative w-full">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fad fa-magnifying-glass"></i>
+                                <i class="fad fa-magnifying-glass text-slate-100"></i>
                             </div>
-                            <input type="text" name="keyword" value="{{ request()->get('keyword') }}" class="search-form"
+                            <input type="text" name="keyword" value="{{ request()->get('keyword') }}"
+                                class="block w-full rounded-full border-transparent bg-emerald-600 p-2.5 pl-10 text-sm text-slate-100 placeholder:text-slate-100/50 ring-transparent transition duration-500 ease-out focus:border focus:border-emerald-500 focus:ring-transparent dark:bg-slate-700 dark:text-white dark:placeholder-slate-400"
                                 placeholder="{{ __('posts.index.search') }}">
                         </div>
                     </form>
@@ -54,7 +54,7 @@
 
 
             <table class="w-full text-sm text-left text-slate-500 dark:text-slate-400">
-                <thead class="font-normal text-slate-500 dark:bg-emerald-500 dark:text-slate-400">
+                <thead class="font-normal text-slate-500 bg-emerald-500">
                     <tr>
                         <th scope="col" class="px-6 py-3 w-[30rem]">
                             <p>{{ __('posts.index.table.title') }}</p>

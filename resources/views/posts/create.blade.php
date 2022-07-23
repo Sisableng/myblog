@@ -6,7 +6,8 @@
             @csrf
             <div class="w-full flex justify-between mb-10">
                 <div class="flex items-center">
-                    <a href="{{ url('posts') }}" class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300">
+                    <a href="{{ url('posts') }}"
+                        class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:tetx-slate-300">
                         <i class="fad fa-arrow-left w-3 h-3"></i>
                     </a>
                 </div>
@@ -66,7 +67,7 @@
                 </div>
 
                 {{-- Right --}}
-                <div class="mb-10 p-5 sm:px-5 border border-slate-200 rounded-3xl sm:mt-7">
+                <div class="mb-10 p-5 sm:px-5 border border-slate-200 dark:border-slate-700 rounded-3xl sm:mt-7">
 
                     {{-- slug --}}
                     <div class="mb-10">
@@ -163,8 +164,7 @@
                         </div>
                         <select id="select_post_tag" name="tag[]"
                             data-placeholder="{{ __('posts.create.form.tag.placeholder') }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('tag') is-invalid @enderror"
-                            multiple>
+                            class="form-control @error('tag') is-invalid @enderror" multiple>
                             @if (old('tag'))
                                 @foreach (old('tag') as $tag)
                                     <option value="{{ $tag->id }}" selected>{{ $tag->title }}</option>
@@ -231,7 +231,7 @@
                     <div class="">
                         <label for="status" class="text-gray-900 dark:text-gray-300">Status</label>
                         <select id="status" name="status"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 @error('status') is-invalid @enderror">
+                            class="form-control mt-5 @error('status') is-invalid @enderror">
                             @foreach ($status as $key => $value)
                                 <option value="{{ $key }}" {{ old('status') == $key ? 'selected' : null }}>
                                     {{ $value }}

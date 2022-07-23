@@ -79,6 +79,8 @@
         </div>
         <!-- End Set -->
 
+
+        {{-- User Info --}}
         <div>
             <button type="button"
                 class="flex text-xl bg-slate-800 rounded-full md:mr-0 ring-4 ring-slate-300 dark:ring-slate-700 focus:ring-emerald-500 focus:ring-4 dark:focus:ring-slate-600"
@@ -92,6 +94,7 @@
                 id="mydropdown">
                 <div class="py-3 px-4">
                     <span class="block text-sm text-slate-900 dark:text-white">{{ Auth::user()->name }}</span>
+                    {{-- <span class="block text-sm text-slate-500 mb-3">{{ Auth::user()->roles->first()->name }}</span> --}}
                     <span
                         class="block text-sm font-medium text-slate-500 truncate dark:text-slate-400">{{ Auth::user()->email }}</span>
                 </div>

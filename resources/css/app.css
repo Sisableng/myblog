@@ -27,7 +27,7 @@ option {
 }
 
 html {
-    @apply font-poppins text-sm font-normal leading-relaxed tracking-wide;
+    @apply overflow-x-hidden font-poppins text-sm font-normal leading-relaxed tracking-wide;
 }
 
 body {
@@ -79,12 +79,14 @@ thead th {
 }
 
 .navbar-fixed {
-    @apply bg-white shadow-xl transition-colors duration-500 ease-in-out;
+    @apply bg-white shadow-xl transition-colors duration-500 ease-in-out dark:bg-slate-800;
 }
 
-.navbar-fixed a span,
-.navbar-fixed ul li a {
-    @apply text-slate-800 transition-all duration-300 ease-in-out hover:text-emerald-500;
+.navbar-fixed .logo,
+.navbar-fixed span,
+.navbar-fixed ul > li > a,
+.navbar-fixed button {
+    @apply text-slate-800 transition-all duration-300 ease-in-out hover:text-emerald-500 dark:text-white;
 }
 
 .active {
@@ -206,42 +208,88 @@ thead th {
     @apply border-4 border-dashed border-emerald-500;
 }
 
-/** Select2 **/
+/* Blog Navbar */
 
-.select2-container--default .select2-selection--single {
-    @apply rounded-full border-none bg-slate-100 dark:bg-slate-700 !important;
+.nav-item {
+    @apply block border-b border-gray-100 py-2 pr-4 pl-3 text-white hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-emerald-500 md:dark:hover:bg-transparent;
 }
 
-.select2-container .select2-selection--single {
-    @apply h-[45px] !important;
+.nav-dropdown {
+    @apply flex w-full items-center justify-between border-b border-slate-100 py-2 pr-4 pl-3 font-medium text-white hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-700 dark:hover:text-white dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-emerald-500 md:dark:hover:bg-transparent;
+}
+
+.nav-dropdown-item {
+    @apply block py-2 px-4 text-base hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white;
+}
+
+/* End Blog Navbar */
+
+/** Select2 **/
+
+.select2-container--default .select2-selection--single,
+.select2-container--default.select2-container--focus
+    .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple {
+    @apply rounded-3xl border-none bg-slate-100 dark:bg-slate-700 !important;
+}
+
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple {
+    @apply min-h-[45px] !important;
 }
 
 .select2-container--default
     .select2-selection--single
+    .select2-selection__rendered,
+.select2-container--default
+    .select2-selection--multiple
     .select2-selection__rendered {
     @apply leading-[45px] !important;
 }
 
-.select2-container .select2-selection--single .select2-selection__rendered {
+.select2-container .select2-selection--single .select2-selection__rendered,
+.select2-container .select2-selection--multiple .select2-selection__rendered {
     @apply pl-5 !important;
 }
 
 .select2-container--default
     .select2-selection--single
+    .select2-selection__arrow,
+.select2-container--default
+    .select2-selection--multiple
     .select2-selection__arrow {
     @apply right-[15px] h-[45px] !important;
 }
 
 .select2-container--default
     .select2-selection--single
+    .select2-selection__clear,
+.select2-container--default
+    .select2-selection--multiple
     .select2-selection__clear {
     @apply mr-5 !important;
 }
 
 .select2-container--default
     .select2-selection--single
+    .select2-selection__rendered,
+.select2-container--default
+    .select2-selection--multiple
     .select2-selection__rendered {
-    @apply dark:text-slate-300 !important;
+    @apply text-slate-700 dark:text-slate-300 !important;
+}
+
+/* Multiple */
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    @apply m-0 rounded-none border-none bg-transparent !important;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__clear {
+    @apply mt-0 !important;
 }
 
 /** Select 2 Dropdown **/
@@ -255,7 +303,7 @@ thead th {
 }
 
 .select2-dropdown {
-    @apply border-none bg-slate-300 dark:bg-slate-700 dark:text-slate-300 !important;
+    @apply border-none bg-slate-300 text-slate-700 dark:bg-slate-700 dark:text-slate-300 !important;
 }
 
 .select2-search--dropdown {
@@ -277,7 +325,7 @@ thead th {
 
 .select2-container--default
     .select2-results__option--highlighted[aria-selected] {
-    @apply bg-slate-200 text-white dark:bg-slate-800/50 !important;
+    @apply bg-slate-200 text-slate-700 first:rounded-t-xl last:rounded-b-xl dark:bg-slate-800/50 dark:text-white !important;
 }
 
 /* End Select2 */

@@ -40,7 +40,7 @@
 
         {{-- Post --}}
         @can('manage_posts')
-            <div class="drop group z-20 bg-white drak:focus:bg-slate-700 dark:bg-slate-800 sidebar-items cursor-pointer select-none {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
+            <div class="drop group z-20 bg-white dark:focus:bg-slate-700 dark:bg-slate-900 sidebar-items cursor-pointer select-none {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'active' : '' }}"
                 onclick="dropdown()">
                 <i class="far fa-file-lines w-[50px]"></i>
                 <div class="flex justify-between w-full items-center">
@@ -89,7 +89,7 @@
 
 
         {{-- Settings --}}
-        <div class="drop group z-20 bg-white dark:bg-slate-800 sidebar-items cursor-pointer select-none {{ Request::is('settings/general', 'filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'active' : '' }}"
+        <div class="drop group z-20 bg-white dark:bg-slate-900 sidebar-items cursor-pointer select-none {{ Request::is('settings/general', 'filemanager/index', 'roles', 'roles/*', 'users', 'users/create') ? 'active' : '' }}"
             onclick="dropdown2()">
             <i class="far fa-gears w-[50px]"></i>
             <div class="flex justify-between w-full items-center">

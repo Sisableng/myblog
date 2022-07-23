@@ -20,9 +20,44 @@ Route::get("/localization/{language}", [
     "switch",
 ])->name("localization.switch");
 
-Route::get("/", function () {
-    return view("welcome");
-});
+// Route::get("/", function () {
+//     return view("welcome");
+// });
+
+Route::get(
+    '/',
+    [\App\Http\Controllers\BlogController::class, 'home']
+)->name('blog.home');
+
+Route::get(
+    '/post/{slug}',
+    [\App\Http\Controllers\BlogController::class, 'showPostsDetail']
+)->name('blog.posts.detail');
+
+Route::get(
+    '/category',
+    [\App\Http\Controllers\BlogController::class, 'showCategories']
+)->name('blog.categories');
+
+Route::get(
+    '/category/{slug}',
+    [\App\Http\Controllers\BlogController::class, 'showPostsByCategory']
+)->name('blog.posts.category');
+
+Route::get(
+    '/tag',
+    [\App\Http\Controllers\BlogController::class, 'showTags']
+)->name('blog.tags');
+
+Route::get(
+    '/tag/{slug}',
+    [\App\Http\Controllers\BlogController::class, 'showPostsByTag']
+)->name('blog.posts.tag');
+
+Route::get(
+    '/search',
+    [\App\Http\Controllers\BlogController::class, 'searchPosts']
+)->name('blog.search');
 
 Auth::routes([
     "register" => false,
