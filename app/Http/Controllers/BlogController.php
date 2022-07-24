@@ -9,6 +9,7 @@ use App\Models\Tag;
 
 class BlogController extends Controller
 {
+    private $heroPage = 5;
     private $popularPage = 3;
     private $newsPage = 10;
     private $perpage = 10;
@@ -18,8 +19,11 @@ class BlogController extends Controller
         $title = 'Ciloa Media';
         return view('blog.home', [
             'title' => $title,
+            'hero' => Post::publish()->latest()->paginate($this->heroPage),
             'populars' => Post::publish()->paginate($this->popularPage),
             'news' => Post::publish()->latest()->paginate($this->newsPage),
+            'categories' => Category::onlyParent()->get(),
+            'tags' => Tag::all(),
         ]);
     }
 

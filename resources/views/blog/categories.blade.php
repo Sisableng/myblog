@@ -2,9 +2,6 @@
 @section('title')
     Kategori
 @endsection
-
-@include('layouts._blog._hero')
-
 @section('content')
     @forelse ($categories as $category)
         <div class="w-full my-5 flex flex-row items-start justify-start space-x-10">

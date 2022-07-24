@@ -3,8 +3,6 @@
     Tag
 @endsection
 
-@include('layouts._blog._hero')
-
 @section('content')
     @forelse ($tags as $tag)
         <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}">{{ $tag->title }}</a>

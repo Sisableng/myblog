@@ -6,7 +6,7 @@
     {{ $post->desc }}
 @endsection
 @section('content')
-    <section class="absolute top-0 left-0 right-0 mx-auto w-full">
+    {{-- <section class="absolute top-0 left-0 right-0 mx-auto w-full">
         <div class="relative bg-green-900 rounded-b-[60px] h-[30rem] overflow-hidden">
             <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
                 class="absolute -top-20 grayscale w-full opacity-50 blur">
@@ -16,8 +16,8 @@
                 </h1>
             </div>
         </div>
-    </section>
-    <section class="mt-[35rem] min-h-[100vh]">
+    </section> --}}
+    <section class="">
         <img src="{{ asset($post->thumb) }}" alt="" class="w-full h-96 object-cover">
         <p>{{ $post->title }}</p>
         <p>{{ $post->desc }}</p>

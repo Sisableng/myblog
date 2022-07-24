@@ -15,12 +15,9 @@
     {{-- Navbar --}}
     @include('layouts._blog._navbar')
 
-
-    <div class="container">
-        @yield('content')
-        {{-- Footer --}}
-        @include('layouts._blog._footer')
-    </div>
+    @yield('content')
+    {{-- Footer --}}
+    @include('layouts._blog._footer')
 
     @auth
         <div class="fixed top-[35%] left-2 z-[99999] sm:top-[90%] sm:left-[20%]">
@@ -82,8 +79,6 @@
             </div>
         </div>
     @endauth
-
-
 
 </body>
 

@@ -1,69 +1,72 @@
-<footer class="py-5 flex sm:flex-col-reverse justify-center items-center mx-auto lg:justify-between mt-10">
-    <div class="text-slate-500">
-        © {{ date('Y') }} <span class="text-green-500">Ciloa Media</span>, All right reserved.
-    </div>
-    <div class="flex items-center space-x-5">
-        <!-- Set Lang -->
-        <div>
-            <button id="dropdownDefault" data-dropdown-toggle="setlang" data-dropdown-placement="bottom"
-                class=" font-medium rounded-full text-base px-4 py-2.5 text-center inline-flex items-center focus:bg-slate-200 dark:focus:bg-slate-800 dark:text-slate-500"
-                type="button">
-                @if (app()->getLocale())
-                @endif
-                @switch(app()->getLocale())
-                    @case('en')
-                        <p>{{ trans('localization.en') }}</p>
-                    @break
+<div class="container">
+    <footer class="py-5 flex sm:flex-col-reverse justify-center items-center mx-auto lg:justify-between mt-10">
+        <div class="text-slate-500">
+            © {{ date('Y') }} <span class="text-green-500">Ciloa Media</span>, All right reserved.
+        </div>
+        <div class="flex items-center space-x-5">
+            <!-- Set Lang -->
+            <div>
+                <button id="dropdownDefault" data-dropdown-toggle="setlang" data-dropdown-placement="bottom"
+                    class=" font-medium rounded-full text-base px-4 py-2.5 text-center inline-flex items-center focus:bg-slate-200 dark:focus:bg-slate-800 dark:text-slate-500"
+                    type="button">
+                    @if (app()->getLocale())
+                    @endif
+                    @switch(app()->getLocale())
+                        @case('en')
+                            <p>{{ trans('localization.en') }}</p>
+                        @break
 
-                    @case('id')
-                        <p>{{ trans('localization.id') }}</p>
-                    @break
+                        @case('id')
+                            <p>{{ trans('localization.id') }}</p>
+                        @break
 
-                    @case('su')
-                        <p>{{ trans('localization.su') }}</p>
-                    @break
+                        @case('su')
+                            <p>{{ trans('localization.su') }}</p>
+                        @break
 
-                    @default
-                @endswitch
+                        @default
+                    @endswitch
 
-                <p class="ml-2 text-slate-400 uppercase">({{ app()->getLocale() }})</p>
-                <i class="fas fa-caret-down w-4 h-4 ml-2 pt-[2px]"></i>
-            </button>
-            <!-- Dropdown menu -->
-            <div id="setlang" class="z-10 hidden bg-gray-100 rounded-lg shadow-xl w-[150px] dark:bg-slate-700">
-                <ul class="text-base sm:text-lg text-center text-slate-700 dark:text-slate-200"
-                    aria-labelledby="dropdownDefault">
-                    <li>
-                        <a href="{{ route('localization.switch', ['language' => 'en']) }}"
-                            class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-t-lg dark:hover:bg-slate-600 dark:hover:text-white">
-                            {{ trans('localization.en') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('localization.switch', ['language' => 'id']) }}"
-                            class="text-base block px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-600 dark:hover:text-white">
-                            {{ trans('localization.id') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('localization.switch', ['language' => 'su']) }}"
-                            class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-b-lg dark:hover:bg-slate-600 dark:hover:text-white">
-                            {{ trans('localization.su') }}
-                        </a>
-                    </li>
-                </ul>
+                    <p class="ml-2 text-slate-400 uppercase">({{ app()->getLocale() }})</p>
+                    <i class="fas fa-caret-down w-4 h-4 ml-2 pt-[2px]"></i>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="setlang" class="z-10 hidden bg-gray-100 rounded-lg shadow-xl w-[150px] dark:bg-slate-700">
+                    <ul class="text-base sm:text-lg text-center text-slate-700 dark:text-slate-200"
+                        aria-labelledby="dropdownDefault">
+                        <li>
+                            <a href="{{ route('localization.switch', ['language' => 'en']) }}"
+                                class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-t-lg dark:hover:bg-slate-600 dark:hover:text-white">
+                                {{ trans('localization.en') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('localization.switch', ['language' => 'id']) }}"
+                                class="text-base block px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-600 dark:hover:text-white">
+                                {{ trans('localization.id') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('localization.switch', ['language' => 'su']) }}"
+                                class="text-base block px-4 py-2 hover:bg-slate-200 hover:rounded-b-lg dark:hover:bg-slate-600 dark:hover:text-white">
+                                {{ trans('localization.su') }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Set -->
+
+
+            <div class="inline">
+                <a href="">fb</a>
+                <a href="">ig</a>
+                <a href="">yt</a>
             </div>
         </div>
-        <!-- End Set -->
+    </footer>
+</div>
 
-
-        <div class="inline">
-            <a href="">fb</a>
-            <a href="">ig</a>
-            <a href="">yt</a>
-        </div>
-    </div>
-</footer>
 <!-- Flowbite -->
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 <!-- Scripts -->
