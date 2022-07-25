@@ -67,8 +67,6 @@
     </footer>
 </div>
 
-<!-- Flowbite -->
-<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script type="text/javascript">
@@ -143,3 +141,5 @@
         document.querySelector("#auth-menu").classList.toggle("hidden");
     }
 </script>
+
+@stack('scripts')
