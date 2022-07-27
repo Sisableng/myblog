@@ -20,7 +20,7 @@
     @include('layouts._blog._footer')
 
     @auth
-        <div class="fixed top-[35%] left-2 z-[99999] sm:top-[90%] sm:left-[20%]">
+        <div class="fixed top-[35%] left-5 z-[99999] sm:top-[90%] sm:left-[20%]">
             <div id="auth-menu"
                 class="hidden w-14 sm:w-auto h-auto bg-slate-200/50 dark:bg-slate-800/50 backdrop-blur shadow-xl rounded-full">
                 <div
@@ -73,9 +73,10 @@
             </div>
         </div>
 
-        <div class="fixed bottom-5 left-2">
-            <div class="cursor-pointer" onclick="authMenu()">
-                Open
+        <div class="fixed bottom-5 left-2 opacity-50 hover:opacity-100 transition-opacity ease-in-out">
+            <div class="cursor-pointer p-2.5 bg-slate-300/30 dark:bg-slate-700/30 rounded-full text-sm px-5 backdrop-blur text-slate-900 dark:text-white font-semibold select-none"
+                onclick="authMenu()">
+                Menu
             </div>
         </div>
     @endauth

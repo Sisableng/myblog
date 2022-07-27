@@ -26,11 +26,11 @@
     <div class="container sm:px-7">
 
         {{-- Hero --}}
-        <section class="mt-20">
+        <section class="mt-20 mb-28">
             <div class="grid lg:grid-rows-2 sm:grid-cols-1 lg:grid-flow-col gap-7">
                 @forelse ($hero as $item)
                     <div
-                        class="group relative first:row-span-2 first:h-full first:sm:h-96 first:lg:text-3xl text-xl row-span-0 h-52  bg-slate-100 bg-cover bg-no-repeat bg-center text-white rounded-3xl overflow-hidden">
+                        class="group relative first:row-span-2 first:h-[28rem] first:sm:h-96 first:lg:text-3xl text-xl row-span-0 h-52  bg-slate-100 bg-cover bg-no-repeat bg-center text-white rounded-3xl overflow-hidden">
 
                         <a href="{{ route('blog.posts.detail', ['slug' => $item->slug]) }}"
                             class="absolute inset-y-0 inset-x-0 flex items-end px-20 py-10 z-10 bg-gradient-to-b from-transparent to-slate-900">
@@ -150,105 +150,47 @@
         </section>
 
         {{-- News Post --}}
-        <section class="mt-20">
-            <div class="grid grid-cols-4 grid-flow-col gap-4">
-                <div class="col-span-1">
-                    <h1 class="text-3xl uppercase font-semibold">Berita terbaru</h1>
-                </div>
-                <div class="col-span-3">
 
-                    <div class="w-full">
-
-                        <div class="slideshow-container flex">
-
-                            @forelse ($news as $new)
-                                <div class="mySlides fade">
-                                    <div class="numbertext">1 / 3</div>
-                                    @if (file_exists(public_path($new->thumb)))
-                                        <img src="{{ asset($new->thumb) }}" class="w-full h-56">
-                                    @else
-                                        <p>no image</p>
-                                    @endif
-                                    <div class="text">Caption Text</div>
-                                </div>
-                            @empty
-                                <p>no data</p>
-                            @endforelse
-
-                            <a class="prev" onclick="plusSlides(-1)">❮</a>
-                            <a class="next" onclick="plusSlides(1)">❯</a>
-
+        <section class="mt-20 space-y-10">
+            <h1>Berita Terbaru</h1>
+            <div class="flex sm:flex-col justify-between space-x-10">
+                @forelse ($news as $new)
+                    <div
+                        class="relative p-6 max-w-lg w-[30rem] sm:w-full h-60 bg-white rounded-3xl border border-slate-200 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between mb-6">
+                            @foreach ($popular->categories as $category)
+                                <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
+                                    class="pr-2 text-emerald-500">
+                                    {{ $category->title }}
+                                </a>
+                            @endforeach
+                            <p class="text-slate-300 dark:text-slate-600">{{ $new->updated_at->format('d M Y') }}</p>
                         </div>
-
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight dark:text-white">
+                                {{ $new->title }}
+                            </h5>
+                        </a>
+                        <p
+                            class="mb-3 font-normal text-slate-500 block overflow-hidden text-ellipsis whitespace-nowrap flex-1 w-full">
+                            {{ $new->desc }}
+                        </p>
+                        <a href="{{ route('blog.posts.detail', ['slug' => $new->slug]) }}"
+                            class="absolute bottom-6 right-6 inline-flex items-center py-2 px-3 text-sm font-medium text-center hover:text-white bg-slate-200 hover:bg-emerald-500 rounded-full">
+                            Lihat
+                            <i class="fas fa-arrow-right w-4 ml-2"></i>
+                        </a>
                     </div>
-
-                    @forelse ($news as $new)
-                        <div class="py-5">
-                            @if (file_exists(public_path($new->thumb)))
-                                <div class="w-44 h-44 overflow-hidden">
-                                    <img src="{{ asset($new->thumb) }}" alt="" class="w-full h-full object-cover">
-                                </div>
-                            @else
-                                <p>no image</p>
-                            @endif
-
-                            <div class="">
-                                {{-- Title --}}
-                                <h1>{{ $new->title }}</h1>
-                                <p>{{ $new->desc }}</p>
-
-                                <div>
-                                    <a href="{{ route('blog.posts.detail', ['slug' => $new->slug]) }}">Tempo</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    @empty
-                        <p>no data</p>
-                    @endforelse
-                    <div class="">
-                        @if ($news->hasPages())
-                            {{ $news->links() }}
-                        @endif
-                    </div>
-                </div>
+                @empty
+                    <p>no data</p>
+                @endforelse
+            </div>
+            <div class="block w-full">
+                @if ($news->hasPages())
+                    {{ $news->links() }}
+                @endif
             </div>
         </section>
+
     </div>
 @endsection
-@push('scripts')
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-
-            // Non Active
-            for (i = 0; i < slides.length; i++) {
-                slides[i].classList.add("hide");
-                slides[i].classList.remove("show");
-            }
-
-            // Active
-            slides[slideIndex - 1].classList.add("show");
-            slides[slideIndex - 1].classList.remove("hide");
-        }
-    </script>
-@endpush
