@@ -6,32 +6,44 @@
     {{ $post->desc }}
 @endsection
 @section('content')
-    {{-- <section class="absolute top-0 left-0 right-0 mx-auto w-full">
-        <div class="relative bg-green-900 rounded-b-[60px] h-[30rem] overflow-hidden">
+    <section class="relative w-full">
+        <div class="relative bg-green-900 h-[30rem] overflow-hidden">
             <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
                 class="absolute -top-20 grayscale w-full opacity-50 blur">
-            <div class="absolute inset-x-0 inset-y-1/2 w-full flex justify-center items-center">
-                <h1 class="max-w-[50%] text-3xl font-semibold text-slate-100 text-center">
-                    {{ $post->title }}
-                </h1>
-            </div>
         </div>
-    </section> --}}
-    <section class="">
-        <img src="{{ asset($post->thumb) }}" alt="" class="w-full h-96 object-cover">
-        <p>{{ $post->title }}</p>
-        <p>{{ $post->desc }}</p>
+        <div class="absolute -bottom-44 w-full h-[35rem] overflow-hidden lg:px-20">
+            <img src="{{ asset($post->thumb) }}" alt="" class="w-full h-full rounded-3xl object-cover object-center">
+        </div>
+    </section>
+    <section class="container mt-72 lg:px-10 space-y-20">
 
-        {{-- Kategori --}}
-        @foreach ($post->categories as $category)
-            <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}">{{ $category->title }}</a>
-        @endforeach
+        <div class="space-x-5">
+            {{-- Kategori --}}
+            @foreach ($post->categories as $category)
+                <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
+                    class="text-emerald-500">{{ $category->title }}</a>
+            @endforeach
+        </div>
+
+        <div class="space-y-3">
+            <h1>{{ $post->title }}</h1>
+            <p>{{ $post->desc }}</p>
+        </div>
+
+
 
 
         {{-- Tag --}}
-        @foreach ($post->tags as $tag)
-            <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}">{{ $tag->title }}</a>
-        @endforeach
+        <div class="flex justify-between items-center">
+            <div>
+                @foreach ($post->tags as $tag)
+                    <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}"
+                        class="p-1 px-5 bg-slate-200 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 rounded-full">{{ $tag->title }}</a>
+                @endforeach
+            </div>
+            <p>{{ $post->updated_at->format('d M Y') }}</p>
+        </div>
+
 
         <p class="mt-20">{!! $post->content !!}</p>
     </section>

@@ -30,7 +30,7 @@
             <div class="grid lg:grid-rows-2 sm:grid-cols-1 lg:grid-flow-col gap-7">
                 @forelse ($hero as $item)
                     <div
-                        class="group relative first:row-span-2 first:h-[28rem] first:sm:h-96 first:lg:text-3xl text-xl row-span-0 h-52  bg-slate-100 bg-cover bg-no-repeat bg-center text-white rounded-3xl overflow-hidden">
+                        class="group relative first:row-span-2 first:h-[28rem] first:sm:h-96 first:lg:text-3xl text-xl row-span-0 h-52 bg-cover bg-no-repeat bg-center text-white rounded-3xl overflow-hidden">
 
                         <a href="{{ route('blog.posts.detail', ['slug' => $item->slug]) }}"
                             class="absolute inset-y-0 inset-x-0 flex items-end px-20 py-10 z-10 bg-gradient-to-b from-transparent to-slate-900">
@@ -72,7 +72,7 @@
 
                                 {{-- Title & Desc --}}
                                 <div
-                                    class="flex w-full h-full p-5 pr-0 bg-white border border-slate-200 lg:rounded-3xl sm:rounded-b-3xl">
+                                    class="flex w-full h-full p-5 pr-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 lg:rounded-3xl sm:rounded-b-3xl">
                                     <div class="w-full">
                                         <div class="space-y-5">
                                             <div class="mb-3">
@@ -94,7 +94,7 @@
                                         <div class="flex items-end h-full pb-5">
                                             <a href="{{ route('blog.posts.detail', ['slug' => $popular->slug]) }}"
                                                 class="text-lg text-slate-300 group-hover:text-emerald-500
-                                            w-10 h-10 p-4 flex items-center justify-center rounded-full group-hover:bg-gray-100">
+                                            w-10 h-10 p-4 flex items-center justify-center rounded-full group-hover:bg-gray-100 dark:group-hover:bg-slate-800">
                                                 <i class="far fa-arrow-right-long"></i>
                                             </a>
                                         </div>
@@ -107,13 +107,14 @@
                     </div>
                 </div>
 
+
+                {{-- Sidebar --}}
                 <div class="lg:p-5 mb-10 sm:col-span-2">
                     <div class="">
                         <form action="{{ route('blog.search') }}" method="GET">
-                            <label for="keyword">Search Post</label>
                             <input id="keyword" name="keyword" value="{{ request()->get('keyword') }}" type="search"
                                 placeholder="search"
-                                class="w-full rounded-full border-0 mt-5 py-3 px-5 bg-gray-100 focus:ring-2 focus:ring-emerald-500">
+                                class="w-full rounded-full border-0 mt-5 py-3 px-5 bg-gray-100 dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500">
                         </form>
                     </div>
 
@@ -137,7 +138,7 @@
                     <div class="my-7 flex flex-wrap">
                         @forelse ($tags as $tag)
                             <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}"
-                                class="block py-2 px-5 m-2.5 ml-0 bg-slate-200 rounded-full hover:bg-emerald-500 hover:text-white">{{ $tag->title }}</a>
+                                class="block py-2 px-5 m-2.5 ml-0 bg-slate-200 dark:bg-slate-800 rounded-full dark:hover:bg-emerald-500 hover:bg-emerald-500 hover:text-white">{{ $tag->title }}</a>
                         @empty
                             <p>no data</p>
                         @endforelse
@@ -156,14 +157,16 @@
             <div class="flex sm:flex-col justify-between space-x-10">
                 @forelse ($news as $new)
                     <div
-                        class="relative p-6 max-w-lg w-[30rem] sm:w-full h-60 bg-white rounded-3xl border border-slate-200 dark:bg-gray-800 dark:border-gray-700">
+                        class="relative p-6 max-w-lg w-[30rem] sm:w-full h-60 bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
                         <div class="flex justify-between mb-6">
-                            @foreach ($popular->categories as $category)
-                                <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
-                                    class="pr-2 text-emerald-500">
-                                    {{ $category->title }}
-                                </a>
-                            @endforeach
+                            <div>
+                                @foreach ($new->categories as $category)
+                                    <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
+                                        class="pr-2 text-emerald-500">
+                                        {{ $category->title }}
+                                    </a>
+                                @endforeach
+                            </div>
                             <p class="text-slate-300 dark:text-slate-600">{{ $new->updated_at->format('d M Y') }}</p>
                         </div>
                         <a href="#">
@@ -176,7 +179,7 @@
                             {{ $new->desc }}
                         </p>
                         <a href="{{ route('blog.posts.detail', ['slug' => $new->slug]) }}"
-                            class="absolute bottom-6 right-6 inline-flex items-center py-2 px-3 text-sm font-medium text-center hover:text-white bg-slate-200 hover:bg-emerald-500 rounded-full">
+                            class="absolute bottom-6 right-6 inline-flex items-center py-2 px-3 text-sm font-medium text-center hover:text-white bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 dark:hover:bg-emerald-500 rounded-full">
                             Lihat
                             <i class="fas fa-arrow-right w-4 ml-2"></i>
                         </a>

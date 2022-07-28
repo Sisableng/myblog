@@ -64,18 +64,18 @@ Auth::routes([
     "reset" => true,
 ]);
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
-    Route::get("/", [
+// Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
+//     Route::get("/", [
+//         App\Http\Controllers\DashboardController::class,
+//         "index",
+//     ])->name("dashboard.index");
+// });
+
+Route::middleware(["auth"])->group(function () {
+    Route::get("/dashboard", [
         App\Http\Controllers\DashboardController::class,
         "index",
     ])->name("dashboard.index");
-});
-
-Route::middleware(["auth"])->group(function () {
-    // Route::get("/home", [
-    //     App\Http\Controllers\HomeController::class,
-    //     "index",
-    // ])->name("home");
 
     // Categories
     Route::get("/categories/select", [

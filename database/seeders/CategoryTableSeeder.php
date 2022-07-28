@@ -17,7 +17,7 @@ class CategoryTableSeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'title' => 'Wata Ciloa',
+                'title' => 'Warta Ciloa',
                 'slug' => 'warta',
                 'thumb' => 'noimage.jpg',
                 'desc' => 'Informasi Seputar Ciloa',

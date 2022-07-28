@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 <title>{{ $title }}</title>
 @section('content')
     <div class="container">

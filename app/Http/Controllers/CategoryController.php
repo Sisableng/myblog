@@ -84,7 +84,7 @@ class CategoryController extends Controller
             [
                 "title" => "required|string|max:60",
                 "slug" => "required|string|unique:categories,slug",
-                "desc" => "required",
+                "desc" => "required|string|max:60",
                 "thumb" => "required|string|max:150",
             ]
         );
@@ -172,7 +172,7 @@ class CategoryController extends Controller
             [
                 "title" => "required|string|max:60",
                 "slug" => "required|string|unique:categories,slug," . $category->id,
-                "desc" => "required",
+                "desc" => "required|string|max:60",
                 "thumb" => "required|string|max:150",
             ]
         );

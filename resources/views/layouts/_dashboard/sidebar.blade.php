@@ -33,7 +33,7 @@
     <div>
         <div class="group sidebar-items {{ Request::is('dashboard') ? 'active' : '' }}">
             <i class="far fa-objects-column w-[50px]"></i>
-            <a href="{{ url('dashboard') }}" class="w-full  group-hover:text-emerald-500 ">
+            <a href="{{ route('dashboard.index') }}" class="w-full  group-hover:text-emerald-500 ">
                 {{ trans('dashboard.menu.dashboard') }}
             </a>
         </div>
@@ -54,7 +54,7 @@
             <div class="z-10 transition-all text-left text-sm mt-2 w-[90%] mx-auto px-4 py-3 bg-gray-100 dark:bg-slate-800 rounded-xl {{ Request::is('posts', 'posts/create', 'posts/*/edit', 'posts/*') ? 'visible' : 'sub' }}"
                 id="submenu">
                 <div class="flex flex-col">
-                    <a href="{{ url('posts') }}"
+                    <a href="{{ route('posts.index') }}"
                         class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500 {{ Request::is('posts', 'posts/create', 'posts/*') ? 'active' : '' }}">
                         {{ trans('dashboard.menu.data') }}
                     </a>
@@ -70,7 +70,7 @@
         @can('manage_tags')
             <div class="group sidebar-items {{ Request::is('tags', 'tags/create', 'tags/*/edit') ? 'active' : '' }}">
                 <i class="far fa-tags w-[50px]"></i>
-                <a href="{{ url('tags') }}"
+                <a href="{{ route('tags.index') }}"
                     class="w-full  group-hover:text-emerald-500 ">{{ trans('dashboard.menu.tags') }}</a>
             </div>
         @endcan
@@ -80,7 +80,7 @@
             <div
                 class="group sidebar-items {{ Request::is('categories', 'categories/create', 'categories/*/edit', 'categories/*') ? 'active' : '' }}">
                 <i class="far fa-bookmark w-[50px]"></i>
-                <a href="{{ url('categories') }}" class="w-full  group-hover:text-emerald-500 ">
+                <a href="{{ route('categories.index') }}" class="w-full  group-hover:text-emerald-500 ">
                     {{ trans('dashboard.menu.category') }}
                 </a>
             </div>

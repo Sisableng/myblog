@@ -5,7 +5,7 @@
 
     >Javascript Internal / External 
     >Asset --}}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
         // Show Hide Password
@@ -23,6 +23,8 @@
                 $('#show_hide_password a').addClass("show");
             }
         });
+
+
     });
 </script>
 
