@@ -59,7 +59,7 @@
                         {{ trans('dashboard.menu.data') }}
                     </a>
                     <a href="{{ url('posts?status=draft') }}"
-                        class="py-3  dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-500">
+                        class="py-3 dark:text-slate-500 line-through cursor-not-allowed">
                         {{ trans('dashboard.menu.trash') }}
                     </a>
                 </div>
@@ -139,7 +139,7 @@
     <div
         class="head sticky bottom-0 top-full inset-x-0 mx-auto w-full bg-white dark:bg-slate-900 py-5 px-5 flex justify-end">
         <div class="sm:hidden cursor-pointer" onclick="collaps()">
-            <i class="fas fa-circle-caret-left text-3xl text-slate-300"></i>
+            <i class="fas fa-circle-caret-left text-3xl text-slate-300 dark:text-slate-500"></i>
         </div>
     </div>
 

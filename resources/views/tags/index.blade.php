@@ -31,12 +31,16 @@
                     @foreach ($tags as $tag)
                         <li
                             class="group flex items-center justify-between w-full p-5 my-10 border border-slate-200 rounded-xl hover:border-green-400 dark:hover:border-green-400 dark:border-slate-600">
-                            <p class="mt-auto mb-auto group-hover:text-green-500 transition duration-500 ease-in-out">
-                                {{ $tag->title }}
-                                <span
-                                    class="text-green-500 italic text-sm opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
-                                    - {{ $tag->created_at->format('d F Y') }}</span>
-                            </p>
+                            <div>
+                                <p class="inline text-slate-500 mr-2">{{ $loop->iteration }}.</p>
+                                <p
+                                    class="inline mt-auto mb-auto group-hover:text-green-500 transition duration-500 ease-in-out">
+                                    {{ $tag->title }}
+                                    <span
+                                        class="text-green-500 italic text-sm opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+                                        - {{ $tag->created_at->format('d F Y') }}</span>
+                                </p>
+                            </div>
                             <div class="space-x-7">
 
                                 {{-- Edit --}}

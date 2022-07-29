@@ -1,4 +1,4 @@
-<ul class="border-l border-l-slate-200 mx-3 px-3 mt-2.5">
+<ul class="border-l border-l-slate-200 dark:border-l-slate-800 mx-3 px-3 mt-2.5">
     @foreach ($categoryRoot as $item)
         <li>
             @if ($category->slug == $item->slug)

@@ -7,7 +7,8 @@
             @csrf
             <div class="w-full flex justify-between mb-10">
                 <div class="flex items-center">
-                    <a href="{{ url('posts') }}" class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300">
+                    <a href="{{ url('posts') }}"
+                        class="p-3 bg-slate-200 text-sm rounded-full hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-800 dark:text-white">
                         <i class="fad fa-arrow-left w-3 h-3"></i>
                     </a>
                 </div>
@@ -30,7 +31,7 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{{ $message }}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{{ $message }}</div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-title" aria-label="Close">
@@ -54,7 +55,7 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{{ $message }}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{{ $message }}</div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-content" aria-label="Close">
@@ -67,7 +68,7 @@
                 </div>
 
                 {{-- Right --}}
-                <div class="mb-10 p-5 sm:px-5 border border-slate-200 rounded-3xl sm:mt-7">
+                <div class="mb-10 p-5 sm:px-5 border border-slate-200 dark:border-slate-800 rounded-3xl sm:mt-7">
 
                     {{-- slug --}}
                     <div class="mb-10">
@@ -84,7 +85,8 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{!! $message !!}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{!! $message !!}
+                                </div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-slug" aria-label="Close">
@@ -110,7 +112,8 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{!! $message !!}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{!! $message !!}
+                                </div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-desc" aria-label="Close">
@@ -148,7 +151,8 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{!! $message !!}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{!! $message !!}
+                                </div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-category" aria-label="Close">
@@ -181,7 +185,8 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{!! $message !!}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{!! $message !!}
+                                </div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-tag" aria-label="Close">
@@ -220,7 +225,8 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{!! $message !!}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{!! $message !!}
+                                </div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-thumb" aria-label="Close">
@@ -250,7 +256,8 @@
                                 <div class="inline-flex items-center justify-center flex-shrink-0 pt-1 text-2xl text-red-700">
                                     <i class="fa-duotone fa-message-exclamation"></i>
                                 </div>
-                                <div class="ml-3 text-sm font-normal text-slate-900">{!! $message !!}</div>
+                                <div class="ml-3 text-sm font-normal text-slate-900 dark:text-white">{!! $message !!}
+                                </div>
                                 <button type="button"
                                     class="ml-auto -mx-1.5 -my-1.5 text-red-700 rounded-lg p-1.5 hover:bg-red-300 inline-flex h-8 w-8"
                                     data-dismiss-target="#toast-stats" aria-label="Close">
@@ -308,7 +315,8 @@
 
             // tinymce
 
-            var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var useDarkMode = localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches);
 
             $("#input_post_content").tinymce({
                 relative_urls: false,

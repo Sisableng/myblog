@@ -1,9 +1,10 @@
 <header class="fixed w-full top-0 z-50">
     <nav id="nav" class="border-slate-200 px-2 sm:px-4 py-7 transition-all duration-300 ease-in-out">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
-            <a href="{{ '/' }}" class="logo flex items-center text-white text-xl">
+            <a href="{{ '/' }}" class="group logo flex items-center text-white text-xl">
                 <img src="{{ asset('images/logo.png') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo">
-                Ciloa<span class="self-center font-bold whitespace-nowrap text-white">Media</span>
+                Ciloa<span
+                    class="self-center font-bold whitespace-nowrap text-white group-hover:text-emerald-500">Media</span>
             </a>
 
             <div class="flex md:order-2">

@@ -1148,6 +1148,10 @@ input:checked + .toggle-bg {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -1253,6 +1257,24 @@ input:checked + .toggle-bg {
 .-ml-px {
   margin-left: -1px;
 }
+.mr-0 {
+  margin-right: 0px;
+}
+.mr-20 {
+  margin-right: 5rem;
+}
+.ml-10 {
+  margin-left: 2.5rem;
+}
+.ml-20 {
+  margin-left: 5rem;
+}
+.ml-12 {
+  margin-left: 3rem;
+}
+.ml-14 {
+  margin-left: 3.5rem;
+}
 .block {
   display: block;
 }
@@ -1298,14 +1320,17 @@ input:checked + .toggle-bg {
 .h-5 {
   height: 1.25rem;
 }
-.h-full {
-  height: 100%;
-}
 .h-44 {
   height: 11rem;
 }
+.h-full {
+  height: 100%;
+}
 .h-52 {
   height: 13rem;
+}
+.h-1 {
+  height: 0.25rem;
 }
 .h-64 {
   height: 16rem;
@@ -1321,9 +1346,6 @@ input:checked + .toggle-bg {
 }
 .h-16 {
   height: 4rem;
-}
-.h-1 {
-  height: 0.25rem;
 }
 .h-\[400px\] {
   height: 400px;
@@ -1450,6 +1472,18 @@ input:checked + .toggle-bg {
 }
 .w-64 {
   width: 16rem;
+}
+.w-\[80\%\] {
+  width: 80%;
+}
+.w-4\/5 {
+  width: 80%;
+}
+.w-11\/12 {
+  width: 91.666667%;
+}
+.w-\[95\%\] {
+  width: 95%;
 }
 .max-w-lg {
   max-width: 32rem;
@@ -1630,9 +1664,6 @@ input:checked + .toggle-bg {
 }
 .gap-7 {
   gap: 1.75rem;
-}
-.gap-14 {
-  gap: 3.5rem;
 }
 .gap-20 {
   gap: 5rem;
@@ -2395,6 +2426,14 @@ input:checked + .toggle-bg {
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(240 82 82 / var(--tw-text-opacity));
+}
+.line-through {
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -3651,10 +3690,6 @@ thead th {
   --tw-bg-opacity: 1;
   background-color: rgb(248 180 180 / var(--tw-bg-opacity));
 }
-.hover\:bg-slate-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
-}
 .hover\:bg-slate-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
@@ -3865,13 +3900,13 @@ thead th {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
-.active\:bg-emerald-500:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(16 185 129 / var(--tw-bg-opacity));
-}
 .active\:text-emerald-500:active {
   --tw-text-opacity: 1;
   color: rgb(16 185 129 / var(--tw-text-opacity));
+}
+.active\:text-white:active {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .active\:text-gray-700:active {
   --tw-text-opacity: 1;
@@ -3880,10 +3915,6 @@ thead th {
 .active\:text-gray-500:active {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-.active\:text-white:active {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .group:hover .group-hover\:-translate-y-5 {
   --tw-translate-y: -1.25rem;
@@ -3939,6 +3970,10 @@ thead th {
 .group:hover .group-hover\:text-slate-900 {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+.group:hover .group-hover\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
@@ -4014,6 +4049,10 @@ thead th {
 .dark .dark\:border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+.dark .dark\:border-l-slate-800 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(30 41 59 / var(--tw-border-opacity));
 }
 .dark .dark\:bg-slate-800 {
   --tw-bg-opacity: 1;
@@ -4303,6 +4342,16 @@ thead th {
     grid-column: span 2 / span 2;
   }
 
+  .sm\:my-5 {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sm\:my-7 {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+
   .sm\:mb-5 {
     margin-bottom: 1.25rem;
   }
@@ -4317,6 +4366,14 @@ thead th {
 
   .sm\:mt-5 {
     margin-top: 1.25rem;
+  }
+
+  .sm\:ml-7 {
+    margin-left: 1.75rem;
+  }
+
+  .sm\:ml-5 {
+    margin-left: 1.25rem;
   }
 
   .sm\:block {
@@ -4463,6 +4520,14 @@ thead th {
 
   .sm\:p-5 {
     padding: 1.25rem;
+  }
+
+  .sm\:p-2\.5 {
+    padding: 0.625rem;
+  }
+
+  .sm\:p-2 {
+    padding: 0.5rem;
   }
 
   .sm\:px-4 {
@@ -4707,10 +4772,6 @@ thead th {
     border-bottom-width: 1px;
   }
 
-  .lg\:p-5 {
-    padding: 1.25rem;
-  }
-
   .lg\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
@@ -4724,11 +4785,6 @@ thead th {
   .lg\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
-  }
-
-  .lg\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
   }
 
   .lg\:pl-\[22rem\] {

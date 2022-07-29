@@ -9,7 +9,6 @@ use App\Models\Tag;
 
 class BlogController extends Controller
 {
-    private $newsPage = 3;
     private $perpage = 10;
 
     public function home()
@@ -20,8 +19,8 @@ class BlogController extends Controller
             'hero' => Post::publish()->latest()->paginate(5),
             'populars' => Post::publish()->paginate(3),
             'news' => Post::publish()->latest()->cursorPaginate(3),
-            'categories' => Category::paginate(5),
-            'tags' => Tag::all(),
+            'categories' => Category::onlyParent()->paginate(5),
+            'tags' => Tag::paginate(5),
         ]);
     }
 

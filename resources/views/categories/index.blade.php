@@ -30,7 +30,7 @@
             @if (count($categories))
                 @include('categories._category-list', [
                     'categories' => $categories,
-                    'count' => 0,
+                    // 'count' => 0,
                 ])
                 <div class="flex justify-end mt-7">
                     {{ $categories->links('vendor.pagination.tailwind') }}

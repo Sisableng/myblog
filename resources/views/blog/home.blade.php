@@ -1,5 +1,6 @@
 @extends('layouts.blog')
 @section('title')
+    {{ 'Blog' }}
 @endsection
 @section('content')
 
