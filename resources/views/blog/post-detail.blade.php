@@ -11,8 +11,9 @@
             <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
                 class="absolute -top-20 grayscale w-full opacity-50 blur">
         </div>
-        <div class="absolute -bottom-44 w-full h-[35rem] overflow-hidden lg:px-20">
-            <img src="{{ asset($post->thumb) }}" alt="" class="w-full h-full rounded-3xl object-cover object-center">
+        <div class="absolute -bottom-52 w-full h-[30rem] overflow-hidden lg:px-20">
+            <img src="{{ asset($post->thumb) }}" alt=""
+                class="w-full h-full  border-8 border-white rounded-3xl object-cover object-center">
         </div>
     </section>
     <section class="container mt-72 lg:px-10 space-y-20">
@@ -45,7 +46,17 @@
         </div>
 
 
-        <p class="mt-20">{!! $post->content !!}</p>
+        <div class="px-20 sm:px-5 mt-20">{!! $post->content !!}</div>
+
+        <div class="px-20 sm:px-5">
+            <p class="uppercase text-xl">{{ __('blog.post.posted') }} <span class="ml-5 normal-case text-lg">
+                    {{-- Kategori --}}
+                    @foreach ($post->categories as $category)
+                        <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
+                            class="text-emerald-500">{{ $category->title }}</a>
+                    @endforeach
+                </span></p>
+        </div>
     </section>
 @endsection
 

@@ -3,7 +3,7 @@
     {{ request()->get('keyword') }}
 @endsection
 @section('content')
-    <section class="absolute top-0 left-0 right-0 mx-auto w-full">
+    <section class="w-full">
         <div class="relative bg-green-900 rounded-b-[60px] h-[30rem] overflow-hidden">
             <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
                 class="absolute -top-20 grayscale w-full opacity-50 blur">
@@ -13,33 +13,54 @@
         </div>
     </section>
 
-    <section class="mt-[35rem] min-h-[100vh]">
-        @forelse ($posts as $post)
-            <div class="w-full my-5 flex flex-row items-start justify-start space-x-10">
+    <section class="container mt-20">
 
-                {{-- Image --}}
-                @if (file_exists(public_path($post->thumb)))
-                    <div class="w-44 h-44 1/5 overflow-hidden">
-                        <img src="{{ asset($post->thumb) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+        <div class="grid grid-cols-4 sm:grid-cols-1 gap-5">
+
+            @forelse ($posts as $post)
+                <div class="">
+                    <div
+                        class="max-w-sm bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                        <div class="h-44 overflow-hidden rounded-t-3xl">
+                            <a href="{{ route('blog.posts.detail', ['slug' => $post->slug]) }}" class="">
+                                <img class="w-full object-cover" src="{{ asset($post->thumb) }}" alt="{{ $post->title }}">
+                            </a>
+                        </div>
+                        <div class="p-5 flex flex-col justify-between h-auto">
+                            <div>
+                                <a href="{{ route('blog.posts.detail', ['slug' => $post->slug]) }}">
+                                    <h5 class="mb-2 text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
+                                        {{ $post->title }}
+                                    </h5>
+                                </a>
+                                <p class="mb-3 font-normal text-slate-700 dark:text-slate-400">
+                                    {{ $post->title }}
+                                </p>
+                            </div>
+                            <div class="flex justify-end">
+                                <a href="{{ route('blog.posts.detail', ['slug' => $post->slug]) }}"
+                                    class="inline-flex items-center py-2 px-5 text-sm font-medium text-center text-white rounded-full bg-emerald-500 hover:bg-emerald-600">
+                                    Lihat
+                                    <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                @else
-                    <p>no image</p>
-                @endif
-
-                <div class="basis-4/5">
-                    {{-- Title --}}
-                    <a href="{{ route('blog.posts.detail', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
-                    <p>{{ $post->desc }}</p>
-
-                    <div>uwaw</div>
                 </div>
-            </div>
-        @empty
-            <p>no data</p>
-        @endforelse
+            @empty
+                <p>no data</p>
+            @endforelse
+        </div>
 
-        @if ($posts->hasPages())
-            {{ $posts->links() }}
-        @endif
+        <div class="mt-10">
+            @if ($posts->hasPages())
+                {{ $posts->links() }}
+            @endif
+        </div>
     </section>
 @endsection

@@ -1,27 +1,9 @@
 @extends('layouts.blog')
 @section('title')
-    Blog
 @endsection
 @section('content')
 
-    <div class="relative bg-green-900 rounded-b-[60px] h-[30rem] overflow-hidden">
-        <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
-            class="grayscale w-full opacity-50 blur object-cover h-full">
-        <div class="absolute inset-x-1/2 inset-y-1/2 flex flex-col justify-center items-center">
-            <a href="{{ '/' }}">
-                <h1 class="uppercase text-5xl font-bold text-slate-100">blog</h1>
-            </a>
-            <div class="mt-10 flex space-x-3 items-center">
-                <p class="text-xl text-slate-300">{{ __('blog.home') }}</p>
-                <a href="{{ 'login' }}" target="_blank"><i class="fad fa-arrow-right pt-1.5 text-slate-400"></i></a>
-                <p class="text-xl text-slate-300">Blog</p>
-                <div class="space-x-3 items-center {{ Request::is('category', 'tag') ? 'inline-flex' : 'hidden' }}">
-                    <i class="fad fa-arrow-right text-slate-400"></i>
-                    <p class="text-xl text-slate-300">@yield('title')</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('layouts._blog._hero')
 
     <div class="container sm:px-7">
 
@@ -50,10 +32,10 @@
         {{-- Popular Post --}}
         <section class="mt-20">
 
-            <div class="grid grid-cols-3 sm:grid-cols-1 gap-14">
+            <div class="grid grid-cols-3 sm:grid-cols-1 gap-20">
                 <div class="col-span-2">
                     <div class="">
-                        <h1 class="text-3xl uppercase font-semibold">Popular Post</h1>
+                        <p class="text-3xl uppercase font-semibold">{{ __('blog.title.popular') }}</p>
                     </div>
                     <div>
                         @forelse ($populars as $popular)
@@ -109,17 +91,20 @@
 
 
                 {{-- Sidebar --}}
-                <div class="lg:p-5 mb-10 sm:col-span-2">
+                <div class="mb-10 sm:col-span-2">
                     <div class="">
-                        <form action="{{ route('blog.search') }}" method="GET">
+                        <form action="{{ route('blog.search') }}" method="GET" class="m-0">
                             <input id="keyword" name="keyword" value="{{ request()->get('keyword') }}" type="search"
-                                placeholder="search"
-                                class="w-full rounded-full border-0 mt-5 py-3 px-5 bg-gray-100 dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500">
+                                placeholder="{{ __('blog.search_form') }}"
+                                class="w-full rounded-full border-0 py-3 px-5 bg-gray-100 dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500">
                         </form>
                     </div>
 
                     {{-- Category List --}}
-                    <p class="mt-7 text-xl font-semibold">Categories</p>
+                    <div class="mt-10 flex items-center">
+                        <p class="text-xl font-semibold">{{ __('blog.widget.categories') }}</p>
+                        <div class="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full ml-3"></div>
+                    </div>
                     <div class="px-5">
 
                         @forelse ($categories as $category)
@@ -128,23 +113,27 @@
                         @empty
                             <p>no data</p>
                         @endforelse
-                        <a href="{{ route('blog.categories') }}" class="text-sm text-slate-300 hover:text-emerald-500">show
-                            all categories <i class="fa-solid fa-caret-right"></i></a>
+                        <a href="{{ route('blog.categories') }}"
+                            class="text-sm text-slate-400 dark:text-slate-600 hover:text-emerald-500">
+                            {{ __('blog.widget.show_categories') }} <i class="fa-solid fa-caret-right"></i></a>
                     </div>
 
                     {{-- Tags List --}}
-                    <p class="mt-7 text-xl font-semibold">Tags</p>
-
-                    <div class="my-7 flex flex-wrap">
+                    <div class="mt-10 flex items-center">
+                        <p class="text-xl font-semibold">{{ __('blog.widget.tags') }}</p>
+                        <div class="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full ml-3"></div>
+                    </div>
+                    <div class="my-7 px-5 flex flex-wrap">
                         @forelse ($tags as $tag)
                             <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}"
                                 class="block py-2 px-5 m-2.5 ml-0 bg-slate-200 dark:bg-slate-800 rounded-full dark:hover:bg-emerald-500 hover:bg-emerald-500 hover:text-white">{{ $tag->title }}</a>
                         @empty
                             <p>no data</p>
                         @endforelse
+                        <a href="{{ route('blog.tags') }}"
+                            class="block mt-5 text-sm text-slate-400 dark:text-slate-600 hover:text-emerald-500">
+                            {{ __('blog.widget.show_tags') }} <i class="fa-solid fa-caret-right"></i></a>
                     </div>
-                    <a href="{{ route('blog.tags') }}" class="text-sm text-slate-300 hover:text-emerald-500">show all
-                        tags <i class="fa-solid fa-caret-right"></i></a>
 
                 </div>
             </div>
@@ -153,11 +142,11 @@
         {{-- News Post --}}
 
         <section class="mt-20 space-y-10">
-            <h1>Berita Terbaru</h1>
-            <div class="flex sm:flex-col justify-between space-x-10">
+            <p class="text-3xl uppercase font-semibold">{{ __('blog.title.news') }}</p>
+            <div class="flex sm:flex-col justify-between sm:space-y-10">
                 @forelse ($news as $new)
                     <div
-                        class="relative p-6 max-w-lg w-[30rem] sm:w-full h-60 bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                        class="relative p-6 max-w-lg w-[30rem] sm:w-full h-64 bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
                         <div class="flex justify-between mb-6">
                             <div>
                                 @foreach ($new->categories as $category)
@@ -169,18 +158,19 @@
                             </div>
                             <p class="text-slate-300 dark:text-slate-600">{{ $new->updated_at->format('d M Y') }}</p>
                         </div>
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-semibold tracking-tight dark:text-white">
-                                {{ $new->title }}
-                            </h5>
+                        <a href="{{ route('blog.posts.detail', ['slug' => $new->slug]) }}"
+                            class="block mb-5 text-xl tracking-tight hover:text-emerald-500 dark:hover:text-emerald-500 dark:text-white">
+
+                            {{ $new->title }}
+
                         </a>
                         <p
-                            class="mb-3 font-normal text-slate-500 block overflow-hidden text-ellipsis whitespace-nowrap flex-1 w-full">
+                            class="mb-5 font-normal text-slate-500 block overflow-hidden text-ellipsis whitespace-nowrap flex-1 w-full">
                             {{ $new->desc }}
                         </p>
                         <a href="{{ route('blog.posts.detail', ['slug' => $new->slug]) }}"
                             class="absolute bottom-6 right-6 inline-flex items-center py-2 px-3 text-sm font-medium text-center hover:text-white bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 dark:hover:bg-emerald-500 rounded-full">
-                            Lihat
+                            {{ __('blog.link.read') }}
                             <i class="fas fa-arrow-right w-4 ml-2"></i>
                         </a>
                     </div>

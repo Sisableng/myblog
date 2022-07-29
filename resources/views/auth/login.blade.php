@@ -6,11 +6,11 @@
         <p class="text-base text-slate-500 mt-3">{{ __('auth.login.sub') }}</p>
     </div>
 
-    <div class="card-body">
+    <div class="container max-w-lg">
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="mb-5">
-                <div class="col-md-6">
+                <div class="">
                     <input placeholder="mail@mail.com" id="email" type="email"
                         class="form-login autofill:bg-yellow-200 @error('email') is-invalid @enderror" name="email"
                         value="{{ old('email') }}" data-tooltip-target="tooltip-1" data-tooltip-placement="top" required

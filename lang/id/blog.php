@@ -6,31 +6,31 @@ return [
 
     // Nav
     'menu' => [
-        'home' => 'Bumi',
+        'home' => 'Home',
         'profile' => 'Profil',
-        'history' => 'Sajarah',
-        'visi_misi' => 'Visi sareng Misi',
-        'academic' => 'Pasantren',
+        'history' => 'Sejarah',
+        'visi_misi' => 'Visi dan Misi',
+        'academic' => 'Pesantren',
         'formal_edu' => 'Pendidikan Formal',
         'contact' => 'Kontak',
-        'register' => 'Pendaptaran'
+        'register' => 'Pendaftaran'
     ],
 
     // Index
-    'search_form' => 'Pilari didieu...',
+    'search_form' => 'Cari disini...',
     'widget' => [
         'categories' => 'Kategori',
-        'show_categories' => 'Tingali kategori sadayana',
+        'show_categories' => 'Lihat semua kategori',
         'tags' => 'Tag',
-        'show_tags' => 'Tingali tag sadayana'
+        'show_tags' => 'Lihat semua tag'
     ],
     'title' => [
 
         // Index
-        'home' => 'Bumi',
-        'search' => '<span class="text-white/50 font-medium mr-3">Pilari : </span>:keyword',
-        'popular' => 'Paling Populer',
-        'news' => 'Paling Anyar',
+        'home' => 'Home',
+        'search' => '<span class="text-white/50 font-medium mr-3">Cari : </span>:keyword',
+        'popular' => 'Posting Terpopuler',
+        'news' => 'Posting Terbaru',
 
         // Category
         'category' => 'List Kategori',
@@ -43,13 +43,13 @@ return [
         'post_tag' => 'Posting Tag: <span class="ml-3 font-semibold">:title</span>',
     ],
     'link' => [
-        'read' => 'Tingali',
+        'read' => 'Lihat',
     ],
 
     // Post Detail
     'post' => [
         'posted' => 'Diposting Di:',
-        'share' => 'Bagikeun',
+        'share' => 'Bagikan',
     ],
 
 ];

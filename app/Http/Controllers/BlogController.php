@@ -21,7 +21,7 @@ class BlogController extends Controller
             'populars' => Post::publish()->paginate(3),
             'news' => Post::publish()->latest()->cursorPaginate(3),
             'categories' => Category::paginate(5),
-            'tags' => Tag::paginate(5),
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -94,5 +94,11 @@ class BlogController extends Controller
         return view('blog.post-detail', [
             'post' => $post
         ]);
+    }
+
+    // Pages
+    public function sejarahPages()
+    {
+        return view('blog.pages.sejarah');
     }
 }

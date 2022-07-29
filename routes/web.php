@@ -59,6 +59,28 @@ Route::get(
     [\App\Http\Controllers\BlogController::class, 'searchPosts']
 )->name('blog.search');
 
+// Blog Pages
+Route::get(
+    '/sejarah',
+    [\App\Http\Controllers\BlogController::class, 'sejarahPages']
+)->name('blog.pages.sejarah');
+
+Route::get("/pesantren", function () {
+    return view("blog.pages.pesantren");
+});
+Route::get("/mts", function () {
+    return view("blog.pages.mts");
+});
+Route::get("/sma", function () {
+    return view("blog.pages.sma");
+});
+Route::get("/badan-otonom", function () {
+    return view("blog.pages.badan-otonom");
+});
+Route::get("/contact", function () {
+    return view("blog.pages.contact");
+});
+
 Auth::routes([
     "register" => false,
     "reset" => true,

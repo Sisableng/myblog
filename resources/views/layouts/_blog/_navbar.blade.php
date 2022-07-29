@@ -9,19 +9,19 @@
             <div class="flex md:order-2">
 
                 <!-- Dark mode switcher -->
-                <button id="theme-toggle" type="button" class="text-slate-400 text-2xl dark:text-slate-400 mr-5">
+                <button id="theme-toggle" type="button" class="text-slate-400 text-2xl dark:text-slate-400 mr-10">
                     <span id="theme-toggle-dark-icon" class="hidden">
                         <i class="fad fa-moon-cloud"></i>
                     </span>
-                    <span id="theme-toggle-light-icon" class="hidden text-yellow-300">
-                        <i class="fad fa-sun-bright"></i>
+                    <span id="theme-toggle-light-icon" class="hidden text-yellow-300 dark:text-yellow-300">
+                        <i class="fad fa-cloud-sun"></i>
                     </span>
                 </button>
                 <!-- Dark mode switcher end -->
 
                 <a href=""
                     class="hidden lg:block text-white bg-green-500 hover:bg-green-600 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-3 md:mr-0">
-                    {{ __('Pendaftaran') }}
+                    {{ __('blog.menu.register') }}
                 </a>
 
                 <!-- Hamburger -->
@@ -38,12 +38,12 @@
                 <ul class="flex flex-col mt-4 md:flex-row text-base md:space-x-8 md:mt-0 md:font-medium tracking-wider">
                     <li>
                         <a href="https://ponpesciloa.rf.gd" class="nav-item" aria-current="page"
-                            target="_blank">{{ __('blog.home') }}</a>
+                            target="_blank">{{ __('blog.menu.home') }}</a>
                     </li>
 
                     <li>
                         <button id="profil-link" data-dropdown-toggle="profil" class="nav-dropdown">
-                            {{ __('Profil') }}
+                            {{ __('blog.menu.profile') }}
                             <i class="fa-solid fa-caret-down ml-3 w-4"></i>
                         </button>
                         <!-- Dropdown menu -->
@@ -52,7 +52,8 @@
                             <ul class="py-1 text-sm text-slate-700 dark:text-slate-400"
                                 aria-labelledby="dropdownLargeButton">
                                 <li>
-                                    <a href="#" class="nav-dropdown-item">Sejarah</a>
+                                    <a href="{{ route('blog.pages.sejarah') }}"
+                                        class="nav-dropdown-item">{{ __('blog.menu.history') }}</a>
                                 </li>
                                 <li aria-labelledby="profil-link">
                                     <button id="doubleDropdownButton" data-dropdown-toggle="profil-sub"
@@ -66,17 +67,17 @@
                                         <ul class="py-1 text-sm text-slate-700 dark:text-slate-200"
                                             aria-labelledby="doubleDropdownButton">
                                             <li>
-                                                <a href="#" class="nav-dropdown-item">
-                                                    {{ __('Pesantren') }}
+                                                <a href="{{ url('pesantren') }}" class="nav-dropdown-item">
+                                                    {{ __('blog.menu.academic') }}
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-dropdown-item">
+                                                <a href="{{ url('mts') }}" class="nav-dropdown-item">
                                                     {{ __('Mts Ciloa') }}
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-dropdown-item">
+                                                <a href="{{ url('sma') }}" class="nav-dropdown-item">
                                                     {{ __('SMA IT Ciloa') }}
                                                 </a>
                                             </li>
@@ -85,7 +86,7 @@
                                 </li>
                             </ul>
                             <div class="py-1">
-                                <a href="#"
+                                <a href="{{ url('badan-otonom') }}"
                                     class="block py-2 px-4 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 dark:text-slate-400 dark:hover:text-white text-base">
                                     {{ __('Badan Otonom') }}
                                 </a>
@@ -95,7 +96,7 @@
 
                     <li>
                         <button id="study-link" data-dropdown-toggle="study" class="nav-dropdown">
-                            {{ __('Pendidikan Formal') }}
+                            {{ __('blog.menu.formal_edu') }}
                             <i class="fa-solid fa-caret-down ml-3 w-4"></i>
                         </button>
                         <!-- Dropdown menu -->
@@ -113,8 +114,8 @@
                     </li>
 
                     <li>
-                        <a href="#" class="nav-item">
-                            {{ __('Kontak') }}
+                        <a href="{{ url('contact') }}" class="nav-item">
+                            {{ __('blog.menu.contact') }}
                         </a>
                     </li>
                 </ul>
