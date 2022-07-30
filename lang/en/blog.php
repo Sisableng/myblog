@@ -22,7 +22,9 @@ return [
         'categories' => 'Category',
         'show_categories' => 'Show all categories',
         'tags' => 'Tags',
-        'show_tags' => 'Show all tags'
+        'show_tags' => 'Show all tags',
+        'contact_information' => 'Contact Information',
+        'social' => 'Social Media'
     ],
     'title' => [
 
@@ -44,12 +46,13 @@ return [
     ],
     'link' => [
         'read' => 'Show',
+        'share' => 'Share',
+        'maps' => 'Show in Google Maps'
     ],
 
     // Post Detail
     'post' => [
         'posted' => 'Posted in:',
-        'share' => 'Share',
     ],
 
 ];

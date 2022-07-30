@@ -84,9 +84,16 @@ thead th {
 
 .navbar-fixed .logo,
 .navbar-fixed .logo span,
+.navbar-fixed span#theme-toggle-dark-icon,
 .navbar-fixed ul > li > a,
-.navbar-fixed ul > li > button {
+.navbar-fixed ul > li > button,
+.navbar-fixed button#hamburger {
     @apply text-slate-800 transition-all duration-300 ease-in-out hover:text-emerald-500 dark:text-white dark:hover:text-emerald-500;
+}
+
+.logo,
+.logo span {
+    @apply hover:text-emerald-500 dark:hover:text-emerald-500;
 }
 
 .active {

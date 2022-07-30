@@ -17,8 +17,7 @@ module.exports = {
 
         extend: {
             screens: {
-                sm: { max: "1024px" },
-                "2xl": "1230px",
+                sm: { max: "768px" },
             },
             transitionProperty: {
                 height: "height",

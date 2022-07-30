@@ -22,7 +22,9 @@ return [
         'categories' => 'Kategori',
         'show_categories' => 'Lihat semua kategori',
         'tags' => 'Tag',
-        'show_tags' => 'Lihat semua tag'
+        'show_tags' => 'Lihat semua tag',
+        'contact_information' => 'Informasi Kontak',
+        'social' => 'Sosial Media'
     ],
     'title' => [
 
@@ -44,12 +46,14 @@ return [
     ],
     'link' => [
         'read' => 'Lihat',
+        'share' => 'Bagikan',
+        'maps' => 'Buka di Google Maps'
     ],
 
     // Post Detail
     'post' => [
         'posted' => 'Diposting Di:',
-        'share' => 'Bagikan',
+
     ],
 
 ];

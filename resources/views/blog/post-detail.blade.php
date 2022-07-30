@@ -7,16 +7,16 @@
 @endsection
 @section('content')
     <section class="relative w-full">
-        <div class="relative bg-green-900 h-[30rem] overflow-hidden">
+        <div class="relative bg-green-900 h-[30rem] sm:h-72 overflow-hidden">
             <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
-                class="absolute -top-20 grayscale w-full opacity-50 blur">
+                class="grayscale w-full opacity-50 blur object-cover h-full">
         </div>
-        <div class="absolute -bottom-52 w-full h-[30rem] overflow-hidden lg:px-20">
+        <div class="absolute -bottom-52 sm:-bottom-40 w-full h-[30rem] sm:h-72 overflow-hidden lg:px-20 sm:px-5">
             <img src="{{ asset($post->thumb) }}" alt=""
-                class="w-full h-full  border-8 border-white rounded-3xl object-cover object-center">
+                class="w-full h-full  border-8 border-white dark:border-slate-900 rounded-3xl object-cover object-center">
         </div>
     </section>
-    <section class="container mt-72 lg:px-10 space-y-20">
+    <section class="container mt-72 sm:mt-48 lg:px-10 sm:px-5 space-y-20 sm:space-y-14">
 
         <div class="space-x-5">
             {{-- Kategori --}}
@@ -48,7 +48,7 @@
 
         <div class="px-20 sm:px-5 mt-20">{!! $post->content !!}</div>
 
-        <div class="px-20 sm:px-5">
+        <div class="lg:px-20">
             <p class="uppercase text-xl">{{ __('blog.post.posted') }} <span class="ml-5 normal-case text-lg">
                     {{-- Kategori --}}
                     @foreach ($post->categories as $category)

@@ -6,12 +6,12 @@
     @include('layouts._blog._hero')
     <section class="container mt-20">
         <h5 class="font-semibold text-xl text-center">{{ __('blog.title.category') }}</h5>
-        <div class="grid grid-cols-3 sm:grid-cols-1 gap-5 mt-20">
+        <div class="grid grid-cols-3 sm:grid-cols-1 gap-20 mt-20">
             @forelse ($categories as $category)
                 <div class="w-full flex flex-col items-center mx-auto">
 
                     {{-- Image --}}
-                    <div class="w-44 h-44 overflow-hidden rounded-full">
+                    <div class="w-24 h-24 overflow-hidden rounded-full">
                         @if (file_exists(public_path($category->thumb)))
                             <img src="{{ asset($category->thumb) }}" alt="{{ $category->title }}"
                                 class="h-full object-cover object-center w-full">
@@ -25,7 +25,7 @@
                         <div class="text-center">
                             <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
                                 class="text-xl font-semibold hover:text-emerald-500 dark:hover:text-emerald-500">{{ $category->title }}</a>
-                            <p class="text-slate-500">{{ $category->desc }}</p>
+                            <p class="text-slate-500 px-20">{{ $category->desc }}</p>
                         </div>
 
                         <div class="w-full text-center mt-5">

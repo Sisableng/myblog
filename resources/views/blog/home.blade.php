@@ -36,12 +36,12 @@
             <div class="grid grid-cols-3 sm:grid-cols-1 gap-20">
                 <div class="col-span-2">
                     <div class="">
-                        <p class="text-3xl uppercase font-semibold">{{ __('blog.title.popular') }}</p>
+                        <p class="text-3xl sm:text-xl uppercase font-semibold">{{ __('blog.title.popular') }}</p>
                     </div>
                     <div>
                         @forelse ($populars as $popular)
                             <div
-                                class="group w-full lg:h-56 sm:h-[30rem] my-10 flex flex-row sm:flex-col items-start justify-start lg:space-x-5">
+                                class="group w-full lg:h-56 sm:h-[25rem] my-10 flex flex-row sm:flex-col items-start justify-start lg:space-x-5">
 
                                 {{-- Image --}}
                                 <div class="lg:basis-3/12 w-full h-full lg:rounded-3xl sm:rounded-t-3xl overflow-hidden">
@@ -68,13 +68,14 @@
                                             </div>
                                             <a href="{{ route('blog.posts.detail', ['slug' => $popular->slug]) }}"
                                                 class="text-3xl sm:text-2xl group-hover:text-emerald-500 ">{{ $popular->title }}</a>
-                                            <p class="text-slate-400">{{ $popular->desc }}</p>
+                                            <p class="text-ellipsis overflow-hidden text-slate-400">{{ $popular->desc }}
+                                            </p>
                                         </div>
 
                                     </div>
 
                                     <div class="w-full basis-20 sm:basis-16">
-                                        <div class="flex items-end h-full pb-5">
+                                        <div class="flex items-end h-full pb-5 sm:pb-0">
                                             <a href="{{ route('blog.posts.detail', ['slug' => $popular->slug]) }}"
                                                 class="text-lg text-slate-300 group-hover:text-emerald-500
                                             w-10 h-10 p-4 flex items-center justify-center rounded-full group-hover:bg-gray-100 dark:group-hover:bg-slate-800">

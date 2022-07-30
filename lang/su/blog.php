@@ -22,7 +22,9 @@ return [
         'categories' => 'Kategori',
         'show_categories' => 'Tingali kategori sadayana',
         'tags' => 'Tag',
-        'show_tags' => 'Tingali tag sadayana'
+        'show_tags' => 'Tingali tag sadayana',
+        'contact_information' => 'Inpormasi Kontak',
+        'social' => 'Sosial Media'
     ],
     'title' => [
 
@@ -44,12 +46,14 @@ return [
     ],
     'link' => [
         'read' => 'Tingali',
+        'share' => 'Bagikeun',
+        'maps' => 'Buka di Google Maps'
     ],
 
     // Post Detail
     'post' => [
         'posted' => 'Diposting Di:',
-        'share' => 'Bagikeun',
+
     ],
 
 ];

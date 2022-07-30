@@ -4,24 +4,23 @@
 @endsection
 @section('content')
     <section class="w-full">
-        <div class="relative bg-green-900 rounded-b-[60px] h-[30rem] overflow-hidden">
+        <div class="relative bg-green-900 h-[30rem] sm:h-80 overflow-hidden">
             <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
-                class="absolute -top-20 grayscale w-full opacity-50 blur">
-            <div class="absolute inset-x-0 inset-y-1/2 w-full flex justify-center items-center">
-                <h1 class="max-w-[50%] text-3xl text-slate-100">
+                class="grayscale w-full opacity-50 blur object-cover h-full">
+            <div class="absolute inset-y-1/2 w-full flex lg:justify-center justify-start lg:items-center">
+                <h1 class="lg:max-w-[50%] text-3xl sm:px-10 text-slate-100">
                     {!! __('blog.title.post_tag', ['title' => $tag->title]) !!}
                 </h1>
             </div>
         </div>
     </section>
 
-    <section class="container mt-20">
+    <section class="container mt-20 sm:px-10">
         <div class="grid grid-cols-4 sm:grid-cols-1 gap-20">
-            <div class="col-span-3">
-                <div class="grid grid-cols-3 sm:grid-1 gap-5">
+            <div class="lg:col-span-3">
+                <div class="grid grid-cols-3 sm:grid-cols-1 gap-10">
                     @forelse ($posts as $post)
-                        <div
-                            class="max-w-sm bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                        <div class="bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
                             <div class="h-44 overflow-hidden rounded-t-3xl">
                                 <a href="{{ route('blog.posts.detail', ['slug' => $post->slug]) }}" class="">
                                     <img class="object-cover" src="{{ asset($post->thumb) }}" alt="{{ $post->title }}">
@@ -67,11 +66,12 @@
 
 
             {{-- List Tags --}}
-            <div class="col-span-1">
+            <div class="lg:col-span-1">
                 <p class="text-xl font-semibold">{{ __('blog.widget.tags') }}</p>
-                <div class="px-5 mt-5">
+                <div class="mt-5">
                     @forelse ($tags as $tag)
-                        <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}">{{ $tag->title }}</a>
+                        <a href="{{ route('blog.posts.tag', ['slug' => $tag->slug]) }}"
+                            class="inline-flex m-2.5 py-1 px-5 bg-slate-200 rounded-full max-w-max dark:bg-slate-800">{{ $tag->title }}</a>
                     @empty
                         <p>No Data</p>
                     @endforelse

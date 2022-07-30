@@ -1,4 +1,4 @@
-<div class="relative bg-green-900 rounded-b-[60px] h-[30rem] overflow-hidden">
+<div class="relative bg-green-900 h-[30rem] overflow-hidden">
     <img src="https://c.pxhere.com/photos/65/78/mosque_sunrise_architecture_landmark_islam_muslim_tower_building-541370.jpg!d"
         class="grayscale w-full opacity-50 blur object-cover h-full">
     <div class="absolute inset-y-1/2 flex flex-col justify-center items-center w-full">
