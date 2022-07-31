@@ -48,18 +48,23 @@
 
         <div class="px-20 sm:px-5 mt-20">{!! $post->content !!}</div>
 
-        <div class="lg:px-20">
-            <p class="uppercase text-xl">{{ __('blog.post.posted') }} <span class="ml-5 normal-case text-lg">
-                    {{-- Kategori --}}
+        <div class="lg:px-20 lg:flex justify-between">
+
+            <div class="sm:mt-10">
+                <p class="block mb-3 uppercase text-slate-500 sm:text-center">{{ __('blog.link.share') }}</p>
+                {!! $shareBtn !!}
+            </div>
+
+            <div class="flex sm:flex-col sm:text-center">
+                <p class="sm:block mb-3 lg:mr-5 uppercase text-slate-500">{{ __('blog.post.posted') }}</p>
+                <div class="flex sm:justify-center space-x-5">
                     @foreach ($post->categories as $category)
                         <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}"
-                            class="text-emerald-500">{{ $category->title }}</a>
+                            class="text-emerald-500 normal-case">{{ $category->title }}</a>
                     @endforeach
-                </span></p>
+                </div>
+            </div>
+
         </div>
     </section>
 @endsection
-
-{{-- Menampilkan kategori dan tag Cara 1 --}}
-{{-- <p>{{ $post->tags->first()->title }}</p>
-     <p>{{ $post->categories->first()->title }}</p> --}}

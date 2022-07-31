@@ -41,7 +41,9 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', null),
+
+    'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -186,6 +188,7 @@ return [
          * Package Service Providers...
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -211,6 +214,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ])->toArray(),
 
 ];

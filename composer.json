@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
@@ -20,6 +21,7 @@
         "unisharp/laravel-filemanager": "^2.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",

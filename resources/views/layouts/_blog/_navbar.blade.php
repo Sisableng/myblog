@@ -47,7 +47,7 @@
                         </button>
                         <!-- Dropdown menu -->
                         <div id="profil"
-                            class="hidden z-10 w-64 font-normal bg-white rounded divide-y divide-slate-100 shadow dark:bg-slate-700 dark:divide-slate-600">
+                            class="hidden z-10 w-64 font-normal bg-white rounded divide-y divide-slate-100 shadow dark:bg-slate-800 dark:divide-slate-700">
                             <ul class="py-1 text-sm text-slate-700 dark:text-slate-400"
                                 aria-labelledby="dropdownLargeButton">
                                 <li>
@@ -57,12 +57,12 @@
                                 <li aria-labelledby="profil-link">
                                     <button id="doubleDropdownButton" data-dropdown-toggle="profil-sub"
                                         data-dropdown-placement="right-start" type="button"
-                                        class="flex justify-between items-center text-base py-2 px-4 w-full hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white">
+                                        class="flex justify-between items-center text-base py-2 px-4 w-full hover:bg-slate-100 dark:hover:bg-slate-700 dark:hover:text-white">
                                         {{ __('Visi dan Misi') }}
                                         <i class="fa-solid fa-caret-right w-4 h-4"></i>
                                     </button>
                                     <div id="profil-sub"
-                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-slate-100 shadow dark:bg-slate-700">
+                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-slate-100 shadow dark:bg-slate-800">
                                         <ul class="py-1 text-sm text-slate-700 dark:text-slate-200"
                                             aria-labelledby="doubleDropdownButton">
                                             <li>
@@ -84,12 +84,12 @@
                                     </div>
                                 </li>
                             </ul>
-                            <div class="py-1">
+                            {{-- <div class="py-1">
                                 <a href="{{ url('badan-otonom') }}"
-                                    class="block py-2 px-4 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 dark:text-slate-400 dark:hover:text-white text-base">
+                                    class="block py-2 px-4 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 dark:text-slate-400 dark:hover:text-white text-base">
                                     {{ __('Badan Otonom') }}
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </li>
 

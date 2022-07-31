@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use Jorenvh\Share\Share;
 
 class BlogController extends Controller
 {
@@ -16,11 +17,11 @@ class BlogController extends Controller
         $title = 'Ciloa Media';
         return view('blog.home', [
             'title' => $title,
-            'hero' => Post::publish()->latest()->paginate(5),
-            'populars' => Post::publish()->paginate(3),
-            'news' => Post::publish()->latest()->cursorPaginate(3),
-            'categories' => Category::onlyParent()->paginate(5),
-            'tags' => Tag::paginate(5),
+            'hero' => Post::publish()->latest()->take(5)->get(),
+            'populars' => Post::publish()->take(3)->get(),
+            'news' => Post::publish()->latest()->cursorPaginate(6),
+            'categories' => Category::onlyParent()->take(5)->get(),
+            'tags' => Tag::take(5)->get(),
         ]);
     }
 
@@ -90,8 +91,15 @@ class BlogController extends Controller
             return redirect()->route('blog.home');
         }
 
+        $shareBtn = \Share::currentPage()
+            ->facebook()
+            ->twitter()
+            ->whatsapp()
+            ->telegram();
+
         return view('blog.post-detail', [
-            'post' => $post
+            'post' => $post,
+            'shareBtn' => $shareBtn
         ]);
     }
 

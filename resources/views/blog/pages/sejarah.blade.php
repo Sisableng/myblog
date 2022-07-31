@@ -137,7 +137,7 @@
 
                             <i class="fa-solid fa-phone-arrow-up-right mr-3 text-slate-500"></i>
                             <a href="" class="inline hover:text-emerald-500 dark:hover:text-emerald-500 mt-2">
-                                0895355305655</a>
+                                082321072859</a>
                         </li>
                         <li class="">
 
@@ -153,7 +153,7 @@
                                 <br>
                                 Kec.Limbangan Timur, Garut Jawa Barat
                             </p>
-                            <a href=""
+                            <a href="https://goo.gl/maps/E8YCFzjAn1QPFGrR7"
                                 class="inline-flex items-center mt-5 px-5 py-1 max-w-max bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" viewBox="0 0 92.3 132.3">
                                     <path fill="#1a73e8"

@@ -28,6 +28,9 @@ return [
     ],
     'title' => [
 
+        'visi' => 'Vision',
+        'misi' => 'Mision',
+
         // Index
         'home' => 'Home',
         'search' => '<span class="text-white/50 font-medium mr-3">Search : </span>:keyword',

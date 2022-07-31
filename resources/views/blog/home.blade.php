@@ -6,17 +6,18 @@
 
     @include('layouts._blog._hero')
 
-    <div class="container sm:px-7">
+    <div class="container px-10 sm:px-5">
 
         {{-- Hero --}}
         <section class="mt-20 mb-28">
             <div class="grid lg:grid-rows-2 sm:grid-cols-1 lg:grid-flow-col gap-7">
                 @forelse ($hero as $item)
                     <div
-                        class="group relative first:row-span-2 first:h-[28rem] first:sm:h-96 first:lg:text-3xl text-xl row-span-0 h-52 bg-cover bg-no-repeat bg-center text-white rounded-3xl overflow-hidden">
+                        class="group relative first:row-span-2 first:h-[28rem] first:sm:h-96 first:lg:text-3xl text-xl row-span-0 h-52 bg-cover bg-no-repeat bg-center text-white rounded-3xl overflow-hidden hover:ring-4 hover:ring-emerald-500
+                        transition ease-out">
 
                         <a href="{{ route('blog.posts.detail', ['slug' => $item->slug]) }}"
-                            class="absolute inset-y-0 inset-x-0 flex items-end px-20 py-10 z-10 bg-gradient-to-b from-transparent to-slate-900">
+                            class="absolute inset-y-0 inset-x-0 flex items-end px-10 py-10 z-10 bg-gradient-to-b from-transparent to-slate-900">
                             <p class="group-hover:-translate-y-5 group-hover:translate-x-5 transition-all">
                                 {{ $item->title }}</p>
                         </a>
@@ -44,10 +45,11 @@
                                 class="group w-full lg:h-56 sm:h-[25rem] my-10 flex flex-row sm:flex-col items-start justify-start lg:space-x-5">
 
                                 {{-- Image --}}
-                                <div class="lg:basis-3/12 w-full h-full lg:rounded-3xl sm:rounded-t-3xl overflow-hidden">
+                                <div
+                                    class="lg:basis-4/12 w-full h-full lg:rounded-3xl sm:rounded-t-3xl overflow-hidden group-hover:ring-4 group-hover:ring-emerald-500">
                                     @if (file_exists(public_path($popular->thumb)))
                                         <img src="{{ asset($popular->thumb) }}" alt="{{ $popular->title }}"
-                                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform">
+                                            class="w-full h-full object-cover transform  group-hover:scale-110 transition-transform">
                                     @else
                                         <p>no image</p>
                                     @endif
@@ -55,7 +57,7 @@
 
                                 {{-- Title & Desc --}}
                                 <div
-                                    class="flex w-full h-full p-5 pr-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 lg:rounded-3xl sm:rounded-b-3xl">
+                                    class="flex w-full h-full p-5 pr-0 bg-white dark:bg-slate-900 lg:rounded-3xl sm:rounded-b-3xl">
                                     <div class="w-full">
                                         <div class="space-y-5">
                                             <div class="mb-3">
@@ -75,7 +77,7 @@
                                     </div>
 
                                     <div class="w-full basis-20 sm:basis-16">
-                                        <div class="flex items-end h-full pb-5 sm:pb-0">
+                                        <div class="flex items-start sm:items-end h-full pb-5 sm:pb-0">
                                             <a href="{{ route('blog.posts.detail', ['slug' => $popular->slug]) }}"
                                                 class="text-lg text-slate-300 group-hover:text-emerald-500
                                             w-10 h-10 p-4 flex items-center justify-center rounded-full group-hover:bg-gray-100 dark:group-hover:bg-slate-800">
@@ -145,10 +147,10 @@
 
         <section class="mt-20 space-y-10">
             <p class="text-3xl uppercase font-semibold">{{ __('blog.title.news') }}</p>
-            <div class="flex sm:flex-col justify-between sm:space-y-10">
+            <div class="grid grid-cols-3 sm:grid-cols-1 gap-5">
                 @forelse ($news as $new)
                     <div
-                        class="relative p-6 max-w-lg w-[30rem] sm:w-full h-64 bg-white rounded-3xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                        class="relative p-6 h-64 bg-white rounded-3xl border border-slate-200 hover:border-emerald-500 dark:hover:border-emerald-500 dark:bg-slate-900 dark:border-slate-700">
                         <div class="flex justify-between mb-6">
                             <div>
                                 @foreach ($new->categories as $category)
@@ -166,8 +168,7 @@
                             {{ $new->title }}
 
                         </a>
-                        <p
-                            class="mb-5 font-normal text-slate-500 block overflow-hidden text-ellipsis whitespace-nowrap flex-1 w-full">
+                        <p class="mb-5 font-normal text-slate-500 truncate">
                             {{ $new->desc }}
                         </p>
                         <a href="{{ route('blog.posts.detail', ['slug' => $new->slug]) }}"

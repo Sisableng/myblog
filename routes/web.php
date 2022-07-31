@@ -94,6 +94,11 @@ Auth::routes([
 // });
 
 Route::middleware(["auth"])->group(function () {
+
+    Route::get('/admin', function () {
+        return redirect('/dashboard');
+    });
+
     Route::get("/dashboard", [
         App\Http\Controllers\DashboardController::class,
         "index",

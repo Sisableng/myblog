@@ -361,3 +361,23 @@ thead th {
 }
 
 /* EndSweet Alert */
+
+/* Social Link */
+
+div#social-links {
+    @apply m-auto;
+}
+
+div#social-links ul {
+    @apply flex space-x-10 sm:justify-center;
+}
+
+div#social-links ul li {
+    @apply w-auto;
+}
+
+div#social-links ul li a {
+    @apply text-2xl text-slate-500 hover:text-emerald-500;
+}
+
+/* End Social Link */
